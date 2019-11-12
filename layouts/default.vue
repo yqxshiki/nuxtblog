@@ -1,55 +1,72 @@
 <template>
   <div>
+    <header>
+      <div class="wrap">
+        <div class="content">
+          <nuxt-link to="/">Home</nuxt-link>
+        </div>
+        <div class="content">
+          <nuxt-link to="/blog">Bolg</nuxt-link>
+        </div>
+        <div class="content">
+          <nuxt-link to="/">
+            <img class="img" src="../static/logo2.png" alt />
+          </nuxt-link>
+        </div>
+        <div class="content">
+          <a href="#">English</a>
+        </div>
+        <div class="content">
+          <a href="#">Chinese</a>
+        </div>
+      </div>
+    </header>
     <nuxt />
+    <footer>
+      <div class="container">
+        <div class="introduce">
+          <nuxt-link to="/sitemap">Sitemap</nuxt-link>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
-<style>
-html {
-  font-family: 'Source Sans Pro', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, 'Helvetica Neue', Arial, sans-serif;
-  font-size: 16px;
-  word-spacing: 1px;
-  -ms-text-size-adjust: 100%;
-  -webkit-text-size-adjust: 100%;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-font-smoothing: antialiased;
-  box-sizing: border-box;
+<style scoped>
+/* 头部 */
+header {
+  width: 100%;
+  height: 100px;
+  margin-top: 40px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 400;
+}
+.wrap {
+  display: flex;
+  justify-content: space-around;
+}
+.img {
+  width: 210px;
+  height: 60px;
+  margin-top: -20px;
+}
+/* 底部 */
+footer {
+  width: 100%;
+  height: 200px;
+  background: rgb(227, 242, 237);
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-  margin: 0;
+.introduce {
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #aaa;
 }
-
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
-  text-decoration: none;
-  padding: 10px 30px;
-}
-
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
-}
-
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
-}
-
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+.introduce:hover {
+  color: #ccc;
 }
 </style>
