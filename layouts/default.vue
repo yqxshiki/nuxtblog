@@ -22,13 +22,6 @@
       </div>
     </header>
     <nuxt />
-    <footer>
-      <div class="container">
-        <div class="introduce">
-          <nuxt-link to="/sitemap">Sitemap</nuxt-link>
-        </div>
-      </div>
-    </footer>
   </div>
 </template>
 
@@ -45,28 +38,12 @@ header {
   display: flex;
   justify-content: space-around;
 }
+.content a:hover {
+  border-bottom: 1px solid black;
+}
 .img {
   width: 210px;
   height: 60px;
   margin-top: -20px;
-}
-/* 底部 */
-footer {
-  width: 100%;
-  height: 200px;
-  background: rgb(227, 242, 237);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.introduce {
-  font-size: 1.2rem;
-  font-weight: 700;
-  cursor: pointer;
-  color: #aaa;
-}
-.introduce:hover {
-  color: #ccc;
 }
 </style>

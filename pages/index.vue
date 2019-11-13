@@ -1,7 +1,17 @@
 <template>
-  <div>
+  <div id="index">
     <swiper />
-    <contact/>
+    <contact />
+    <footer>
+      <div class="container">
+        <div class="introduce">
+          <nuxt-link to="/sitemap">Sitemap</nuxt-link>
+        </div>
+      </div>
+      <div class="keep">
+        <p>关于yqxshiki个人网站//鄂ICP备19027794号</p>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -17,5 +27,31 @@ export default {
   }
 };
 </script>
-<style>
+<style scoped>
+#index{
+  overflow: hidden;
+}
+/* 底部 */
+footer {
+  width: 100%;
+  height: 200px;
+  background: rgb(227, 242, 237);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.introduce {
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  color: #aaa;
+}
+.introduce:hover {
+  color: #ccc;
+}
+.keep {
+  color: #aaa;
+  margin-top: 100px;
+  margin-left: 40px;
+}
 </style>
