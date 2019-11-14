@@ -28,6 +28,14 @@
         <div class="description">Our store</div>
         <div class="mindescription">Wuhan Qingchuan University</div>
       </div>
+
+      <div class="wrap">
+        <div class="icon">
+          <i class="iconfont">&#xe603;</i>
+        </div>
+        <div class="description">Personal blog</div>
+        <div class="mindescription">https://www.yqxshiki.com/</div>
+      </div>
     </div>
   </div>
 </template>
@@ -43,7 +51,6 @@ export default {};
   line-height: 300px;
   width: 100%;
   height: 300px;
-  margin-left: 3%;
 }
 .wrap div {
   width: 100%;
@@ -62,13 +69,13 @@ export default {};
 /* iconfont */
 @font-face {
   font-family: "iconfont"; /* project id 1505337 */
-  src: url("//at.alicdn.com/t/font_1505337_cpdpbi8t6ft.eot");
-  src: url("//at.alicdn.com/t/font_1505337_cpdpbi8t6ft.eot?#iefix")
+  src: url("//at.alicdn.com/t/font_1505337_23q2fryjtld.eot");
+  src: url("//at.alicdn.com/t/font_1505337_23q2fryjtld.eot?#iefix")
       format("embedded-opentype"),
-    url("//at.alicdn.com/t/font_1505337_cpdpbi8t6ft.woff2") format("woff2"),
-    url("//at.alicdn.com/t/font_1505337_cpdpbi8t6ft.woff") format("woff"),
-    url("//at.alicdn.com/t/font_1505337_cpdpbi8t6ft.ttf") format("truetype"),
-    url("//at.alicdn.com/t/font_1505337_cpdpbi8t6ft.svg#iconfont") format("svg");
+    url("//at.alicdn.com/t/font_1505337_23q2fryjtld.woff2") format("woff2"),
+    url("//at.alicdn.com/t/font_1505337_23q2fryjtld.woff") format("woff"),
+    url("//at.alicdn.com/t/font_1505337_23q2fryjtld.ttf") format("truetype"),
+    url("//at.alicdn.com/t/font_1505337_23q2fryjtld.svg#iconfont") format("svg");
 }
 .iconfont {
   font-family: "iconfont" !important;

@@ -1,10 +1,10 @@
 <template>
   <div id="list">
     <div class="wrap">
-      <div class="acticle" v-for="item in listarray" :key="item.index">
-        <h1>{{item.title}}</h1>
+      <div class="acticle">
+        <h1>{{arrlist.title}}</h1>
         <div class="container">
-          <p>{{item.body}}</p>
+          <div v-html="arrlist.body"></div>
         </div>
       </div>
     </div>
@@ -12,20 +12,25 @@
 </template>
 
 <script>
-import axios from "axios";
 export default {
   name: "list",
-  date() {
-    return {};
+  data() {
+    return {
+      arrlist: {
+        title: "",
+        body: ""
+      }
+    };
   },
-  asyncData() {
-    return axios
-      .get(
-        "https://www.fastmock.site/mock/27daaace66e047350e2beff518943c0f/nuxt/list"
-      )
-      .then(res => {
-        return { listarray: res.data.data };
+  methods: {
+    getblog(list) {
+      this.axios.get("http://localhost:4000/api/blog/" + list).then(res => {
+        this.arrlist = res.data;
       });
+    }
+  },
+  mounted() {
+    this.getblog(this.$route.params.list);
   }
 };
 </script>
@@ -39,9 +44,15 @@ export default {
 /* 文章 */
 .acticle {
   width: 750px;
-  height: 200px;
   margin-top: 1rem;
   padding: 1rem;
+  box-shadow: 2px 2px 2px 2px #aaa;
+}
+.acticle:hover {
+  box-shadow: 4px 4px 4px 4px #ccc;
+}
+h1 {
+  margin-left: 25%;
 }
 .container p {
   text-indent: 2rem;
