@@ -28,14 +28,14 @@ export default {
 };
 </script>
 <style scoped>
-#index{
+#index {
   overflow: hidden;
 }
 /* 底部 */
 footer {
   width: 100%;
   height: 200px;
-  background: rgb(227, 242, 237);
+  background: rgb(5, 36, 36);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,13 +44,13 @@ footer {
   font-size: 1.2rem;
   font-weight: 700;
   cursor: pointer;
-  color: #aaa;
+  color: #000;
 }
 .introduce:hover {
-  color: #ccc;
+  color: #000;
 }
 .keep {
-  color: #aaa;
+  color: #000;
   margin-top: 100px;
   margin-left: 40px;
 }

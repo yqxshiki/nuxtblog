@@ -66,25 +66,7 @@ export default {};
   font-size: 1rem;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-/* iconfont */
-@font-face {
-  font-family: "iconfont"; /* project id 1505337 */
-  src: url("//at.alicdn.com/t/font_1505337_23q2fryjtld.eot");
-  src: url("//at.alicdn.com/t/font_1505337_23q2fryjtld.eot?#iefix")
-      format("embedded-opentype"),
-    url("//at.alicdn.com/t/font_1505337_23q2fryjtld.woff2") format("woff2"),
-    url("//at.alicdn.com/t/font_1505337_23q2fryjtld.woff") format("woff"),
-    url("//at.alicdn.com/t/font_1505337_23q2fryjtld.ttf") format("truetype"),
-    url("//at.alicdn.com/t/font_1505337_23q2fryjtld.svg#iconfont") format("svg");
-}
-.iconfont {
-  font-family: "iconfont" !important;
+.iconfont{
   font-size: 3rem;
-  font-style: normal;
-  color: skyblue;
-  cursor: pointer;
-  -webkit-font-smoothing: antialiased;
-  -webkit-text-stroke-width: 0.2px;
-  -moz-osx-font-smoothing: grayscale;
 }
 </style>

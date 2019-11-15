@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     getblog(list) {
-      this.axios.get("http://localhost:4000/api/blog/" + list).then(res => {
+      this.axios.get("http://49.232.96.54:4000/api/blog/" + list).then(res => {
         this.arrlist = res.data;
       });
     }
@@ -34,7 +34,10 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style  scoped>
+a {
+  color: black;
+}
 .wrap {
   width: 100%;
   display: flex;
@@ -47,12 +50,30 @@ export default {
   margin-top: 1rem;
   padding: 1rem;
   box-shadow: 2px 2px 2px 2px #aaa;
+  background: rgb(217, 216, 223);
 }
 .acticle:hover {
   box-shadow: 4px 4px 4px 4px #ccc;
 }
 h1 {
-  margin-left: 25%;
+  width: 100%;
+  color: #2c3e5036;
+  background-image: url("~static/wenzi.jpeg");
+  background-clip: text;
+  -webkit-background-clip: text;
+  animation: change 3s infinite;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+@keyframes change {
+  0% {
+    background-position: left 0 top 0px;
+  }
+
+  100% {
+    background-position: left 800px top 0px;
+  }
 }
 .container p {
   text-indent: 2rem;

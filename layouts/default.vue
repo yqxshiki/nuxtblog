@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="default">
     <header>
       <div class="wrap">
         <div class="content">
@@ -10,14 +10,14 @@
         </div>
         <div class="content">
           <nuxt-link to="/">
-            <img class="img" src="../static/logo2.png" alt />
+            <img class="img" src="../static/scrook.png" alt />
           </nuxt-link>
         </div>
         <div class="content">
           <a href="#">English</a>
         </div>
         <div class="content">
-          <a href="#">Chinese</a>
+          <nuxt-link to="/withme">Withme</nuxt-link>
         </div>
       </div>
     </header>
@@ -39,11 +39,15 @@ header {
   justify-content: space-around;
 }
 .content a:hover {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid aqua;
+  color: aqua;
 }
 .img {
   width: 210px;
   height: 60px;
   margin-top: -20px;
+}
+a {
+  color: #fff;
 }
 </style>
