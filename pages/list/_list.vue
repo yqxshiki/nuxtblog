@@ -1,7 +1,7 @@
 <template>
   <div id="list">
     <div class="wrap">
-      <div class="acticle">
+      <div class="acticle" v-highlight>
         <h1>{{arrlist.title}}</h1>
         <div class="container">
           <div v-html="arrlist.body"></div>
@@ -13,15 +13,26 @@
 </template>
 
 <script>
+import Vue from "vue";
+import hljs from "highlight.js";
+import "highlight.js/styles/googlecode.css"; //样式文件
+// 自定义指令
+Vue.directive("highlight", function(el) {
+  let blocks = el.querySelectorAll("pre code");
+  blocks.forEach(block => {
+    hljs.highlightBlock(block);
+  });
+});
 export default {
-  layout:'sidebar',
+  layout: "sidebar",
   name: "list",
   data() {
     return {
       arrlist: {
         title: "",
         body: ""
-      }
+      },
+      title: this.$route.params.title
     };
   },
   methods: {
@@ -33,11 +44,17 @@ export default {
   },
   mounted() {
     this.getblog(this.$route.params.list);
+  },
+  head() {
+    return {
+      title: this.title,
+      meta: [{ hid: "description", name: "description", content: "yqxshiki" }]
+    };
   }
 };
 </script>
 <style  scoped>
-#list{
+#list {
   margin-top: -1rem;
 }
 a {
@@ -83,7 +100,7 @@ h1 {
 .container p {
   text-indent: 2rem;
 }
-.end{
+.end {
   color: #aaa;
   text-align: center;
 }

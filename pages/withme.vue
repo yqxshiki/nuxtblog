@@ -47,7 +47,13 @@
 <script>
 export default {
   layout: "sidebar",
-  transition: "withme"
+  transition: "withme",
+  head() {
+    return {
+      title: "关于我",
+      meta: [{ hid: "description", name: "withme", content: "withme" }]
+    };
+  }
 };
 </script>
 <style scoped>

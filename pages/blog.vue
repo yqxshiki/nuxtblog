@@ -3,7 +3,9 @@
     <div class="container">
       <div class="list" v-for="item in list" :key="item.index">
         <div class="title">
-          <nuxt-link :to="'/list/'+item._id">{{item.title}}</nuxt-link>
+          <!-- <nuxt-link :to="'/list/'+item._id">{{item.title}}</nuxt-link> -->
+          <nuxt-link :to="{name:'list-list',params:{list:item._id,title:item.title}}">{{item.title}}</nuxt-link>
+
         </div>
         <!-- <div class="time">2018-01-11T10:00:57.520Z</div> -->
       </div>
@@ -14,6 +16,12 @@
 <script>
 export default {
   layout: "sidebar",
+    head() {
+    return {
+      title: "Blog",
+       meta: [{ hid: 'description', name: 'Blog', content: 'Blog'}]
+    };
+  },
   data() {
     return {
       list: ""
@@ -32,9 +40,8 @@ export default {
 };
 </script>
 <style scoped>
-#blog{
+#blog {
   margin-top: -2rem;
-
 }
 .container {
   width: 100%;
