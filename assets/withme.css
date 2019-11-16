@@ -1,0 +1,9 @@
+.withme-enter-active,
+.withme-leave-active {
+  transition: opacity .7s;
+}
+
+.withme-enter,
+.withme-leave-active {
+  opacity: 0;
+}

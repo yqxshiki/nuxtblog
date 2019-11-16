@@ -1,5 +1,13 @@
 <template>
   <div id="default">
+    <div class="github">
+      <a href="https://github.com/yqxshiki" target="_blank">
+        <img
+          src="https://github.blog/wp-content/uploads/2008/12/forkme_left_green_007200.png?resize=149%2C149"
+          alt
+        />
+      </a>
+    </div>
     <header>
       <div class="wrap">
         <div class="content">
@@ -56,6 +64,25 @@
         </div>
       </div>
     </div>
+    <footer>
+      <div class="copyright">
+        <span class="quan">©2019</span>
+        <span class="with-ren">
+          <i class="iconfont">&#xebac;</i>
+        </span>
+        <span class="author">Scrook</span>
+      </div>
+      <div class="skill">
+        <span>
+          由
+          <a href="https://zh.nuxtjs.org/" target="_blank">NuxtJS</a>编写
+        </span>
+        <span>
+          仿照
+          <a href="https://www.yqxshiki.com/" target="_blank">用Hexo Next完成的Blog</a>
+        </span>
+      </div>
+    </footer>
   </div>
 </template>
 <script>
@@ -97,8 +124,8 @@ export default {
       var currentTime = this.secondToDate(timestamp - createtime);
       var currentTimeHtml =
         "本网站已经运行了：" +
-        currentTime[0] +
-        "年 " +
+        // currentTime[0] +
+        // "月 " +
         currentTime[1] +
         "天 " +
         currentTime[2] +
@@ -116,6 +143,14 @@ export default {
 };
 </script>
 <style scoped>
+.github{
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.github img{
+  width: 100px;
+}
 /* 头部 */
 header {
   width: 100%;
@@ -149,13 +184,17 @@ header {
 }
 .nuxt {
   flex: 8;
-  border: 1px solid #f40;
+  width: 80%;
+  /* background: #eee; */
+  opacity: 0.9;
+  box-sizing: border-box;
 }
 /* 侧边栏 */
 .sidebar {
   flex: 2;
   width: 240px;
-  border: 1px solid black;
+  height: 510px;
+  margin-left: 2rem;
   opacity: 0.9;
   color: #555;
   box-sizing: border-box;
@@ -174,6 +213,10 @@ header {
 }
 .sidebar .img {
   height: 200px;
+  transition: 2.5s all;
+}
+.sidebar .img:hover {
+  transform: rotate(360deg);
 }
 /* icon */
 a span {
@@ -188,12 +231,12 @@ a span i {
 .touxiang {
   width: 130px;
   height: 180px;
-  border: 1px solid #eee;
   border-radius: 60%;
+  border: 1px solid black;
 }
 .lianjie:hover {
-  background: #ccc;
-  opacity: 0.6;
+  border-radius: 4px;
+  background: #eee;
 }
 /* 名称 */
 .title {
@@ -214,5 +257,23 @@ div.time {
   text-align: center;
   padding: 6px;
   margin-bottom: 40px;
+}
+/* 底部栏 */
+footer {
+  width: 100%;
+  height: 80px;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+}
+footer div {
+  width: 100%;
+  text-align: center;
+}
+footer div a {
+  color: aquamarine;
+}
+footer div a:hover {
+  color: aqua;
+  border-bottom: 1px solid aqua;
 }
 </style>

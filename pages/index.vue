@@ -9,7 +9,10 @@
         </div>
       </div>
       <div class="keep">
-        <p>关于yqxshiki个人网站//鄂ICP备19027794号</p>
+        <span>关于yqxshiki个人网站</span>
+        <a href="http://beian.miit.gov.cn/" target="_blank">
+          <span>鄂ICP备19027794号</span>
+        </a>
       </div>
     </footer>
   </div>
@@ -35,7 +38,7 @@ export default {
 footer {
   width: 100%;
   height: 200px;
-  background: rgb(5, 36, 36);
+  background: rgb(53, 77, 77);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -53,5 +56,12 @@ footer {
   color: #000;
   margin-top: 100px;
   margin-left: 40px;
+}
+.keep a {
+  color: #000;
+}
+.keep a :hover {
+  color: aqua;
+  border-bottom: 1px solid aqua;
 }
 </style>

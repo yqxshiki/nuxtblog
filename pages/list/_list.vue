@@ -6,6 +6,7 @@
         <div class="container">
           <div v-html="arrlist.body"></div>
         </div>
+        <div class="end">---------------- The End ----------------</div>
       </div>
     </div>
   </div>
@@ -13,6 +14,7 @@
 
 <script>
 export default {
+  layout:'sidebar',
   name: "list",
   data() {
     return {
@@ -35,6 +37,9 @@ export default {
 };
 </script>
 <style  scoped>
+#list{
+  margin-top: -1rem;
+}
 a {
   color: black;
 }
@@ -77,5 +82,9 @@ h1 {
 }
 .container p {
   text-indent: 2rem;
+}
+.end{
+  color: #aaa;
+  text-align: center;
 }
 </style>

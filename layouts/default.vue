@@ -1,5 +1,13 @@
 <template>
   <div id="default">
+    <div class="github">
+      <a href="https://github.com/yqxshiki" target="_blank">
+        <img
+          src="https://github.blog/wp-content/uploads/2008/12/forkme_left_green_007200.png?resize=149%2C149"
+          alt
+        />
+      </a>
+    </div>
     <header>
       <div class="wrap">
         <div class="content">
@@ -26,6 +34,14 @@
 </template>
 
 <style scoped>
+.github {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+.github img {
+  width: 100px;
+}
 /* 头部 */
 header {
   width: 100%;

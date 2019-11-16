@@ -13,6 +13,7 @@
 
 <script>
 export default {
+  layout: "sidebar",
   data() {
     return {
       list: ""
@@ -31,17 +32,22 @@ export default {
 };
 </script>
 <style scoped>
+#blog{
+  margin-top: -2rem;
+
+}
 .container {
   width: 100%;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  padding: 1rem;
 }
 /* 文章 */
 .list {
   width: 750px;
   height: 200px;
-  box-shadow: 5px 5px 5px 5px #fff;
+  box-shadow: 2px 2px 2px 2px #fff;
   margin-top: 1rem;
   padding: 1rem;
   background: rgb(217, 216, 223);
@@ -50,7 +56,7 @@ export default {
   align-items: center;
 }
 .list:hover {
-  box-shadow: 5px 5px 30px 5px #ccc;
+  box-shadow: 5px 5px 30px 5px #aaa;
 }
 .list div {
   margin-top: 1rem;
