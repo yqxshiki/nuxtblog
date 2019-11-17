@@ -46,7 +46,6 @@
 
 <script>
 export default {
-  layout: "sidebar",
   transition: "withme",
   head() {
     return {

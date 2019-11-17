@@ -23,6 +23,7 @@ import swiper from "@/components/swpier";
 import contact from "@/components/contact";
 
 export default {
+  layout: "sidebar",
   name: "index",
   components: {
     swiper,

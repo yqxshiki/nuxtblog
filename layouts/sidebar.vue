@@ -29,126 +29,17 @@
         </div>
       </div>
     </header>
-    <div class="container">
-      <div class="nuxt">
-        <nuxt />
-      </div>
-      <div class="sidebar">
-        <div class="center">
-          <div class="img">
-            <img src="~static/icon.jpg" alt class="touxiang" />
-          </div>
-          <div class="title">Scrook</div>
-          <div class="describe">世人万千种，浮云莫去求，斯人若彩虹，遇上方知有。</div>
-          <div class="count">
-            <div class="shuzi"></div>
-            <div class="rizhi">日志</div>
-          </div>
-          <div class="icon">
-            <a href="https://github.com/yqxshiki?tab=repositories" target="_blank" class="lianjie">
-              <span>
-                <i class="iconfont">&#xe709;</i>
-                <span>GitHub</span>
-              </span>
-            </a>
-            <a href="mailto:1023942883@qq.com" target="_blank" class="lianjie">
-              <span>
-                <i class="iconfont">&#xe643;</i>
-                <span>E-Mail</span>
-              </span>
-            </a>
-          </div>
-          <div class="time">
-            <span id="htmer_time"></span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <footer>
-      <div class="copyright">
-        <span class="quan">©2019</span>
-        <span class="with-ren">
-          <i class="iconfont">&#xebac;</i>
-        </span>
-        <span class="author">Scrook</span>
-      </div>
-      <div class="skill">
-        <span>
-          由
-          <a href="https://zh.nuxtjs.org/" target="_blank">NuxtJS</a>编写
-        </span>
-        <span>
-          仿照
-          <a href="https://www.yqxshiki.com/" target="_blank">用Hexo Next完成的Blog</a>
-        </span>
-      </div>
-    </footer>
+    <nuxt />
   </div>
 </template>
-<script>
-export default {
-  methods: {
-    secondToDate(second) {
-      if (!second) {
-        return 0;
-      }
-      var time = new Array(0, 0, 0, 0, 0);
-      if (second >= 365 * 24 * 3600) {
-        time[0] = parseInt(second / (365 * 24 * 3600));
-        second %= 365 * 24 * 3600;
-      }
-      if (second >= 24 * 3600) {
-        time[1] = parseInt(second / (24 * 3600));
-        second %= 24 * 3600;
-      }
-      if (second >= 3600) {
-        time[2] = parseInt(second / 3600);
-        second %= 3600;
-      }
-      if (second >= 60) {
-        time[3] = parseInt(second / 60);
-        second %= 60;
-      }
-      if (second > 0) {
-        time[4] = second;
-      }
-      return time;
-    },
-    setTime() {
-      var createtime = Math.round(
-        new Date(Date.UTC(2019, 10, 14, 11, 42, 23)).getTime() / 1000
-      );
-      var timestamp = Math.round(
-        (new Date().getTime() + 8 * 60 * 60 * 1000) / 1000
-      );
-      var currentTime = this.secondToDate(timestamp - createtime);
-      var currentTimeHtml =
-        "本网站已经运行了：" +
-        // currentTime[0] +
-        // "月 " +
-        currentTime[1] +
-        "天 " +
-        currentTime[2] +
-        "时 " +
-        currentTime[3] +
-        "分 " +
-        currentTime[4] +
-        "秒";
-      document.getElementById("htmer_time").innerHTML = currentTimeHtml;
-    }
-  },
-  mounted() {
-    setInterval(this.setTime(), 1000);
-  }
-};
-</script>
+
 <style scoped>
-.github{
+.github {
   position: absolute;
   left: 0;
   top: 0;
 }
-.github img{
+.github img {
   width: 100px;
 }
 /* 头部 */
@@ -163,9 +54,6 @@ header {
   display: flex;
   justify-content: space-around;
 }
-.content a {
-  color: #fff;
-}
 .content a:hover {
   border-bottom: 1px solid aqua;
   color: aqua;
@@ -175,105 +63,7 @@ header {
   height: 60px;
   margin-top: -20px;
 }
-/* 内容区 */
-.container {
-  display: flex;
-  width: 80%;
-  position: relative;
-  margin: 0 auto;
-}
-.nuxt {
-  flex: 8;
-  width: 80%;
-  /* background: #eee; */
-  opacity: 0.9;
-  box-sizing: border-box;
-}
-/* 侧边栏 */
-.sidebar {
-  flex: 2;
-  width: 240px;
-  height: 510px;
-  margin-left: 2rem;
-  opacity: 0.9;
-  color: #555;
-  box-sizing: border-box;
-  background: #fff;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12),
-    0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
-    0 -1px 0.5px 0 rgba(0, 0, 0, 0.09);
-  border-radius: initial;
-}
-.center {
-  text-align: center;
-}
-.sidebar div {
-  width: 240px;
-  margin-top: 0.8rem;
-}
-.sidebar .img {
-  height: 200px;
-  transition: 2.5s all;
-}
-.sidebar .img:hover {
-  transform: rotate(360deg);
-}
-/* icon */
-a span {
-  color: #555;
-}
-a span i {
-  font-size: 16px;
-}
-.center .img {
-  margin-top: 40px;
-}
-.touxiang {
-  width: 130px;
-  height: 180px;
-  border-radius: 60%;
-  border: 1px solid black;
-}
-.lianjie:hover {
-  border-radius: 4px;
-  background: #eee;
-}
-/* 名称 */
-.title {
-  font-size: 18px;
-  font-weight: 700;
-}
-/* 描述 */
-.describe {
-  color: #999;
-  font-size: 13px;
-}
-div.time {
-  width: 80%;
-  color: #7b68ee;
-  text-shadow: 0 5px 5px #00bfff;
-  font-size: 16px;
-  text-indent: 1rem;
-  text-align: center;
-  padding: 6px;
-  margin-bottom: 40px;
-}
-/* 底部栏 */
-footer {
-  width: 100%;
-  height: 80px;
-  margin-top: 2rem;
-  font-size: 1.2rem;
-}
-footer div {
-  width: 100%;
-  text-align: center;
-}
-footer div a {
-  color: aquamarine;
-}
-footer div a:hover {
-  color: aqua;
-  border-bottom: 1px solid aqua;
+a {
+  color: #fff;
 }
 </style>

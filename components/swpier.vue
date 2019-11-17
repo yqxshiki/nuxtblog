@@ -22,6 +22,7 @@ export default {
           "https://www.fastmock.site/mock/f7e7b8434e7952ee812e847cda9fd3e7/music/url"
         )
         .then(res => {
+          console.log(res);
           this.imgsrc = res.data.data.swiperList;
         });
     }

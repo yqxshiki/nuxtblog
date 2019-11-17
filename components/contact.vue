@@ -25,7 +25,7 @@
         <div class="icon">
           <i class="iconfont">&#xe64b;</i>
         </div>
-        <div class="description">Our store</div>
+        <div class="description">My location</div>
         <div class="mindescription">Wuhan Qingchuan University</div>
       </div>
 

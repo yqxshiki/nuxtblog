@@ -3,7 +3,7 @@
     <div class="wrap">
       <div class="acticle" v-highlight>
         <h1>{{arrlist.title}}</h1>
-        <div class="container">
+        <div class="container" v-highlight>
           <div v-html="arrlist.body"></div>
         </div>
         <div class="end">---------------- The End ----------------</div>
@@ -15,8 +15,7 @@
 <script>
 import Vue from "vue";
 import hljs from "highlight.js";
-import "highlight.js/styles/googlecode.css"; //样式文件
-// 自定义指令
+import "highlight.js/styles/atelier-cave-light.css";
 Vue.directive("highlight", function(el) {
   let blocks = el.querySelectorAll("pre code");
   blocks.forEach(block => {
@@ -24,7 +23,6 @@ Vue.directive("highlight", function(el) {
   });
 });
 export default {
-  layout: "sidebar",
   name: "list",
   data() {
     return {
@@ -45,6 +43,7 @@ export default {
   mounted() {
     this.getblog(this.$route.params.list);
   },
+
   head() {
     return {
       title: this.title,
@@ -78,7 +77,6 @@ a {
   box-shadow: 4px 4px 4px 4px #ccc;
 }
 h1 {
-  width: 100%;
   color: #2c3e5036;
   background-image: url("~static/wenzi.jpeg");
   background-clip: text;
@@ -87,6 +85,8 @@ h1 {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
+  word-break: break-word;
+  font-weight: 400;
 }
 @keyframes change {
   0% {

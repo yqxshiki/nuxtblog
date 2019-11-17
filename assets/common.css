@@ -14,6 +14,11 @@ body {
   opacity: 0.9;
 }
 
+ul li {
+  list-style: circle;
+
+}
+
 a {
   text-decoration: none;
   list-style: none;
@@ -25,19 +30,18 @@ a:hover {
 }
 
 p img {
-  height: 370px;
+  height: 300px;
 }
 
 /* iconfont */
 @font-face {
-  font-family: 'iconfont';
-  /* project id 1505337 */
-  src: url('//at.alicdn.com/t/font_1505337_7c5cs4nri4s.eot');
-  src: url('//at.alicdn.com/t/font_1505337_7c5cs4nri4s.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1505337_7c5cs4nri4s.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1505337_7c5cs4nri4s.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1505337_7c5cs4nri4s.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1505337_7c5cs4nri4s.svg#iconfont') format('svg');
+  font-family: 'iconfont';  /* project id 1505337 */
+  src: url('//at.alicdn.com/t/font_1505337_wj2hv61f3gh.eot');
+  src: url('//at.alicdn.com/t/font_1505337_wj2hv61f3gh.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_1505337_wj2hv61f3gh.woff2') format('woff2'),
+  url('//at.alicdn.com/t/font_1505337_wj2hv61f3gh.woff') format('woff'),
+  url('//at.alicdn.com/t/font_1505337_wj2hv61f3gh.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_1505337_wj2hv61f3gh.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -48,4 +52,31 @@ p img {
   -webkit-font-smoothing: antialiased;
   -webkit-text-stroke-width: 0.2px;
   -moz-osx-font-smoothing: grayscale;
+}
+
+/* 代码块 */
+code {
+  color: #1e90ff;
+  font-family: 'YaHei Consolas Hybrid', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
+}
+
+code h1 {
+  padding: 0;
+  font-weight: bold;
+  line-height: 1.5;
+  font-family: 'Lobster Two', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+}
+
+blockquote {
+  padding: 0 15px;
+  color: #666;
+  border-left: 4px solid #666;
+}
+
+.hljs-attr {
+  color: #1e90ff;
+}
+
+.hljs-number {
+  color: #718c00;
 }

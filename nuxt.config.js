@@ -28,8 +28,7 @@ export default {
   css: [
     'element-ui/lib/theme-chalk/index.css',
     'assets/main.css',
-    'assets/common.css',
-    'assets/withme.css'
+    'assets/common.css'
 
   ],
   /*
