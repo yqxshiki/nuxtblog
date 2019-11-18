@@ -192,7 +192,7 @@ header {
 /* 侧边栏 */
 .sidebar {
   flex: 2;
-  width: 240px;
+  width: 260px;
   height: 510px;
   margin-left: 2rem;
   opacity: 0.9;
@@ -203,12 +203,14 @@ header {
     0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
     0 -1px 0.5px 0 rgba(0, 0, 0, 0.09);
   border-radius: initial;
+  box-sizing: border-box;
 }
 .center {
+  width: 100%;
   text-align: center;
 }
 .sidebar div {
-  width: 240px;
+  width: 260px;
   margin-top: 0.8rem;
 }
 .sidebar .img {

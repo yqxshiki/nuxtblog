@@ -15,7 +15,9 @@ mongoose.connect('mongodb://localhost:27017/nuxtblog', {
 // 创建模型
 const Acticle = mongoose.model("Acticle", new mongoose.Schema({
     title: { type: String },
-    body: { type: String }
+    body: { type: String },
+    date: { type: String },
+    lastdate: { type: String }
 }))
 app.get('/', (req, res) => res.send('Hello World!'))
 // 新增

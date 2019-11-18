@@ -7,6 +7,36 @@
           <div v-html="arrlist.body"></div>
         </div>
         <div class="end">---------------- The End ----------------</div>
+
+        <div class="copyright">
+          <p>
+            <span class="title">本文标题</span>:
+            <span>{{arrlist.title}}</span>
+          </p>
+          <p>
+            <span class="title">文章作者</span>:
+            <span>Scrook</span>
+          </p>
+          <p>
+            <span class="title">发布时间</span>:
+            <span>{{arrlist.date}}</span>
+          </p>
+          <p>
+            <span class="title">最后更新</span>:
+            <span>{{arrlist.lastdate}}</span>
+          </p>
+          <p>
+            <span class="title">许可协议</span>:
+            <span>
+              <a
+                class="href"
+                href="https://creativecommons.org/licenses/by-nc-nd/4.0/"
+                target="_blank"
+                title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)"
+              >署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。
+            </span>
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -26,10 +56,7 @@ export default {
   name: "list",
   data() {
     return {
-      arrlist: {
-        title: "",
-        body: ""
-      },
+      arrlist: {},
       title: this.$route.params.title
     };
   },
@@ -103,5 +130,26 @@ h1 {
 .end {
   color: #aaa;
   text-align: center;
+}
+/* 版权信息 */
+.copyright {
+  width: 85%;
+  border: 1px solid #aaa;
+  font-size: 0.93rem;
+  line-height: 1.6em;
+  word-break: break-all;
+  background: rgba(255, 255, 255, 0.4);
+  margin-top: 1rem;
+  margin-left: 3rem;
+  box-shadow: 2px 2px 2px 2px #666;
+}
+.title {
+  width: 5.2em;
+  color: #333;
+  font-weight: bold;
+}
+.href:hover {
+  color: #000;
+  border-bottom: 2px solid #555;
 }
 </style>

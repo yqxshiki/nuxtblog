@@ -4,22 +4,20 @@
       <div class="list" v-for="item in list" :key="item.index">
         <div class="title">
           <nuxt-link
-            @click="add"
             :to="{name:'list-list',params:{list:item._id,title:item.title}}"
           >{{item.title}}</nuxt-link>
         </div>
         <!-- <div class="time">2018-01-11T10:00:57.520Z</div> -->
         <div class="time">
           <i class="iconfont">&#xe63d;</i>
-          发表于: 2019-10-20
+          发表于: {{item.date}}
         </div>
-        <div class="yuedu">
+        <!-- <div class="yuedu">
           <i class="iconfont">&#xe636;</i>
           阅读次数:{{count}}
-        </div>
+        </div> -->
         <div class="button">
           <nuxt-link
-            @click="add"
             :to="{name:'list-list',params:{list:item._id,title:item.title}}"
           >阅读全文</nuxt-link>
         </div>
@@ -49,9 +47,6 @@ export default {
       this.axios.get("http://49.232.96.54:4000/api/blog").then(res => {
         this.list = res.data;
       });
-    },
-    add() {
-      console.log("1");
     }
   },
   mounted() {
