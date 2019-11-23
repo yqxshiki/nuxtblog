@@ -34,6 +34,10 @@
 </template>
 
 <style scoped>
+#default{
+  width: 100%;
+  height: 100%;
+}
 .github {
   position: absolute;
   left: 0;

@@ -7,7 +7,6 @@
             :to="{name:'list-list',params:{list:item._id,title:item.title}}"
           >{{item.title}}</nuxt-link>
         </div>
-        <!-- <div class="time">2018-01-11T10:00:57.520Z</div> -->
         <div class="time">
           <i class="iconfont">&#xe63d;</i>
           发表于: {{item.date}}

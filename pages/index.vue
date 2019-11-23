@@ -1,7 +1,11 @@
 <template>
   <div id="index">
-    <swiper />
-    <contact />
+    <div class="center">
+      <swiper />
+      <hotacticle />
+
+      <contact />
+    </div>
     <footer>
       <div class="container">
         <div class="introduce">
@@ -33,24 +37,29 @@
 <script>
 import swiper from "@/components/swpier";
 import contact from "@/components/contact";
-
+import hotacticle from "@/components/hot";
 export default {
   layout: "sidebar",
   name: "index",
   components: {
     swiper,
-    contact
+    contact,
+    hotacticle
   }
 };
 </script>
 <style scoped>
 #index {
-  overflow: hidden;
+  width: 100%;
+  height: 100%;
+}
+.center {
+  width: 80%;
+  margin: 0 auto;
 }
 /* 底部 */
 footer {
   width: 100%;
-  height: 200px;
   background: rgb(53, 77, 77);
   display: flex;
   justify-content: center;
@@ -67,7 +76,7 @@ footer {
 }
 .keep {
   color: #000;
-  margin-top: 100px;
+  margin-top: 40px;
   margin-left: 40px;
 }
 .keep a {

@@ -192,7 +192,7 @@ header {
 /* 侧边栏 */
 .sidebar {
   flex: 2;
-  width: 260px;
+  width: 200px;
   height: 510px;
   margin-left: 2rem;
   opacity: 0.9;
@@ -210,7 +210,7 @@ header {
   text-align: center;
 }
 .sidebar div {
-  width: 260px;
+  width: 200px;
   margin-top: 0.8rem;
 }
 .sidebar .img {

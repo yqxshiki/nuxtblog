@@ -44,13 +44,17 @@
 export default {};
 </script>
 <style scoped>
+#contact {
+  width: 100%;
+  height: 240px;
+  margin-top: -2rem;
+}
 .container {
   display: flex;
   justify-content: space-around;
   text-align: center;
-  line-height: 300px;
+  line-height: 200px;
   width: 100%;
-  height: 300px;
 }
 .wrap div {
   width: 100%;
@@ -66,7 +70,7 @@ export default {};
   font-size: 1rem;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-.iconfont{
+.iconfont {
   font-size: 3rem;
 }
 </style>
