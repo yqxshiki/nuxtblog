@@ -9,6 +9,8 @@
         <!-- 图片 -->
         <div class="pic">
           <div class="img" v-for="(item,index) in arrimg" :key="index">
+            <!-- 骨架屏 -->
+            <div class="skeleton" v-show="isshow"></div>
             <p class="hidden">{{list.length>index?item.imgsrc:item.imgsrc=""}}</p>
             <img class="noneimg" alt :src="item.imgsrc" />
           </div>
@@ -16,8 +18,10 @@
         <div class="acticlebody">
           <div class="article" v-for="(item,_id) in list" :key="_id">
             <nuxt-link :to="{name:'list-list',params:{list:item._id,title:item.title}}">
-              <!-- 文章 -->
+              <!-- 骨架屏 -->
+              <div class="bodyskeleton" v-show="isshow"></div>
               <div class="articlecont">
+                <!-- 文章 -->
                 <div class="title">{{item.title}}</div>
                 <div class="body">{{item.body | filter}}</div>
               </div>
@@ -30,12 +34,14 @@
 </template>
 
 <script>
+import { setInterval } from "timers";
 export default {
   name: "hot",
   data() {
     return {
       arrimg: [],
-      list: []
+      list: [],
+      isshow: true
     };
   },
   // 过滤
@@ -49,12 +55,12 @@ export default {
     getblog() {
       this.axios.get("http://49.232.96.54:4000/api/blog").then(res => {
         let length = res.data.length;
-        if (length <= 5) {
+        if (length <= 4) {
           res.data.map((item, index) => {
             this.list.unshift(item);
           });
         } else {
-          this.list = res.data.slice(length - 5, length);
+          this.list = res.data.slice(length - 4, length);
         }
       });
     },
@@ -71,15 +77,23 @@ export default {
     // 去掉空白
     hiddenimg() {
       let img = document.querySelectorAll(".noneimg");
-      console.log(img);
       for (let i = 0; i < img.length; i++) {
         const item = img[i];
         if (item.currentSrc == "") {
-          console.log(item.parentNode);
           item.parentNode.style.display = "none";
         }
       }
+    },
+    loading() {
+      if (this.list !== []) {
+        this.isshow = false;
+      }
     }
+  },
+  created() {
+    setInterval(() => {
+      this.loading();
+    }, 1000);
   },
   mounted() {
     this.getblog();
@@ -109,16 +123,31 @@ h2 .iconfont {
 }
 .container {
   display: flex;
+  height: 944px;
 }
 .hidden {
   display: none;
 }
-.pic {
-  flex: 2;
-  margin-left: 2rem;
+/* 骨架屏 */
+.skeleton {
+  width: 240px;
+  height: 160px;
+  background: #aaa;
+  position: absolute;
 }
+.bodyskeleton {
+  width: 486px;
+  height: 151px;
+  background: #aaa;
+  position: absolute;
+}
+.pic {
+  flex: 3;
+  margin-left: 4rem;
+}
+/* 文章 */
 .articleboyd {
-  flex: 8;
+  flex: 7;
 }
 .article {
   font: 8;
@@ -132,7 +161,6 @@ h2 .iconfont {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  transition: 1s;
   cursor: pointer;
   border-radius: 1rem;
 }
@@ -140,13 +168,15 @@ h2 .iconfont {
   margin-left: 1rem;
   height: 160px;
   color: #444;
+  transition: 1s;
 }
-.articlecont:hover {
-  color: #5b3eac;
+.article a .articlecont:hover {
+  color: rgb(185, 53, 53);
+  box-shadow: 10px 10px 10px rgb(87, 73, 163);
 }
 .img {
   margin-left: 2rem;
-  margin-top: 3.4rem;
+  margin-top: 3.6rem;
   flex: 2;
   width: 60%;
   height: 160px;
@@ -154,12 +184,14 @@ h2 .iconfont {
 .img img {
   width: 240px;
 }
+/* 标题 */
 .title {
   color: #1e90ff;
   font-weight: 500;
   text-align: center;
   font-size: 1.4rem;
 }
+/* 内容 */
 .body {
   display: -webkit-box;
   -webkit-box-orient: vertical;

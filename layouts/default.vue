@@ -178,23 +178,23 @@ header {
 /* 内容区 */
 .container {
   display: flex;
-  width: 80%;
+  width: 70%;
   position: relative;
   margin: 0 auto;
 }
 .nuxt {
   flex: 8;
   width: 80%;
-  /* background: #eee; */
   opacity: 0.9;
   box-sizing: border-box;
+  margin-top:-1rem;
 }
 /* 侧边栏 */
 .sidebar {
   flex: 2;
-  width: 200px;
+  width: 240px;
   height: 510px;
-  margin-left: 2rem;
+  margin-left: 4rem;
   opacity: 0.9;
   color: #555;
   box-sizing: border-box;
@@ -210,7 +210,7 @@ header {
   text-align: center;
 }
 .sidebar div {
-  width: 200px;
+  width: 240px;
   margin-top: 0.8rem;
 }
 .sidebar .img {

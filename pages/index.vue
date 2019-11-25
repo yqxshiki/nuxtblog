@@ -3,7 +3,6 @@
     <div class="center">
       <swiper />
       <hotacticle />
-
       <contact />
     </div>
     <footer>

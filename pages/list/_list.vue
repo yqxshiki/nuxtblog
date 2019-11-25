@@ -7,7 +7,9 @@
           <div v-html="arrlist.body"></div>
         </div>
         <div class="end">---------------- The End ----------------</div>
-
+        <!-- 回到顶部 -->
+        <div class="backtop" @click="top">^</div>
+        <!-- 底部信息 -->
         <div class="copyright">
           <p>
             <span class="title">本文标题</span>:
@@ -46,6 +48,8 @@
 import Vue from "vue";
 import hljs from "highlight.js";
 import "highlight.js/styles/atelier-cave-light.css";
+import { setInterval, clearInterval } from "timers";
+// 代码高亮
 Vue.directive("highlight", function(el) {
   let blocks = el.querySelectorAll("pre code");
   blocks.forEach(block => {
@@ -65,10 +69,26 @@ export default {
       this.axios.get("http://49.232.96.54:4000/api/blog/" + list).then(res => {
         this.arrlist = res.data;
       });
+    },
+    // 回到顶部
+    top() {
+      let timer = setInterval(function() {
+        let osTop =
+          document.documentElement.scrollTop || document.body.scrollTop;
+        let ispeed = Math.floor(-osTop / 5);
+        document.documentElement.scrollTop = document.body.scrollTop =
+          osTop + ispeed;
+        if (osTop === 0) {
+          clearInterval(timer);
+        }
+      }, 30);
     }
   },
   mounted() {
     this.getblog(this.$route.params.list);
+    setInterval(() => {
+      console.log(document.documentElement.scrollTop);
+    }, 1000);
   },
 
   head() {
@@ -91,6 +111,15 @@ a {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+}
+/* 回到顶部 */
+.backtop {
+  font-size: 6rem;
+  color: #ccc;
+  position: absolute;
+  right: -3rem;
+  bottom: 1rem;
+  cursor: pointer;
 }
 /* 文章 */
 .acticle {
