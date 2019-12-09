@@ -61,10 +61,15 @@ export default {
   data() {
     return {
       arrlist: {},
-      title: this.$route.params.title
+      title: this.$route.params.title,
+      // 滚动条
+      dtop: "",
+      // 回到顶部标签
+      backtop: ""
     };
   },
   methods: {
+    // 获取内容
     getblog(list) {
       this.axios.get("http://49.232.96.54:4000/api/blog/" + list).then(res => {
         this.arrlist = res.data;
@@ -82,15 +87,39 @@ export default {
           clearInterval(timer);
         }
       }, 30);
+    },
+    getscrool() {
+      if (this.dtop >= 650) {
+        this.backtop.style.right = 3 + "rem";
+        this.backtop.style.bottom = 3 + "rem";
+      } else {
+        this.backtop.style.right = -5 + "rem";
+        this.backtop.style.bottom = -3 + "rem";
+      }
+    },
+    getcount(list) {
+      this.arrlist.count++;
+      this.axios.post("http://49.232.96.54:4000/api/resive/" + list, this.arrlist);
     }
   },
   mounted() {
+    // 获取详情
     this.getblog(this.$route.params.list);
-    setInterval(() => {
-      console.log(document.documentElement.scrollTop);
+    setTimeout(() => {
+      this.getcount(this.$route.params.list);
     }, 1000);
-  },
+    // 滚动效果
+    this.backtop = document.getElementsByClassName("backtop")[0];
+    const timer = setInterval(() => {
+      this.dtop = document.documentElement.scrollTop || document.body.scrollTop;
+      this.getscrool();
+    }, 500);
 
+    // 销毁
+    this.$once("hook:beforeDestroy", () => {
+      clearInterval(timer);
+    });
+  },
   head() {
     return {
       title: this.title,
@@ -116,10 +145,11 @@ a {
 .backtop {
   font-size: 6rem;
   color: #ccc;
-  position: absolute;
-  right: -3rem;
-  bottom: 1rem;
+  position: fixed;
+  right: -5rem;
+  bottom: 5rem;
   cursor: pointer;
+  transition: 0.7s;
 }
 /* 文章 */
 .acticle {
