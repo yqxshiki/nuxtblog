@@ -28,7 +28,22 @@ const routes = [
         path: '/resive/:id',
         name: 'resive',
         component: () => import("../components/resive.vue")
-      }
+      },
+
+      {
+        // 信息
+        path: '/categories/create',
+        component: () => import('../components/CategoryEdit.vue')
+      },
+      {
+        path: '/categories/edit/:id',
+        component: () => import('../components/CategoryEdit.vue'),
+        props: true
+      },
+      {
+        path: '/categories/list',
+        component: () => import('../components/CategoryList.vue')
+      },
     ]
   },
   { path: "*", redirect: "/error", hidden: true }

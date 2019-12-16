@@ -2,18 +2,23 @@
   <div id="home">
     <el-container style="border: 1px solid #eee">
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu :default-openeds="['1', '3']">
+        <el-menu router  :default-openeds="['1', '3']">
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-message"></i>博客管理
             </template>
             <el-menu-item-group>
-              <template slot="title">详情</template>
+              <template slot="title">分类</template>
+              <el-menu-item index="/categories/create">新建文章分类</el-menu-item>
+              <el-menu-item index="/categories/list">文章分类列表</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group>
+              <template slot="title">文章详情</template>
               <router-link to="/display">
                 <el-menu-item index="1-1">展示文章</el-menu-item>
               </router-link>
             </el-menu-item-group>
-            <el-menu-item-group title="管理">
+            <el-menu-item-group title="管理文章">
               <router-link to="/create">
                 <el-menu-item index="1-3">创建文章</el-menu-item>
               </router-link>

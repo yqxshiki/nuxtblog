@@ -25,6 +25,7 @@ export default {
       tableData: [
         {
           title: "",
+          categories:"",
           body: ""
         }
       ]
@@ -32,12 +33,17 @@ export default {
   },
   methods: {
     getblog() {
-      this.axios.get("http://49.232.96.54:4000/api/blog").then(res => {
+      this.axios.get("/rest/acticles/blog").then(res => {
         this.tableData = res.data;
         this.tableData.map((item, index) => {
           var body = item.body.replace(/<\/?.+?>/g, "").substring(0, 240);
           item.body = body;
         });
+      });
+    },
+    getcategory() {
+      this.axios.get("/category").then(res => {
+        console.log(res.data);
       });
     },
     // 编辑
@@ -46,19 +52,18 @@ export default {
     },
     // 删除
     deleteblog(id) {
-      this.axios
-        .delete("http://49.232.96.54:4000/api/delete/" + id)
-        .then(res => {
-          this.$message({
-            message: "恭喜你，删除文章成功",
-            type: "success"
-          });
-          this.getblog();
+      this.axios.delete("/rest/acticles/delete/" + id).then(res => {
+        this.$message({
+          message: "恭喜你，删除文章成功",
+          type: "success"
         });
+        this.getblog();
+      });
     }
   },
   mounted() {
     this.getblog();
+    // this.getcategory();
   }
 };
 </script>

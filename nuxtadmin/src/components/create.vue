@@ -5,6 +5,11 @@
         <a name="top"></a>
         <el-input v-model="form.title"></el-input>
       </el-form-item>
+      <el-form-item label="文章分类">
+        <el-select v-model="form.categories">
+          <el-option v-for="item in parents" :key="item._id" :label="item.name" :value="item._id"></el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item label="文章内容">
         <mavon-editor
           :ishljs="true"
@@ -49,14 +54,19 @@ export default {
     return {
       form: {
         title: "",
+        categories: "",
         body: ""
       },
+      // 类别
+      parents: "",
+      // 渲染的内容
       html: ""
     };
   },
   methods: {
+    // 提交 
     onSubmit() {
-      if (this.form.title == "" || this.form.body == "") {
+      if (this.form.title == "" || this.form.body == ""||this.form.categories=="") {
         this.$message({
           message: "文章标题或者文章内容不能为空",
           type: "warning"
@@ -70,20 +80,19 @@ export default {
         let nowdate = year + "-" + month + "-" + date;
         let newform = {
           title: this.form.title,
+          categories: this.form.categories,
           body: this.html,
           date: nowdate,
           lastdate: nowdate,
           count: 0
         };
-        this.axios
-          .post("http://49.232.96.54:4000/api/create", newform)
-          .then(res => {
-            this.$message({
-              message: "恭喜你，创建成功",
-              type: "success"
-            });
-            this.$router.push("/display");
+        this.axios.post("/rest/acticles/create", newform).then(res => {
+          this.$message({
+            message: "恭喜你，创建成功",
+            type: "success"
           });
+          this.$router.push("/display");
+        });
       }
     },
     // 所有操作都会被解析重新渲染
@@ -95,7 +104,16 @@ export default {
     cancel() {
       this.form.title = "";
       this.form.body = "";
+      this.form.categories = "";
+    },
+    // 获取类别
+    async fetchparent() {
+      const res = await this.axios.get("/rest/categories/category");
+      this.parents = res.data;
     }
+  },
+  mounted() {
+    this.fetchparent();
   }
 };
 </script>

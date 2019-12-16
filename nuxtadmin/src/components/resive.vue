@@ -5,6 +5,11 @@
         <el-input v-model="form.title"></el-input>
         <a name="top"></a>
       </el-form-item>
+      <el-form-item label="文章分类">
+        <el-select v-model="form.categories">
+          <el-option v-for="item in parents" :key="item._id" :label="item.name" :value="item._id"></el-option>
+        </el-select>
+      </el-form-item>
       <el-form-item label="文章内容">
         <mavon-editor v-model="form.body" ref="md" style="min-height: 600px" />
       </el-form-item>
@@ -42,6 +47,7 @@ export default {
     return {
       form: {
         title: "",
+          categories: "",
         body: ""
       }
     };
@@ -66,10 +72,7 @@ export default {
           lastdate: nowdate
         };
         this.axios
-          .post(
-            "http://49.232.96.54:4000/api/resive/" + this.$route.params.id,
-            newform
-          )
+          .post("/rest/acticles/resive/" + this.$route.params.id, newform)
           .then(res => {
             this.$message({
               message: "恭喜你，修改成功",
@@ -86,7 +89,7 @@ export default {
     },
     getblog() {
       this.axios
-        .get("http://49.232.96.54:4000/api/blog/" + this.$route.params.id)
+        .get("/rest/acticles/blog/" + this.$route.params.id)
         .then(res => {
           this.form = res.data;
         });

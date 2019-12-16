@@ -71,7 +71,7 @@ export default {
   methods: {
     // 获取内容
     getblog(list) {
-      this.axios.get("http://49.232.96.54:4000/api/blog/" + list).then(res => {
+      this.axios.get("http://localhost:4000/api/blog/" + list).then(res => {
         this.arrlist = res.data;
       });
     },
@@ -99,7 +99,7 @@ export default {
     },
     getcount(list) {
       this.arrlist.count++;
-      this.axios.post("http://49.232.96.54:4000/api/resive/" + list, this.arrlist);
+      this.axios.post("http://localhost:4000/api/resive/" + list, this.arrlist);
     }
   },
   mounted() {
