@@ -53,7 +53,7 @@ export default {
   methods: {
     // 文章
     getblog() {
-      this.axios.get("http://localhost:4000/api/blog").then(res => {
+      this.axios.get("/rest/acticles/blog").then(res => {
         let length = res.data.length;
         if (length <= 4) {
           res.data.map((item, index) => {

@@ -59,7 +59,7 @@ export default {
   methods: {
     // 获取文章接口
     getlist() {
-      this.axios.get("http://localhost:4000/api/blog").then(res => {
+      this.axios.get("/rest/acticles/blog").then(res => {
         this.list = res.data;
         this.list = this.list.reverse();
       });

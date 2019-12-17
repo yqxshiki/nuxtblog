@@ -22,7 +22,7 @@
           </nuxt-link>
         </div>
         <div class="content">
-          <a href="#">English</a>
+            <nuxt-link to="/category">Category</nuxt-link>
         </div>
         <div class="content">
           <nuxt-link to="/withme">Withme</nuxt-link>

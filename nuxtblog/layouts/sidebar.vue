@@ -22,7 +22,7 @@
           </nuxt-link>
         </div>
         <div class="content">
-          <a href="#">English</a>
+          <nuxt-link to="/category">Category</nuxt-link>
         </div>
         <div class="content">
           <nuxt-link to="/withme">Withme</nuxt-link>
@@ -34,7 +34,7 @@
 </template>
 
 <style scoped>
-#default{
+#default {
   width: 100%;
   height: 100%;
 }

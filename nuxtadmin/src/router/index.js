@@ -4,17 +4,16 @@ import Home from '../views/home.vue'
 
 Vue.use(VueRouter)
 
-const routes = [
-  {
+const routes = [{
     path: '/',
     name: 'home',
     component: Home,
-    redirect:"/display",
+    redirect: "/display",
     children: [
       // 展示文章
       {
-        path: '/display',
-        name: 'display',
+        path: '/displaylist',
+        name: 'displaylist',
         component: () => import("../components/display.vue")
       },
       // 创建文章
@@ -27,9 +26,9 @@ const routes = [
       {
         path: '/resive/:id',
         name: 'resive',
-        component: () => import("../components/resive.vue")
+        props: true,
+        component: () => import("../components/create.vue")
       },
-
       {
         // 信息
         path: '/categories/create',
@@ -46,7 +45,11 @@ const routes = [
       },
     ]
   },
-  { path: "*", redirect: "/error", hidden: true }
+  {
+    path: "*",
+    redirect: "/error",
+    hidden: true
+  }
 
 ]
 

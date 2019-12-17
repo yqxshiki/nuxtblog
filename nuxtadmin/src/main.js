@@ -9,6 +9,7 @@ import axios from 'axios'
 Vue.prototype.axios = axios;
 axios.defaults.timeout = 30000;
 axios.defaults.baseURL = "http://localhost:4000/api";
+
 Vue.config.productionTip = false
 
 Vue.use(ElementUI);

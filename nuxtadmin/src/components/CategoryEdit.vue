@@ -52,6 +52,7 @@ export default {
     async fetch() {
       const res = await this.axios.get(`/rest/categories/category/${this.id}`);
       this.model = res.data;
+      console.log( this.model)
     },
     async fetchparent() {
       const res = await this.axios.get("/rest/categories/category");

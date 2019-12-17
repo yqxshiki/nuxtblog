@@ -50,6 +50,9 @@ export default {
   components: {
     mavonEditor
   },
+  props: {
+    id: {}
+  },
   data() {
     return {
       form: {
@@ -64,9 +67,13 @@ export default {
     };
   },
   methods: {
-    // 提交 
+    // 提交
     onSubmit() {
-      if (this.form.title == "" || this.form.body == ""||this.form.categories=="") {
+      if (
+        this.form.title == "" ||
+        this.form.body == "" ||
+        this.form.categories == ""
+      ) {
         this.$message({
           message: "文章标题或者文章内容不能为空",
           type: "warning"
@@ -86,13 +93,20 @@ export default {
           lastdate: nowdate,
           count: 0
         };
-        this.axios.post("/rest/acticles/create", newform).then(res => {
-          this.$message({
-            message: "恭喜你，创建成功",
-            type: "success"
-          });
-          this.$router.push("/display");
+        let res;
+        if (this.id) {
+          res = this.axios.post(
+            "/rest/acticles/resive/" + this.$route.params.id,
+            newform
+          );
+        } else {
+          res = this.axios.post("/rest/acticles/create", newform);
+        }
+        this.$message({
+          message: "恭喜你，保存成功",
+          type: "success"
         });
+        this.$router.push("/displaylist");
       }
     },
     // 所有操作都会被解析重新渲染
@@ -110,10 +124,18 @@ export default {
     async fetchparent() {
       const res = await this.axios.get("/rest/categories/category");
       this.parents = res.data;
+    },
+    // 获取文章详情
+    async getblog() {
+      const res = await this.axios.get(
+        "/rest/acticles/blog/" + this.$route.params.id
+      );
+      this.form = res.data;
     }
   },
   mounted() {
     this.fetchparent();
+    this.id && this.getblog();
   }
 };
 </script>
