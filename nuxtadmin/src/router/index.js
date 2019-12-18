@@ -8,7 +8,7 @@ const routes = [{
     path: '/',
     name: 'home',
     component: Home,
-    redirect: "/display",
+    redirect: "/displaylist",
     children: [
       // 展示文章
       {

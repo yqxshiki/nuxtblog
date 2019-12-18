@@ -6,7 +6,7 @@
         <el-input v-model="form.title"></el-input>
       </el-form-item>
       <el-form-item label="文章分类">
-        <el-select v-model="form.categories">
+        <el-select v-model="form.categories" multiple>
           <el-option v-for="item in parents" :key="item._id" :label="item.name" :value="item._id"></el-option>
         </el-select>
       </el-form-item>
@@ -57,7 +57,7 @@ export default {
     return {
       form: {
         title: "",
-        categories: "",
+        categories: [],
         body: ""
       },
       // 类别

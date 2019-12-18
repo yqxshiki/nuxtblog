@@ -71,7 +71,7 @@ export default {
   methods: {
     // 获取内容
     getblog(list) {
-      this.axios.get("http://localhost:4000/api/blog/" + list).then(res => {
+      this.axios.get("/rest/acticles/blog/" + list).then(res => {
         this.arrlist = res.data;
       });
     },
@@ -99,7 +99,7 @@ export default {
     },
     getcount(list) {
       this.arrlist.count++;
-      this.axios.post("http://localhost:4000/api/resive/" + list, this.arrlist);
+      this.axios.post("/rest/acticles/resive/" + list, this.arrlist);
     }
   },
   mounted() {
@@ -130,7 +130,7 @@ export default {
 </script>
 <style  scoped>
 #list {
-  margin-top: -1rem;
+  margin-top: 0.6rem;
 }
 a {
   color: black;

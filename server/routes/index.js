@@ -48,6 +48,13 @@ module.exports = app => {
         const model = await req.Model.findById(req.params.id)
         res.send(model)
     })
+    // 按照标签获取文章
+    router.get('/categorylist/:id', async (req, res) => {
+        const model = await req.Model.find({
+            categories: req.params.id
+        })
+        res.send(model);
+    })
 
 
     app.use('/api/rest/:resource', async (req, res, next) => {
