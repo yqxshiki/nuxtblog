@@ -4,7 +4,7 @@
       <el-main>
         <el-table :data="tableData" stripe border>
           <el-table-column prop="title" label="标题" width="140"></el-table-column>
-          <el-table-column prop="body" label="内容" width="700"></el-table-column>
+          <el-table-column prop="bodyrender" label="内容" width="700"></el-table-column>
           <el-table-column fixed="right" label="操作" width="130">
             <template slot-scope="scope">
               <el-button @click="edit(scope.row._id)" type="text" size="small">编辑</el-button>
@@ -16,7 +16,6 @@
     </el-container>
   </div>
 </template>
-
 <script>
 import marked from "marked";
 export default {
@@ -25,19 +24,21 @@ export default {
       tableData: [
         {
           title: "",
-          body: ""
+          bodyrender: ""
         }
       ]
     };
   },
   methods: {
-    getblog() {
-      this.axios.get("/rest/acticles/blog").then(res => {
-        this.tableData = res.data;
-        this.tableData.map((item, index) => {
-          var body = item.body.replace(/<\/?.+?>/g, "").substring(0, 240);
-          item.body = body;
-        });
+    async getblog() {
+      const res = await this.axios.get("/rest/acticles/blog");
+      this.tableData = await res.data;
+      this.tableData.map((item, index) => {
+        console.log(item.bodyrender)
+        var bodyrender = item.bodyrender
+          .replace(/<\/?.+?>/g, "")
+          .substring(0, 240);
+        item.bodyrender = bodyrender;
       });
     },
     // 编辑

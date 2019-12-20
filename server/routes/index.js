@@ -55,11 +55,19 @@ module.exports = app => {
         })
         res.send(model);
     })
+    // 转换接口名中间件
+    const resourceMiddleware = require("../middleware/resource")
+    // 通用接口
+    app.use('/api/rest/:resource', resourceMiddleware(), router)
 
-
-    app.use('/api/rest/:resource', async (req, res, next) => {
-        const modelname = require('inflection').classify(req.params.resource)
-        req.Model = require(`../models/${modelname}`)
-        next();
-    }, router)
+    // 上传接口
+    const multer = require("multer")
+    const upload = multer({
+        dest: __dirname + '/../uploads'
+    })
+    app.post("/api/upload", upload.single('file'), async (req, res) => {
+        const file = req.file;
+        file.url = `http://localhost:4000/uploads/${file.filename}`
+        res.send(file);
+    })
 }

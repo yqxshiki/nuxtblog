@@ -1,5 +1,6 @@
 <template>
   <div id="create">
+        <h1>{{id?'编辑':'新建'}}文章</h1>
     <el-form ref="form" :model="form" label-width="80px">
       <el-form-item label="文章标题">
         <a name="top"></a>
@@ -17,8 +18,8 @@
           ref="md"
           @change="change"
           style="min-height: 600px"
+          @imgAdd="$imgAdd"
         />
-        <!-- <el-input type="textarea" v-model="form.body"></el-input> -->
       </el-form-item>
       <el-form-item>
         <el-button type="primary" @click="onSubmit">立即创建</el-button>
@@ -58,15 +59,28 @@ export default {
       form: {
         title: "",
         categories: [],
-        body: ""
+            // 渲染后的内容
+        body: "",
+         // 未渲染的内容
+        bodyrender:""
       },
       // 类别
       parents: "",
-      // 渲染的内容
-      html: ""
+      // 渲染后的内容
+      html: "",
+      // 未渲染的内容
+      body: ""
     };
   },
   methods: {
+    // 绑定@imgAdd event
+    async $imgAdd(pos, $file) {
+      // 第一步.将图片上传到服务器.
+      var formdata = new FormData();
+      formdata.append("file", $file);
+      const res = await this.axios.post("upload", formdata);
+      this.$refs.md.$img2Url(pos, res.data.url);
+    },
     // 提交
     onSubmit() {
       if (
@@ -88,7 +102,8 @@ export default {
         let newform = {
           title: this.form.title,
           categories: this.form.categories,
-          body: this.html,
+          body: this.body,
+          bodyrender: this.html,
           date: nowdate,
           lastdate: nowdate,
           count: 0
@@ -112,6 +127,7 @@ export default {
     // 所有操作都会被解析重新渲染
     change(value, render) {
       // render 为 markdown 解析后的结果[html]
+      this.body=value;
       this.html = render;
     },
     // 取消
