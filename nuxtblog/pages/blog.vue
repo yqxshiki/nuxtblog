@@ -10,7 +10,7 @@
             发表于: {{item.date}}
           </div>
           <!-- 内容 -->
-          <p class="content">{{item.body|filter}}</p>
+          <p class="content">{{item.bodyrender|filter}}</p>
         </div>
 
         <div class="yuedu">

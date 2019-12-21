@@ -4,7 +4,7 @@
       <div class="acticle" v-highlight>
         <h1>{{arrlist.title}}</h1>
         <div class="container" v-highlight>
-          <div v-html="arrlist.body"></div>
+          <div v-html="arrlist.bodyrender"></div>
         </div>
         <div class="end">---------------- The End ----------------</div>
         <!-- 回到顶部 -->
