@@ -60,7 +60,7 @@ module.exports = app => {
     // 通用接口
     app.use('/api/rest/:resource', resourceMiddleware(), router)
 
-    // 上传接口
+    // 上传图片
     const multer = require("multer")
     const upload = multer({
         dest: __dirname + '/../uploads'

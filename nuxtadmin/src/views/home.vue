@@ -19,6 +19,13 @@
             <el-menu-item-group title="管理文章">
               <el-menu-item index="/create">创建文章</el-menu-item>
             </el-menu-item-group>
+            <el-menu-item-group>
+              <template slot="title">用户信息</template>
+              <el-menu-item index="/displaylist">展示用户</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group title="管理文章">
+              <el-menu-item index="/create">创建用户</el-menu-item>
+            </el-menu-item-group>
           </el-submenu>
         </el-menu>
       </el-aside>

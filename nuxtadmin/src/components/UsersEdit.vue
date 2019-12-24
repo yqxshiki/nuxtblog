@@ -1,14 +1,30 @@
 <template>
   <div id="CategoryEdit">
-    <h1>{{id?'编辑':'新建'}}文章分类</h1>
+    <h1>{{id?'编辑':'新建'}}用户</h1>
     <el-form label-width="120px" @submit.native.prevent="save">
-      <el-form-item label="上级分类">
-        <el-select v-model="model.parents">
-          <el-option v-for="item in parents" :key="item._id" :label="item.name" :value="item._id"></el-option>
-        </el-select>
-      </el-form-item>
       <el-form-item label="名称">
-        <el-input v-model="model.name"></el-input>
+        <el-input v-model="model.title"></el-input>
+      </el-form-item>
+      <el-form-item label="描述">
+        <el-input v-model="model.describe"></el-input>
+      </el-form-item>
+      <el-form-item label="图片">
+        <el-upload
+          class="avatar-uploader"
+          :action="uploadUrl"
+          :show-file-list="false"
+          :on-success="afterupload()"
+          :headers="getAuthHeaders()"
+        >
+          <img v-if="model.icon" :src="model.icon" class="avatar" />
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
+      </el-form-item>
+      <el-form-item label="github链接">
+        <el-input v-model="model.gitlink"></el-input>
+      </el-form-item>
+      <el-form-item label="qq链接">
+        <el-input v-model="model.qqlink"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" native-type="submit">保存</el-button>
@@ -29,6 +45,20 @@ export default {
     };
   },
   methods: {
+    // 上传
+    uploadUrl() {
+      return this.$http.defaults.baseURL + "/upload";
+    },
+    // 显示图片
+    afterupload(res) {
+      this.$set(this.model, "icon", res.icon);
+    },
+    // 请求头
+    getAuthHeaders() {
+      return {
+        Authorization: `Bearer ${localStorage.token || ""}`
+      };
+    },
     // 提交
     async save() {
       let res;
