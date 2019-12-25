@@ -7,7 +7,7 @@
           <!-- 发表时间 -->
           <div class="time">
             <i class="iconfont">&#xe63d;</i>
-            发表于: {{item.date}}
+            发表于: {{item.createdAt | yeardata}}
           </div>
           <!-- 内容 -->
           <p class="content">{{item.bodyrender|filter}}</p>
@@ -33,6 +33,7 @@
 </template>
 
 <script>
+import dayjs from "dayjs";
 export default {
   // 标题
   head() {
@@ -54,6 +55,9 @@ export default {
   filters: {
     filter(val) {
       return val.replace(/<\/?.+?>/g, "");
+    },
+    yeardata(val){
+     return dayjs(val).format("YYYY/MM/DD");
     }
   },
   methods: {

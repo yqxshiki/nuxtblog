@@ -21,11 +21,11 @@
           </p>
           <p>
             <span class="title">发布时间</span>:
-            <span>{{arrlist.date}}</span>
+            <span>{{arrlist.createdAt|yeardata}}</span>
           </p>
           <p>
             <span class="title">最后更新</span>:
-            <span>{{arrlist.lastdate}}</span>
+            <span>{{arrlist.updatedAt|yeardata}}</span>
           </p>
           <p>
             <span class="title">许可协议</span>:
@@ -45,6 +45,7 @@
 </template>
 
 <script>
+import dayjs from "dayjs";
 import Vue from "vue";
 import hljs from "highlight.js";
 import "highlight.js/styles/atelier-cave-light.css";
@@ -67,6 +68,11 @@ export default {
       // 回到顶部标签
       backtop: ""
     };
+  },
+  filters: {
+    yeardata(val) {
+      return dayjs(val).format("YYYY/MM/DD HH:mm:ss");
+    }
   },
   methods: {
     // 获取内容

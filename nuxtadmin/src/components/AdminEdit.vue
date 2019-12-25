@@ -23,7 +23,6 @@ export default {
   data() {
     return {
       model: {},
-      parents: []
     };
   },
   methods: {

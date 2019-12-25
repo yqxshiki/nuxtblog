@@ -59,7 +59,7 @@ module.exports = app => {
     const upload = multer({
         dest: __dirname + '/../../uploads'
     })
-    app.post("/api/upload", upload.single('file'), async (req, res) => {
+    app.post("/api/uploads", upload.single('file'), async (req, res) => {
         const file = req.file;
         file.url = `http://localhost:4000/uploads/${file.filename}`
         res.send(file);

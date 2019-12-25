@@ -10,12 +10,6 @@ const schema = new mongoose.Schema({
     bodyrender: {
         type: String
     },
-    date: {
-        type: String
-    },
-    lastdate: {
-        type: String
-    },
     count: {
         type: Number
     },
@@ -23,6 +17,8 @@ const schema = new mongoose.Schema({
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Category'
     }],
+}, {
+    timestamps: true
 })
 
 module.exports = mongoose.model('Acticle', schema)

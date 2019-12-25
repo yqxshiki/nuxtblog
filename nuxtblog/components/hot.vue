@@ -23,7 +23,7 @@
               <div class="articlecont">
                 <!-- 文章 -->
                 <div class="title">{{item.title}}</div>
-                <div class="body">{{item.body | filter}}</div>
+                <div class="body">{{item.bodyrender | filter}}</div>
               </div>
             </nuxt-link>
           </div>
@@ -53,7 +53,7 @@ export default {
   methods: {
     // 文章
     getblog() {
-      this.$axios.get("/rest/acticles/blog").then(res => {
+      this.$axios.get("/blog").then(res => {
         let length = res.data.length;
         if (length <= 4) {
           res.data.map((item, index) => {

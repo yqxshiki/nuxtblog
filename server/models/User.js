@@ -15,8 +15,14 @@ const schema = new mongoose.Schema({
     },
     qqlink: {
         type: String
+    },
+    about: {
+        type: String
+    },
+    // 未渲染的
+    aboutrender: {
+        type: String
     }
-
 })
 
 module.exports = mongoose.model('User', schema)

@@ -26,6 +26,16 @@
       <el-form-item label="qq链接">
         <el-input v-model="model.qqlink"></el-input>
       </el-form-item>
+      <el-form-item label="文章内容">
+        <mavon-editor
+          :ishljs="true"
+          v-model="model.about"
+          ref="md"
+          @change="change"
+          style="min-height: 600px"
+          @imgAdd="$imgAdd"
+        />
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" native-type="submit">保存</el-button>
       </el-form-item>
@@ -40,8 +50,10 @@ export default {
   },
   data() {
     return {
-      model: {},
-      parents: []
+      model: {
+        aboutrender: ""
+      },
+      html: ""
     };
   },
   methods: {
@@ -55,9 +67,13 @@ export default {
         Authorization: `Bearer ${localStorage.token || ""}`
       };
     },
+    change(value, render) {
+      this.html = render;
+    },
     // 提交
     async save() {
       let res;
+      this.model.aboutrender = this.html;
       if (this.id) {
         res = await this.$axios.post(
           `/rest/users/resive/${this.id}`,
@@ -78,7 +94,7 @@ export default {
     async fetch() {
       const res = await this.$axios.get(`/rest/users/details/${this.id}`);
       this.model = res.data;
-    },
+    }
   },
   created() {
     this.id && this.fetch();
