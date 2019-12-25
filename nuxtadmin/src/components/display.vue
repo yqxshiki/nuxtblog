@@ -31,10 +31,9 @@ export default {
   },
   methods: {
     async getblog() {
-      const res = await this.axios.get("/rest/acticles/blog");
+      const res = await this.$axios.get("/rest/acticles/blog");
       this.tableData = await res.data;
       this.tableData.map((item, index) => {
-        console.log(item.bodyrender)
         var bodyrender = item.bodyrender
           .replace(/<\/?.+?>/g, "")
           .substring(0, 240);
@@ -47,7 +46,7 @@ export default {
     },
     // 删除
     deleteblog(id) {
-      this.axios.delete("/rest/acticles/delete/" + id).then(res => {
+      this.$axios.delete("/rest/acticles/delete/" + id).then(res => {
         this.$message({
           message: "恭喜你，删除文章成功",
           type: "success"

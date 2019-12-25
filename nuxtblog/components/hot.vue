@@ -53,7 +53,7 @@ export default {
   methods: {
     // 文章
     getblog() {
-      this.axios.get("/rest/acticles/blog").then(res => {
+      this.$axios.get("/rest/acticles/blog").then(res => {
         let length = res.data.length;
         if (length <= 4) {
           res.data.map((item, index) => {
@@ -66,7 +66,7 @@ export default {
     },
     // 图片
     getimg() {
-      this.axios
+      this.$axios
         .get(
           "https://www.fastmock.site/mock/27daaace66e047350e2beff518943c0f/nuxt/acticlepic"
         )

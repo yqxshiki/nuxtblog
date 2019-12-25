@@ -7,7 +7,7 @@
           标签
         </h2>
         <div class="list" v-for="item in list" :key="item._id">
-          <nuxt-link :to="{name:'list-list',params:{list:item._id,title:item.title}}">
+          <nuxt-link tag="div" :to="{name:'list-list',params:{list:item._id,title:item.title}}">
             <div class="heard">
               <span class="listdate">{{item.date}}</span>
               <span class="listtitle">{{item.title}}</span>
@@ -29,7 +29,7 @@ export default {
   },
   methods: {
     async getblog(id) {
-      const res = await this.axios.get(`/rest/acticles/categorylist/${id}`);
+      const res = await this.$axios.get(`/categorylist/${id}`);
       this.list = res.data;
       console.log(this.list);
     }

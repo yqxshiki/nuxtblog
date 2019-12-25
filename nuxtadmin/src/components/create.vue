@@ -78,7 +78,7 @@ export default {
       // 第一步.将图片上传到服务器.
       var formdata = new FormData();
       formdata.append("file", $file);
-      const res = await this.axios.post("upload", formdata);
+      const res = await this.$axios.post("upload", formdata);
       this.$refs.md.$img2Url(pos, res.data.url);
     },
     // 提交
@@ -110,12 +110,12 @@ export default {
         };
         let res;
         if (this.id) {
-          res = this.axios.post(
+          res = this.$axios.post(
             "/rest/acticles/resive/" + this.$route.params.id,
             newform
           );
         } else {
-          res = this.axios.post("/rest/acticles/create", newform);
+          res = this.$axios.post("/rest/acticles/create", newform);
         }
         this.$message({
           message: "恭喜你，保存成功",
@@ -138,13 +138,13 @@ export default {
     },
     // 获取类别
     async fetchparent() {
-      const res = await this.axios.get("/rest/categories/category");
+      const res = await this.$axios.get("/rest/categories/category");
       this.parents = res.data;
     },
     // 获取文章详情
     async getblog() {
-      const res = await this.axios.get(
-        "/rest/acticles/blog/" + this.$route.params.id
+      const res = await this.$axios.get(
+        "/rest/acticles/details/" + this.$route.params.id
       );
       this.form = res.data;
     }

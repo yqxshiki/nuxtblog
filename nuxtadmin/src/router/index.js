@@ -43,21 +43,43 @@ const routes = [{
       path: '/categories/list',
       component: () => import('../components/CategoryList.vue')
     },
-      //用户信息
-      {
-        path: '/users/create',
-        component: () => import('../components/UsersEdit.vue')
-      },
-      {
-        path: '/users/edit/:id',
-        component: () => import('../components/UsersEdit.vue'),
-        props: true
-      },
-      {
-        path: '/users/list',
-        component: () => import('../components/UsersList.vue')
-      },
+    //管理员
+    {
+      path: '/admin/create',
+      component: () => import('../components/AdminEdit.vue')
+    },
+    {
+      path: '/admin/edit/:id',
+      component: () => import('../components/AdminEdit.vue'),
+      props: true
+    },
+    {
+      path: '/admin/list',
+      component: () => import('../components/AdminList.vue')
+    },
+    //用户信息
+    {
+      path: '/users/create',
+      component: () => import('../components/UsersEdit.vue')
+    },
+    {
+      path: '/users/edit/:id',
+      component: () => import('../components/UsersEdit.vue'),
+      props: true
+    },
+    {
+      path: '/users/list',
+      component: () => import('../components/UsersList.vue')
+    },
   ]
+},
+{
+  path: '/login',
+  name: "login",
+  component: () => import('../components/Login.vue'),
+  meta: {
+    isPublic: true
+  }
 },
 {
   path: "*",
@@ -73,4 +95,10 @@ const router = new VueRouter({
   routes
 })
 
+router.beforeEach((to, from, next) => {
+  if (!to.meta.isPublic && !localStorage.token) {
+    next('/login');
+  }
+  next();
+})
 export default router

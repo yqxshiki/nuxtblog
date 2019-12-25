@@ -1,5 +1,5 @@
 <template>
-  <div id="CategoryEdit">
+  <div id="UserEdit">
     <h1>{{id?'编辑':'新建'}}用户</h1>
     <el-form label-width="120px" @submit.native.prevent="save">
       <el-form-item label="名称">
@@ -13,7 +13,7 @@
           class="avatar-uploader"
           :action="uploadUrl"
           :show-file-list="false"
-          :on-success="afterupload()"
+          :on-success="afterupload"
           :headers="getAuthHeaders()"
         >
           <img v-if="model.icon" :src="model.icon" class="avatar" />
@@ -45,13 +45,9 @@ export default {
     };
   },
   methods: {
-    // 上传
-    uploadUrl() {
-      return this.$http.defaults.baseURL + "/upload";
-    },
     // 显示图片
     afterupload(res) {
-      this.$set(this.model, "icon", res.icon);
+      this.$set(this.model, "icon", res.url);
     },
     // 请求头
     getAuthHeaders() {
@@ -63,15 +59,15 @@ export default {
     async save() {
       let res;
       if (this.id) {
-        res = await this.axios.post(
-          `/rest/categories/resive/${this.id}`,
+        res = await this.$axios.post(
+          `/rest/users/resive/${this.id}`,
           this.model
         );
       } else {
-        res = await this.axios.post("/rest/categories/create", this.model);
+        res = await this.$axios.post("/rest/users/create", this.model);
       }
       // 跳转
-      this.$router.push("/categories/list");
+      this.$router.push("/users/list");
       // 提示信息
       this.$message({
         type: "success",
@@ -80,16 +76,11 @@ export default {
     },
     // 获取详情
     async fetch() {
-      const res = await this.axios.get(`/rest/categories/category/${this.id}`);
+      const res = await this.$axios.get(`/rest/users/details/${this.id}`);
       this.model = res.data;
     },
-    async fetchparent() {
-      const res = await this.axios.get("/rest/categories/category");
-      this.parents = res.data;
-    }
   },
   created() {
-    this.fetchparent();
     this.id && this.fetch();
   }
 };

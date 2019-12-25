@@ -2,7 +2,7 @@
   <div id="home">
     <el-container style="border: 1px solid #eee">
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu router :default-openeds="['1', '3']">
+        <el-menu router :default-openeds="['1']">
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-message"></i>博客管理
@@ -13,18 +13,31 @@
               <el-menu-item index="/categories/list">文章分类列表</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
-              <template slot="title">文章详情</template>
+              <template slot="title">文章</template>
               <el-menu-item index="/displaylist">展示文章</el-menu-item>
             </el-menu-item-group>
-            <el-menu-item-group title="管理文章">
+            <el-menu-item-group>
               <el-menu-item index="/create">创建文章</el-menu-item>
             </el-menu-item-group>
+          </el-submenu>
+
+          <el-submenu index="1">
+            <template slot="title">
+              <i class="el-icon-message"></i>管理员管理
+            </template>
             <el-menu-item-group>
-              <template slot="title">用户信息</template>
-              <el-menu-item index="/displaylist">展示用户</el-menu-item>
+              <template slot="title">管理员</template>
+              <el-menu-item index="/admin/list">展示管理员</el-menu-item>
             </el-menu-item-group>
-            <el-menu-item-group title="管理文章">
-              <el-menu-item index="/create">创建用户</el-menu-item>
+            <el-menu-item-group>
+              <el-menu-item index="/admin/create">创建管理员</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group>
+              <template slot="title">用户</template>
+              <el-menu-item index="/users/list">展示用户</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group>
+              <el-menu-item index="/users/create">创建用户</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>

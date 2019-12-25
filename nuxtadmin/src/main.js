@@ -6,9 +6,11 @@ import router from './router'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
+Vue.use(ElementUI);
+
 // axios
-import axios from './http'
-Vue.prototype.axios = axios;
+import http from './http'
+Vue.prototype.$axios = http;
 
 Vue.config.productionTip = false
 
@@ -16,12 +18,11 @@ Vue.config.productionTip = false
 Vue.mixin({
   computed: {
     uploadUrl() {
-      return this.axios.defaults.baseURL + 'upload'
+      return this.$axios.defaults.baseURL + '/upload'
     }
   },
 })
 
-Vue.use(ElementUI);
 
 new Vue({
   router,

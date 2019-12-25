@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     getsrc() {
-      this.axios
+      this.$axios
         .get(
           "https://www.fastmock.site/mock/f7e7b8434e7952ee812e847cda9fd3e7/music/url"
         )

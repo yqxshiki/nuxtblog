@@ -29,7 +29,7 @@ export default {
   methods: {
     // 获取分类列表
     async fetch() {
-      const res = await this.axios.get("rest/categories/category");
+      const res = await this.$axios.get("rest/categories/category");
       this.items = res.data;
     },
     // 删除
@@ -39,7 +39,7 @@ export default {
         cancelButtonText: "取消",
         type: "warning"
       }).then(async () => {
-        const res = await this.axios.delete(`rest/categories/delete/${row._id}`);
+        const res = await this.$axios.delete(`rest/categories/delete/${row._id}`);
         this.$message({
           type: "success",
           message: "删除成功!"

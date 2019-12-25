@@ -8,6 +8,7 @@
         />
       </a>
     </div>
+    <!-- 头部 -->
     <header>
       <div class="wrap">
         <div class="content">
@@ -22,7 +23,7 @@
           </nuxt-link>
         </div>
         <div class="content">
-            <nuxt-link to="/category">Category</nuxt-link>
+          <nuxt-link to="/category">Category</nuxt-link>
         </div>
         <div class="content">
           <nuxt-link to="/withme">Withme</nuxt-link>
@@ -30,28 +31,30 @@
       </div>
     </header>
     <div class="container">
+      <!-- 内容 -->
       <div class="nuxt">
         <nuxt />
       </div>
+      <!-- 侧边栏 -->
       <div class="sidebar">
-        <div class="center">
+        <div class="center" v-if="item">
           <div class="img">
             <img src="~static/icon.jpg" alt class="touxiang" />
           </div>
-          <div class="title">Scrook</div>
-          <div class="describe">世人万千种，浮云莫去求，斯人若彩虹，遇上方知有。</div>
+          <div class="title">{{item.title}}</div>
+          <div class="describe">{{item.describe}}</div>
           <div class="count">
             <div class="shuzi"></div>
             <div class="rizhi">日志</div>
           </div>
           <div class="icon">
-            <a href="https://github.com/yqxshiki?tab=repositories" target="_blank" class="lianjie">
+            <a :href="item.gitlink" target="_blank" class="lianjie">
               <span>
                 <i class="iconfont">&#xe709;</i>
                 <span>GitHub</span>
               </span>
             </a>
-            <a href="mailto:1023942883@qq.com" target="_blank" class="lianjie">
+            <a :href="item.qqlink" target="_blank" class="lianjie">
               <span>
                 <i class="iconfont">&#xe643;</i>
                 <span>E-Mail</span>
@@ -64,6 +67,8 @@
         </div>
       </div>
     </div>
+
+    <!-- 底部 -->
     <footer>
       <div class="copyright">
         <span class="quan">©2019</span>
@@ -87,6 +92,18 @@
 </template>
 <script>
 export default {
+  data() {
+    return {
+      item: null
+    };
+  },
+  computed: {
+    // 获取用户信息
+    async getuserinfo() {
+      const res = await this.$axios.get("/user/info");
+      this.item = res.data[0];
+    }
+  },
   methods: {
     secondToDate(second) {
       if (!second) {
@@ -138,7 +155,14 @@ export default {
     }
   },
   mounted() {
-    setInterval(this.setTime(), 1000);
+    this.getuserinfo;
+    let times = setTimeout(() => {
+      if (this.item) {
+        setInterval(this.setTime(), 1000);
+      } else {
+        clearTimeout(times);
+      }
+    },1000);
   }
 };
 </script>
@@ -187,7 +211,7 @@ header {
   width: 80%;
   opacity: 0.9;
   box-sizing: border-box;
-  margin-top:-1rem;
+  margin-top: -1rem;
 }
 /* 侧边栏 */
 .sidebar {

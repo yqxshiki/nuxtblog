@@ -71,7 +71,7 @@ export default {
   methods: {
     // 获取内容
     getblog(list) {
-      this.axios.get("/rest/acticles/blog/" + list).then(res => {
+      this.$axios.get(`/blog/${list}`).then(res => {
         this.arrlist = res.data;
       });
     },
@@ -99,7 +99,7 @@ export default {
     },
     getcount(list) {
       this.arrlist.count++;
-      this.axios.post("/rest/acticles/resive/" + list, this.arrlist);
+      this.$axios.post("/resive/" + list, this.arrlist);
     }
   },
   mounted() {

@@ -1,14 +1,12 @@
 <template>
-  <div id="CategoryEdit">
-    <h1>{{id?'编辑':'新建'}}文章分类</h1>
+  <div id="UserEdit">
+    <h1>{{id?'编辑':'新建'}}用户</h1>
     <el-form label-width="120px" @submit.native.prevent="save">
-      <el-form-item label="上级分类">
-        <el-select v-model="model.parents">
-          <el-option v-for="item in parents" :key="item._id" :label="item.name" :value="item._id"></el-option>
-        </el-select>
+      <el-form-item label="用户名">
+        <el-input v-model="model.username"></el-input>
       </el-form-item>
-      <el-form-item label="名称">
-        <el-input v-model="model.name"></el-input>
+      <el-form-item label="密码">
+        <el-input v-model="model.password"></el-input>
       </el-form-item>
       <el-form-item>
         <el-button type="primary" native-type="submit">保存</el-button>
@@ -34,14 +32,14 @@ export default {
       let res;
       if (this.id) {
         res = await this.$axios.post(
-          `/rest/categories/resive/${this.id}`,
+          `/rest/admins/resive/${this.id}`,
           this.model
         );
       } else {
-        res = await this.$axios.post("/rest/categories/create", this.model);
+        res = await this.$axios.post("/rest/admins/create", this.model);
       }
       // 跳转
-      this.$router.push("/categories/list");
+      this.$router.push("/admin/list");
       // 提示信息
       this.$message({
         type: "success",
@@ -50,16 +48,11 @@ export default {
     },
     // 获取详情
     async fetch() {
-      const res = await this.$axios.get(`/rest/categories/details/${this.id}`);
+      const res = await this.$axios.get(`/rest/admins/details/${this.id}`);
       this.model = res.data;
-    },
-    async fetchparent() {
-      const res = await this.$axios.get("/rest/categories/category");
-      this.parents = res.data;
     }
   },
   created() {
-    this.fetchparent();
     this.id && this.fetch();
   }
 };

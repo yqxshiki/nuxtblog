@@ -8,7 +8,7 @@
       </h4>
       <div class="category">
         <div class="list" v-for="item in categories" :key="item._id">
-          <nuxt-link :to="{name:'categories-categorylist',params:{categorylist:item._id,title:item.name}}">
+          <nuxt-link tag="div" :to="{name:'categories-categorylist',params:{categorylist:item._id,title:item.name}}">
             <span class="name">{{item.name}}</span>
           </nuxt-link>
         </div>
@@ -30,7 +30,7 @@ export default {
   methods: {
     //   获取类别
     async getcategory() {
-      const res = await this.axios.get("/rest/categories/category");
+      const res = await this.$axios.get("/category");
       this.categories = res.data.slice(6, res.data.length);
       this.length = this.categories.length;
     },
