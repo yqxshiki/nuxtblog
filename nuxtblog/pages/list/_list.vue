@@ -7,8 +7,6 @@
           <div v-html="arrlist.bodyrender"></div>
         </div>
         <div class="end">---------------- The End ----------------</div>
-        <!-- 回到顶部 -->
-        <div class="backtop" @click="top">^</div>
         <!-- 底部信息 -->
         <div class="copyright">
           <p>
@@ -63,10 +61,6 @@ export default {
     return {
       arrlist: {},
       title: this.$route.params.title,
-      // 滚动条
-      dtop: "",
-      // 回到顶部标签
-      backtop: ""
     };
   },
   filters: {
@@ -81,28 +75,6 @@ export default {
         this.arrlist = res.data;
       });
     },
-    // 回到顶部
-    top() {
-      let timer = setInterval(function() {
-        let osTop =
-          document.documentElement.scrollTop || document.body.scrollTop;
-        let ispeed = Math.floor(-osTop / 5);
-        document.documentElement.scrollTop = document.body.scrollTop =
-          osTop + ispeed;
-        if (osTop === 0) {
-          clearInterval(timer);
-        }
-      }, 30);
-    },
-    getscrool() {
-      if (this.dtop >= 650) {
-        this.backtop.style.right = 3 + "rem";
-        this.backtop.style.bottom = 3 + "rem";
-      } else {
-        this.backtop.style.right = -5 + "rem";
-        this.backtop.style.bottom = -3 + "rem";
-      }
-    },
     getcount(list) {
       this.arrlist.count++;
       this.$axios.post("/resive/" + list, this.arrlist);
@@ -114,17 +86,6 @@ export default {
     setTimeout(() => {
       this.getcount(this.$route.params.list);
     }, 1000);
-    // 滚动效果
-    this.backtop = document.getElementsByClassName("backtop")[0];
-    const timer = setInterval(() => {
-      this.dtop = document.documentElement.scrollTop || document.body.scrollTop;
-      this.getscrool();
-    }, 500);
-
-    // 销毁
-    this.$once("hook:beforeDestroy", () => {
-      clearInterval(timer);
-    });
   },
   head() {
     return {

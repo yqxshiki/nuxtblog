@@ -8,7 +8,10 @@
       </h4>
       <div class="category">
         <div class="list" v-for="item in categories" :key="item._id">
-          <nuxt-link tag="div" :to="{name:'categories-categorylist',params:{categorylist:item._id,title:item.name}}">
+          <nuxt-link
+            tag="div"
+            :to="{name:'categories-categorylist',params:{categorylist:item._id,title:item.name}}"
+          >
             <span class="name">{{item.name}}</span>
           </nuxt-link>
         </div>
@@ -75,7 +78,7 @@ export default {
   margin-top: 1rem;
 }
 .container {
-  width: 100%;
+  width: 90%;
   text-align: center;
   padding: 1rem;
   background: #ccc;
@@ -91,6 +94,7 @@ export default {
   flex-wrap: wrap;
   margin-top: 3rem;
   margin-bottom: 3rem;
+  margin: 0 auto;
 }
 .name {
   font-size: 1.2rem;

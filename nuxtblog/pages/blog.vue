@@ -27,8 +27,6 @@
         <div class="end">---------------- The End ----------------</div>
       </div>
     </div>
-    <!-- 回到顶部 -->
-    <div class="backtop" @click="top" ref="top">^</div>
   </div>
 </template>
 
@@ -44,11 +42,7 @@ export default {
   },
   data() {
     return {
-      list: "",
-      // 滚动条
-      dtop: "",
-      // 回到顶部标签
-      backtop: ""
+      list: ""
     };
   },
   // 过滤
@@ -56,8 +50,8 @@ export default {
     filter(val) {
       return val.replace(/<\/?.+?>/g, "");
     },
-    yeardata(val){
-     return dayjs(val).format("YYYY/MM/DD");
+    yeardata(val) {
+      return dayjs(val).format("YYYY/MM/DD");
     }
   },
   methods: {
@@ -67,43 +61,10 @@ export default {
         this.list = res.data;
         this.list = this.list.reverse();
       });
-    },
-    // 回到顶部
-    top() {
-      let timer = setInterval(function() {
-        let osTop =
-          document.documentElement.scrollTop || document.body.scrollTop;
-        let ispeed = Math.floor(-osTop / 5);
-        document.documentElement.scrollTop = document.body.scrollTop =
-          osTop + ispeed;
-        if (osTop === 0) {
-          clearInterval(timer);
-        }
-      }, 30);
-    },
-    getscrool() {
-      if (this.dtop >= 650) {
-        this.backtop.style.right = 3 + "rem";
-        this.backtop.style.bottom = 3 + "rem";
-      } else {
-        this.backtop.style.right = -5 + "rem";
-        this.backtop.style.bottom = -3 + "rem";
-      }
     }
   },
   mounted() {
     this.getlist();
-    // 滚动效果
-    this.backtop = document.getElementsByClassName("backtop")[0];
-    const timer = setInterval(() => {
-      this.dtop = document.documentElement.scrollTop || document.body.scrollTop;
-      this.getscrool();
-    }, 500);
-
-    // 销毁
-    this.$once("hook:beforeDestroy", () => {
-      clearInterval(timer);
-    });
   }
 };
 </script>
@@ -131,7 +92,7 @@ export default {
 /* 文章 */
 .list {
   width: 750px;
-  height: 300px;
+  height: 360px;
   box-shadow: -6px -6px 6px 4px rgb(224, 198, 198);
   margin-top: 2rem;
   padding: 1rem;

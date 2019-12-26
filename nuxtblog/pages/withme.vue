@@ -35,6 +35,7 @@ export default {
 #withme {
   background: #eee;
   margin-top: 1rem;
+  width: 90%;
 }
 .about {
   width:750px;

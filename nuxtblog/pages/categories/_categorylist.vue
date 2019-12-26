@@ -9,7 +9,7 @@
         <div class="list" v-for="item in list" :key="item._id">
           <nuxt-link tag="div" :to="{name:'list-list',params:{list:item._id,title:item.title}}">
             <div class="heard">
-              <span class="listdate">{{item.date}}</span>
+              <span class="listdate">{{item.createdAt | date}}</span>
               <span class="listtitle">{{item.title}}</span>
             </div>
           </nuxt-link>
@@ -20,12 +20,18 @@
 </template>
 
 <script>
+import dayjs from 'dayjs'
 export default {
   name: "categorylist",
   data() {
     return {
       list: []
     };
+  },
+  filters: {
+    date(val) {
+      return dayjs(val).format("YYYY-MM-DD");
+    }
   },
   methods: {
     async getblog(id) {

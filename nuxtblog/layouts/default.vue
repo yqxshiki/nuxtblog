@@ -67,7 +67,8 @@
         </div>
       </div>
     </div>
-
+     <!-- 回到顶部 -->
+    <div class="backtop" @click="top" ref="top">^</div>
     <!-- 底部 -->
     <footer>
       <div class="copyright">
@@ -94,7 +95,11 @@
 export default {
   data() {
     return {
-      item: null
+      item: null,
+       // 滚动条
+      dtop: "",
+      // 回到顶部标签
+      backtop: ""
     };
   },
   computed: {
@@ -152,6 +157,28 @@ export default {
         currentTime[4] +
         "秒";
       document.getElementById("htmer_time").innerHTML = currentTimeHtml;
+    },
+    // 回到顶部
+    top() {
+      let timer = setInterval(function() {
+        let osTop =
+          document.documentElement.scrollTop || document.body.scrollTop;
+        let ispeed = Math.floor(-osTop / 5);
+        document.documentElement.scrollTop = document.body.scrollTop =
+          osTop + ispeed;
+        if (osTop === 0) {
+          clearInterval(timer);
+        }
+      }, 30);
+    },
+    getscrool() {
+      if (this.dtop >= 650) {
+        this.backtop.style.right = 3 + "rem";
+        this.backtop.style.bottom = 3 + "rem";
+      } else {
+        this.backtop.style.right = -5 + "rem";
+        this.backtop.style.bottom = -3 + "rem";
+      }
     }
   },
   mounted() {
@@ -162,11 +189,33 @@ export default {
       } else {
         clearTimeout(times);
       }
-    },1000);
+    }, 1000);
+
+    // 滚动效果
+    this.backtop = document.getElementsByClassName("backtop")[0];
+    const timer = setInterval(() => {
+      this.dtop = document.documentElement.scrollTop || document.body.scrollTop;
+      this.getscrool();
+    }, 500);
+
+    // 销毁
+    this.$once("hook:beforeDestroy", () => {
+      clearInterval(timer);
+    });
   }
 };
 </script>
 <style scoped>
+/* 回到顶部 */
+.backtop {
+  font-size: 6rem;
+  color: #ccc;
+  position: fixed;
+  right: -5rem;
+  bottom: 5rem;
+  cursor: pointer;
+  transition: 0.7s;
+}
 .github {
   position: absolute;
   left: 0;

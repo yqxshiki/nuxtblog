@@ -1,11 +1,12 @@
 /* 过度动画 */
 .page-enter-active,
 .page-leave-active {
-  transition: opacity .7s;
+  transition: opacity .6s;
 }
 
 .page-enter,
 .page-leave-active {
+  transform: rotate(26deg);
+  transition: .6s;
   opacity: 0;
 }
-

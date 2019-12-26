@@ -106,11 +106,12 @@ export default {
 </script>
 <style scoped>
 .wrap {
-  width: 100%;
+  width: 90%;
   height: 100%;
   background: rgb(217, 216, 223);
   overflow: hidden;
   opacity: 0.9;
+  margin: 0 auto;
 }
 h2 {
   color: red;
@@ -166,7 +167,7 @@ h2 .iconfont {
 }
 .article a .articlecont {
   margin-left: 1rem;
-  height: 160px;
+  width:100%;
   color: #444;
   transition: 1s;
 }
