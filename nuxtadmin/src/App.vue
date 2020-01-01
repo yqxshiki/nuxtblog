@@ -12,6 +12,10 @@ body {
   overflow-x: hidden;
   padding: 0;
   margin: 0;
+  // background: #ccc;
+  .el-input{
+    max-width:640px ;
+  }
   a {
     color: #000;
     text-decoration: none;

@@ -7,6 +7,9 @@ const schema = new mongoose.Schema({
     body: {
         type: String
     },
+    icon:{
+        type:String
+    },
     bodyrender: {
         type: String
     },

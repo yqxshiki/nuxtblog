@@ -71,6 +71,20 @@ const routes = [{
       path: '/users/list',
       component: () => import('../components/UsersList.vue')
     },
+    //轮播图
+    {
+      path: '/img/create',
+      component: () => import('../components/ImgEdit.vue')
+    },
+    {
+      path: '/img/edit/:id',
+      component: () => import('../components/ImgEdit.vue'),
+      props: true
+    },
+    {
+      path: '/img/list',
+      component: () => import('../components/ImgList.vue')
+    },
   ]
 },
 {

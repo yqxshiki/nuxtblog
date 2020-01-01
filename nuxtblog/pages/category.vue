@@ -21,23 +21,22 @@
 </template>
 
 <script>
+import { setInterval, clearInterval } from "timers";
 export default {
   name: "category",
   data() {
     return {
-      categories: [],
       //   标签总数
       length: ""
     };
   },
+  async asyncData({ $axios }) {
+    const res = await $axios.get("/web/api/category");
+    return { categories: res.slice(6, res.length) };
+  },
   methods: {
-    //   获取类别
-    async getcategory() {
-      const res = await this.$axios.get("/category");
-      this.categories = res.data.slice(6, res.data.length);
-      this.length = this.categories.length;
-    },
     setstyle() {
+      this.length = this.categories.length;
       let list = document.querySelectorAll(".list");
       list = Array.from(list);
       let arr = [];
@@ -60,9 +59,11 @@ export default {
     }
   },
   mounted() {
-    this.getcategory();
-    setTimeout(() => {
-      this.setstyle();
+    let times = setInterval(() => {
+      if (this.categories !== undefined) {
+        this.setstyle();
+        clearInterval(times);
+      }
     }, 1000);
   },
   head() {

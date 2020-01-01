@@ -9,8 +9,8 @@ app.use(require('cors')())
 
 // 静态文件
 app.use('/uploads', express.static(__dirname + '/uploads'))
-// app.use('/admin', express.static(__dirname + '/public/admin'))
-// app.use('/', express.static(__dirname + '/public/web'))
+app.use('/admin', express.static(__dirname + '/public/admin'))
+app.use('/', express.static(__dirname + '/public/web'))
 
 // 数据库
 require('./plugins/db')(app)

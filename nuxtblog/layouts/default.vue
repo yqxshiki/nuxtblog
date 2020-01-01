@@ -12,13 +12,13 @@
     <header>
       <div class="wrap">
         <div class="content">
-          <nuxt-link to="/">Home</nuxt-link>
+          <nuxt-link   to="/">Home</nuxt-link>
         </div>
         <div class="content">
-          <nuxt-link to="/blog">Bolg</nuxt-link>
+          <nuxt-link   to="/blog">Bolg</nuxt-link>
         </div>
         <div class="content">
-          <nuxt-link to="/">
+          <nuxt-link to="/"  >
             <img class="img" src="../static/scrook.png" alt />
           </nuxt-link>
         </div>
@@ -26,14 +26,14 @@
           <nuxt-link to="/category">Category</nuxt-link>
         </div>
         <div class="content">
-          <nuxt-link to="/withme">Withme</nuxt-link>
+          <nuxt-link   to="/withme" >Withme</nuxt-link>
         </div>
       </div>
     </header>
     <div class="container">
       <!-- 内容 -->
       <div class="nuxt">
-        <nuxt />
+        <nuxt keep-alive />
       </div>
       <!-- 侧边栏 -->
       <div class="sidebar">
@@ -67,7 +67,7 @@
         </div>
       </div>
     </div>
-     <!-- 回到顶部 -->
+    <!-- 回到顶部 -->
     <div class="backtop" @click="top" ref="top">^</div>
     <!-- 底部 -->
     <footer>
@@ -96,7 +96,7 @@ export default {
   data() {
     return {
       item: null,
-       // 滚动条
+      // 滚动条
       dtop: "",
       // 回到顶部标签
       backtop: ""
@@ -105,7 +105,7 @@ export default {
   computed: {
     // 获取用户信息
     async getuserinfo() {
-      const res = await this.$axios.get("/user/info");
+      const res = await this.$axios.get("/web/api/user/info");
       this.item = res.data[0];
     }
   },
@@ -179,10 +179,18 @@ export default {
         this.backtop.style.right = -5 + "rem";
         this.backtop.style.bottom = -3 + "rem";
       }
+    },
+    seticon() {
+      var link = document.createElement("link");
+      link.type = "image/x-icon";
+      link.rel = "shortcut icon";
+      link.href = "https://hexophoto-1259178461.cos.ap-beijing.myqcloud.com/photos/img/icon.jpg";
+      document.getElementsByTagName("head")[0].appendChild(link);
     }
   },
   mounted() {
     this.getuserinfo;
+    this.seticon();
     let times = setTimeout(() => {
       if (this.item) {
         setInterval(this.setTime(), 1000);
@@ -244,7 +252,8 @@ header {
   color: aqua;
 }
 .img {
-  width: 210px;
+  text-align: center;
+  /* width: 210px; */
   height: 60px;
   margin-top: -20px;
 }

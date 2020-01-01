@@ -3,7 +3,10 @@
     <div class="container">
       <div class="list" v-for="item in list" :key="item.index">
         <div class="title">
-          <nuxt-link :to="{name:'list-list',params:{list:item._id,title:item.title}}">{{item.title}}</nuxt-link>
+          <nuxt-link
+            keep-alive
+            :to="{name:'list-list',params:{list:item._id,title:item.title}}"
+          >{{item.title}}</nuxt-link>
           <!-- 发表时间 -->
           <div class="time">
             <i class="iconfont">&#xe63d;</i>
@@ -33,16 +36,12 @@
 <script>
 import dayjs from "dayjs";
 export default {
+  name: "blog",
   // 标题
   head() {
     return {
       title: "Blog",
       meta: [{ hid: "description", name: "Blog", content: "Blog" }]
-    };
-  },
-  data() {
-    return {
-      list: ""
     };
   },
   // 过滤
@@ -54,17 +53,9 @@ export default {
       return dayjs(val).format("YYYY/MM/DD");
     }
   },
-  methods: {
-    // 获取文章接口
-    getlist() {
-      this.$axios.get("/blog").then(res => {
-        this.list = res.data;
-        this.list = this.list.reverse();
-      });
-    }
-  },
-  mounted() {
-    this.getlist();
+  async asyncData({ $axios }) {
+    const res = await $axios.get("/web/api/blog");
+    return { list: res.reverse() };
   }
 };
 </script>
@@ -90,8 +81,7 @@ export default {
   transition: 0.7s;
 }
 /* 文章 */
-.list {
-  width: 750px;
+.list {width: 750px;
   height: 360px;
   box-shadow: -6px -6px 6px 4px rgb(224, 198, 198);
   margin-top: 2rem;

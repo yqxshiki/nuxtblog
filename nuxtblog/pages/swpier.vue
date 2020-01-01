@@ -2,7 +2,7 @@
   <div id="swiper">
     <el-carousel :interval="3000" type="card" height="300px">
       <el-carousel-item v-for="itmes in imgsrc" :key="itmes.index">
-        <img :src="itmes.imgSrc" alt class="medium" />
+        <img :src="itmes.url" :alt="itmes.image" class="medium" />
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -16,18 +16,13 @@ export default {
     };
   },
   computed: {
-    getsrc() {
-      this.$axios
-        .get(
-          "https://www.fastmock.site/mock/f7e7b8434e7952ee812e847cda9fd3e7/music/url"
-        )
-        .then(res => {
-          this.imgsrc = res.data.data.swiperList;
-        });
+    async getimg() {
+      const res = await this.$axios.get("/web/api/imglist");
+      this.imgsrc = res.data[0].items;
     }
   },
-  mounted() {
-    this.getsrc;
+  created() {
+    this.getimg;
   }
 };
 </script>

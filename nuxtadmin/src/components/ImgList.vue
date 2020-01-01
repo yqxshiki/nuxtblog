@@ -1,17 +1,16 @@
 <template>
-  <div id="categolrylist">
+  <div id="userlist">
     <myloading :loading="loading">
-      <h1>文章分类列表</h1>
+      <h1>轮播图列表</h1>
       <el-table :data="items">
         <el-table-column prop="_id" label="ID" width="240"></el-table-column>
-        <el-table-column prop="parents.name" label="上级分类"></el-table-column>
-        <el-table-column prop="name" label="名称"></el-table-column>
+        <el-table-column prop="title" label="名称" width="240"></el-table-column>
         <el-table-column fixed="right" label="操作" width="180">
           <template slot-scope="scope">
             <el-button
               type="primary"
               size="small"
-              @click="$router.push(`/categories/edit/${scope.row._id}`)"
+              @click="$router.push(`/img/edit/${scope.row._id}`)"
             >编辑</el-button>
             <el-button type="primary" size="small" @click="remove(scope.row)">删除</el-button>
           </template>
@@ -32,19 +31,17 @@ export default {
   methods: {
     // 获取分类列表
     async fetch() {
-      const res = await this.$axios.get("rest/categories/category");
+      const res = await this.$axios.get("rest/imgs/category");
       this.items = res.data;
     },
     // 删除
     async remove(row) {
-      this.$confirm(`是否要确定删除分类"${row.name}"`, "提示", {
+      this.$confirm(`是否要确定删除分类"${row.title}"`, "提示", {
         confirmButtonText: "确定",
         cancelButtonText: "取消",
         type: "warning"
       }).then(async () => {
-        const res = await this.$axios.delete(
-          `rest/categories/delete/${row._id}`
-        );
+        const res = await this.$axios.delete(`rest/imgs/delete/${row._id}`);
         this.$message({
           type: "success",
           message: "删除成功!"
@@ -73,7 +70,7 @@ export default {
 };
 </script>
 <style>
-#categolrylist{
+#userlist {
   width: 100%;
   height: 100%;
 }

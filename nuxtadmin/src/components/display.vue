@@ -1,19 +1,21 @@
 <template>
   <div id="display">
-    <el-container>
-      <el-main>
-        <el-table :data="tableData" stripe border>
-          <el-table-column prop="title" label="标题" width="140"></el-table-column>
-          <el-table-column prop="bodyrender" label="内容" width="700"></el-table-column>
-          <el-table-column fixed="right" label="操作" width="130">
-            <template slot-scope="scope">
-              <el-button @click="edit(scope.row._id)" type="text" size="small">编辑</el-button>
-              <el-button type="text" size="small" @click="deleteblog(scope.row._id)">删除</el-button>
-            </template>
-          </el-table-column>
-        </el-table>
-      </el-main>
-    </el-container>
+    <myloading :loading="loading">
+      <el-container>
+        <el-main>
+          <el-table :data="tableData" stripe border>
+            <el-table-column prop="title" label="标题" width="140"></el-table-column>
+            <el-table-column prop="bodyrender" label="内容" width="700"></el-table-column>
+            <el-table-column fixed="right" label="操作" width="130">
+              <template slot-scope="scope">
+                <el-button @click="edit(scope.row._id)" type="text" size="small">编辑</el-button>
+                <el-button type="text" size="small" @click="deleteblog(scope.row._id)">删除</el-button>
+              </template>
+            </el-table-column>
+          </el-table>
+        </el-main>
+      </el-container>
+    </myloading>
   </div>
 </template>
 <script>
@@ -26,7 +28,8 @@ export default {
           title: "",
           bodyrender: ""
         }
-      ]
+      ],
+      loading: true
     };
   },
   methods: {
@@ -53,14 +56,32 @@ export default {
         });
         this.getblog();
       });
+    },
+    isloading() {
+      if (this.tableData[0].bodyrender == undefined) {
+        return;
+      } else {
+        this.loading = false;
+      }
     }
   },
   created() {
     this.getblog();
+    if (this.tableData.bodyrender == undefined) {
+      setInterval(() => {
+        this.isloading();
+      });
+    } else {
+      return;
+    }
   }
 };
 </script>
 <style scoped>
+#display {
+  width: 100%;
+  height: 100%;
+}
 .cell {
   text-indent: 2rem;
 }

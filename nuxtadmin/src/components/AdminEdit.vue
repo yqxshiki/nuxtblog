@@ -23,6 +23,7 @@ export default {
   data() {
     return {
       model: {},
+      loading: true
     };
   },
   methods: {
@@ -49,10 +50,24 @@ export default {
     async fetch() {
       const res = await this.$axios.get(`/rest/admins/details/${this.id}`);
       this.model = res.data;
+    },
+    isloading() {
+      if (this.model.username == undefined) {
+        return;
+      } else {
+        this.loading = false;
+      }
     }
   },
   created() {
     this.id && this.fetch();
+    if (this.id) {
+      setInterval(() => {
+        this.isloading();
+      });
+    } else {
+      this.loading = false;
+    }
   }
 };
 </script>

@@ -1,44 +1,46 @@
 <template>
   <div id="create">
-    <h1>{{id?'编辑':'新建'}}文章</h1>
-    <el-form ref="form" :model="form" label-width="80px">
-      <el-form-item label="文章标题">
-        <a name="top"></a>
-        <el-input v-model="form.title"></el-input>
-      </el-form-item>
-      <el-form-item label="文章分类">
-        <el-select v-model="form.categories" multiple>
-          <el-option v-for="item in parents" :key="item._id" :label="item.name" :value="item._id"></el-option>
-        </el-select>
-      </el-form-item>
-      <el-form-item label="文章内容">
-        <mavon-editor
-          :ishljs="true"
-          v-model="form.body"
-          ref="md"
-          @change="change"
-          style="min-height: 600px"
-          @imgAdd="$imgAdd"
-        />
-      </el-form-item>
-      <el-form-item>
-        <el-button type="primary" @click="onSubmit">立即创建</el-button>
-        <el-button type="info" @click="cancel">取消</el-button>
-      </el-form-item>
-      <a name="bottom"></a>
-      <div class="icon">
-        <div class="go">
-          <a href="#top">
-            <i class="el-icon-top"></i>
-          </a>
+    <myloading :loading="loading">
+      <h1>{{id?'编辑':'新建'}}文章</h1>
+      <el-form ref="form" :model="form" label-width="80px">
+        <el-form-item label="文章标题">
+          <a name="top"></a>
+          <el-input v-model="form.title"></el-input>
+        </el-form-item>
+        <el-form-item label="文章分类">
+          <el-select v-model="form.categories" multiple>
+            <el-option v-for="item in parents" :key="item._id" :label="item.name" :value="item._id"></el-option>
+          </el-select>
+        </el-form-item>
+        <el-form-item label="文章内容">
+          <mavon-editor
+            :ishljs="true"
+            v-model="form.body"
+            ref="md"
+            @change="change"
+            style="min-height: 600px"
+            @imgAdd="$imgAdd"
+          />
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="onSubmit">立即创建</el-button>
+          <el-button type="info" @click="cancel">取消</el-button>
+        </el-form-item>
+        <a name="bottom"></a>
+        <div class="icon">
+          <div class="go">
+            <a href="#top">
+              <i class="el-icon-top"></i>
+            </a>
+          </div>
+          <div class="go">
+            <a href="#bottom">
+              <i class="el-icon-bottom"></i>
+            </a>
+          </div>
         </div>
-        <div class="go">
-          <a href="#bottom">
-            <i class="el-icon-bottom"></i>
-          </a>
-        </div>
-      </div>
-    </el-form>
+      </el-form>
+    </myloading>
   </div>
 </template>
 
@@ -62,7 +64,8 @@ export default {
       // 类别
       parents: "",
       // 渲染后的内容
-      html: ""
+      html: "",
+      loading: true
     };
   },
   methods: {
@@ -118,11 +121,25 @@ export default {
         "/rest/acticles/details/" + this.$route.params.id
       );
       this.form = res.data;
+    },
+    isloading() {
+      if (this.form.title == undefined) {
+        return;
+      } else {
+        this.loading = false;
+      }
     }
   },
   mounted() {
     this.fetchparent();
     this.id && this.getblog();
+    if (this.id) {
+      setInterval(() => {
+        this.isloading();
+      }, 600);
+    } else {
+      this.loading = false;
+    }
   }
 };
 </script>

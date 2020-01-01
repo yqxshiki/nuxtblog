@@ -34,7 +34,6 @@
 </template>
 
 <script>
-import { setInterval } from "timers";
 export default {
   name: "hot",
   data() {
@@ -53,7 +52,7 @@ export default {
   methods: {
     // 文章
     getblog() {
-      this.$axios.get("/blog").then(res => {
+      this.$axios.get("/web/api/blog").then(res => {
         let length = res.data.length;
         if (length <= 4) {
           res.data.map((item, index) => {
@@ -167,7 +166,7 @@ h2 .iconfont {
 }
 .article a .articlecont {
   margin-left: 1rem;
-  width:100%;
+  width: 100%;
   color: #444;
   transition: 1s;
 }

@@ -6,7 +6,7 @@
           <span class="title">{{this.$route.params.title}}</span>
           标签
         </h2>
-        <div class="list" v-for="item in list" :key="item._id">
+        <div class="list" v-for="item in itemlist" :key="item._id">
           <nuxt-link tag="div" :to="{name:'list-list',params:{list:item._id,title:item.title}}">
             <div class="heard">
               <span class="listdate">{{item.createdAt | date}}</span>
@@ -20,28 +20,19 @@
 </template>
 
 <script>
-import dayjs from 'dayjs'
+import dayjs from "dayjs";
 export default {
   name: "categorylist",
-  data() {
-    return {
-      list: []
-    };
-  },
   filters: {
     date(val) {
       return dayjs(val).format("YYYY-MM-DD");
     }
   },
-  methods: {
-    async getblog(id) {
-      const res = await this.$axios.get(`/categorylist/${id}`);
-      this.list = res.data;
-      console.log(this.list);
-    }
-  },
-  mounted() {
-    this.getblog(this.$route.params.categorylist);
+  async asyncData({ $axios, route }) {
+    const res = await $axios.get(
+      `/web/api/categorylist/${route.params.categorylist}`
+    );
+    return { itemlist: res };
   }
 };
 </script>

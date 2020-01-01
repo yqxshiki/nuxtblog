@@ -57,10 +57,10 @@ Vue.directive("highlight", function(el) {
 });
 export default {
   name: "list",
+  serverCacheKey() {},
   data() {
     return {
-      arrlist: {},
-      title: this.$route.params.title,
+      title: this.$route.params.title
     };
   },
   filters: {
@@ -68,21 +68,18 @@ export default {
       return dayjs(val).format("YYYY/MM/DD HH:mm:ss");
     }
   },
+  // 获取内容详情
+  async asyncData({ $axios, route }) {
+    const res = await $axios.get(`/web/api/blog/${route.params.list}`);
+    return { arrlist: res };
+  },
   methods: {
-    // 获取内容
-    getblog(list) {
-      this.$axios.get(`/blog/${list}`).then(res => {
-        this.arrlist = res.data;
-      });
-    },
     getcount(list) {
       this.arrlist.count++;
-      this.$axios.post("/resive/" + list, this.arrlist);
+      this.$axios.post("/web/api/resive/" + list, this.arrlist);
     }
   },
   mounted() {
-    // 获取详情
-    this.getblog(this.$route.params.list);
     setTimeout(() => {
       this.getcount(this.$route.params.list);
     }, 1000);

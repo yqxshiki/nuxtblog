@@ -3,7 +3,7 @@ import App from './App.vue'
 import router from './router'
 
 // ElementUI
-import ElementUI from 'element-ui';
+import ElementUI, { Loading } from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
@@ -16,14 +16,19 @@ Vue.prototype.$axios = http;
 import { mavonEditor } from "mavon-editor";
 import "mavon-editor/dist/css/index.css";
 Vue.component("mavonEditor", mavonEditor)
+// Loading
+import myloading from './views/loading.vue'
+Vue.component("myloading", myloading)
+
 Vue.config.productionTip = false
 
-
+import animate from 'animate.css'
+Vue.use(animate)
 // 混入
 Vue.mixin({
   computed: {
     uploadUrl() {
-      return this.$axios.defaults.baseURL + '/uploads'
+      return 'http://localhost:4000/api/uploads'
     }
   },
   methods: {

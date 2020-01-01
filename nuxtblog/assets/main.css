@@ -6,7 +6,5 @@
 
 .page-enter,
 .page-leave-active {
-  transform: rotate(26deg);
-  transition: .6s;
-  opacity: 0;
+  opacity: 0.2;
 }

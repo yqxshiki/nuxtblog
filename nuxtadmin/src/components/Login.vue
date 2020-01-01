@@ -45,12 +45,18 @@ export default {
         });
       }
     }
-  }
+  },
 };
 </script>
 <style scoped>
 .login-card {
   width: 25rem;
-  margin: 10rem auto;
+  height: 20rem;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
 }
 </style>

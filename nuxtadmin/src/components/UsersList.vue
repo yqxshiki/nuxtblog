@@ -1,21 +1,23 @@
 <template>
-  <div>
-    <h1>用户信息列表</h1>
-    <el-table :data="items">
-      <el-table-column prop="_id" label="ID" width="240"></el-table-column>
-      <el-table-column prop="title" label="名称"></el-table-column>
-      <el-table-column prop="gitlink" label="github链接"></el-table-column>
-      <el-table-column fixed="right" label="操作" width="180">
-        <template slot-scope="scope">
-          <el-button
-            type="primary"
-            size="small"
-            @click="$router.push(`/users/edit/${scope.row._id}`)"
-          >编辑</el-button>
-          <el-button type="primary" size="small" @click="remove(scope.row)">删除</el-button>
-        </template>
-      </el-table-column>
-    </el-table>
+  <div id="userlist">
+    <myloading :loading="loading">
+      <h1>用户信息列表</h1>
+      <el-table :data="items">
+        <el-table-column prop="_id" label="ID" width="240"></el-table-column>
+        <el-table-column prop="title" label="名称" width="240"></el-table-column>
+        <el-table-column prop="gitlink" label="github链接" width="560"></el-table-column>
+        <el-table-column fixed="right" label="操作" width="180">
+          <template slot-scope="scope">
+            <el-button
+              type="primary"
+              size="small"
+              @click="$router.push(`/users/edit/${scope.row._id}`)"
+            >编辑</el-button>
+            <el-button type="primary" size="small" @click="remove(scope.row)">删除</el-button>
+          </template>
+        </el-table-column>
+      </el-table>
+    </myloading>
   </div>
 </template>
 
@@ -23,7 +25,8 @@
 export default {
   data() {
     return {
-      items: []
+      items: null,
+      loading: true
     };
   },
   methods: {
@@ -46,12 +49,30 @@ export default {
         });
         this.fetch();
       });
+    },
+    isloading() {
+      if (this.items == null) {
+        return;
+      } else {
+        this.loading = false;
+      }
     }
   },
   created() {
     this.fetch();
+    if (this.items == null) {
+      setInterval(() => {
+        this.isloading();
+      });
+    } else {
+      return;
+    }
   }
 };
 </script>
 <style>
+#userlist {
+  width: 100%;
+  height: 100%;
+}
 </style>

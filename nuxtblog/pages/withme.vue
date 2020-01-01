@@ -6,28 +6,16 @@
 
 <script>
 export default {
-  // transition: "withme",
+  name: "withme",
   head() {
     return {
       title: "关于我",
       meta: [{ hid: "description", name: "withme", content: "withme" }]
     };
   },
-  data() {
-    return {
-      item: {
-        about: ""
-      }
-    };
-  },
-  computed: {
-    async getabout() {
-      const res = await this.$axios.get("/user/info");
-      this.item = res.data[0];
-    }
-  },
-  created() {
-    this.getabout;
+  async asyncData({ $axios }) {
+    const res = await $axios.get("/web/api/user/info");
+    return { item: res[0] };
   }
 };
 </script>
@@ -38,7 +26,7 @@ export default {
   width: 90%;
 }
 .about {
-  width:750px;
+  width: 750px;
   padding: 1rem;
 }
 </style>

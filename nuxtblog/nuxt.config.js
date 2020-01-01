@@ -1,25 +1,25 @@
 export default {
   mode: 'universal',
+  render: {
+    resourceHints: false, // 添加prefetch和preload，以加快初始化页面加载时间。如果有许多页面和路由，可禁用此项
+  },
   /*
    ** Headers of the page
    */
-
-
   head: {
-    // title: process.env.npm_package_name || 'Scrook.Blog',
     title: 'Scrook.Blog',
     meta: [{
-        charset: 'utf-8'
-      },
-      {
-        name: 'viewport',
-        content: 'width=device-width, initial-scale=1'
-      },
-      {
-        hid: 'description',
-        name: 'description',
-        content: process.env.npm_package_description || ''
-      }
+      charset: 'utf-8'
+    },
+    {
+      name: 'viewport',
+      content: 'width=device-width, initial-scale=1'
+    },
+    {
+      hid: 'description',
+      name: 'description',
+      content: process.env.npm_package_description || ''
+    }
     ],
     link: [{
       rel: 'icon',
@@ -55,7 +55,10 @@ export default {
   /*
    ** Nuxt.js modules
    */
-  modules: [],
+  modules: [
+    '@nuxtjs/axios'
+  ],
+  // axios:{},
   /*
    ** Build configuration
    */
@@ -64,6 +67,6 @@ export default {
     /*
      ** You can extend webpack config here
      */
-    extend(config, ctx) {}
+    extend(config, ctx) { }
   }
 }

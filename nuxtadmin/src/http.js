@@ -4,7 +4,7 @@ import Vue from 'vue'
 import router from './router/index'
 
 const http = axios.create({
-    baseURL: "http://localhost:4000/api",
+    baseURL: process.env.VUE_APP_URL || '/api',
 })
 
 //请求

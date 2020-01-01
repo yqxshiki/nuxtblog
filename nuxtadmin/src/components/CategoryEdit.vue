@@ -32,21 +32,28 @@ export default {
     // 提交
     async save() {
       let res;
-      if (this.id) {
-        res = await this.$axios.post(
-          `/rest/categories/resive/${this.id}`,
-          this.model
-        );
+      if (this.model.name == undefined) {
+        this.$message({
+          message: "分类内容不能为空",
+          type: "warning"
+        });
       } else {
-        res = await this.$axios.post("/rest/categories/create", this.model);
+        if (this.id) {
+          res = await this.$axios.post(
+            `/rest/categories/resive/${this.id}`,
+            this.model
+          );
+        } else {
+          res = await this.$axios.post("/rest/categories/create", this.model);
+        }
+        // 跳转
+        this.$router.push("/categories/list");
+        // 提示信息
+        this.$message({
+          type: "success",
+          message: "保存成功"
+        });
       }
-      // 跳转
-      this.$router.push("/categories/list");
-      // 提示信息
-      this.$message({
-        type: "success",
-        message: "保存成功"
-      });
     },
     // 获取详情
     async fetch() {
@@ -61,6 +68,7 @@ export default {
   created() {
     this.fetchparent();
     this.id && this.fetch();
+    console.log(this.model.name);
   }
 };
 </script>
