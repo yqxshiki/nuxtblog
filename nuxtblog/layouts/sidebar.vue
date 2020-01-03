@@ -38,36 +38,19 @@
   width: 100%;
   height: 100%;
 }
-.github {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-.github img {
-  width: 100px;
-}
-/* 头部 */
-header {
-  width: 100%;
-  height: 100px;
-  margin-top: 40px;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-weight: 400;
-}
 .wrap {
   display: flex;
   justify-content: space-around;
 }
+.content a {
+  font-weight: 700;
+}
 .content a:hover {
   border-bottom: 1px solid aqua;
   color: aqua;
-}
+ }
 .img {
   width: 210px;
   height: 60px;
-  margin-top: -20px;
-}
-a {
-  color: #fff;
-}
+} 
 </style>

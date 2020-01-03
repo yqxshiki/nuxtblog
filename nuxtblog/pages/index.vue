@@ -59,9 +59,10 @@ export default {
 #index {
   width: 100%;
   height: 100%;
+  margin-top: 3rem;
 }
 .center {
-  width: 80%;
+  width: 100%;
   margin: 0 auto;
 }
 /* 底部 */
@@ -71,6 +72,23 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+footer::before {
+  background: #000
+    linear-gradient(
+      to left,
+      #4cd964,
+      #5ac8fa,
+      #007aff,
+      #34aadc,
+      #5856d6,
+      #ff2d55
+    );
+  content: "";
+  height: 8px;
+  position: absolute;
+  bottom: -150%;
+  width: 100%;
 }
 .introduce {
   font-size: 1.2rem;

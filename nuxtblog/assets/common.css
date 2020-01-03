@@ -8,12 +8,13 @@ body {
 
 html,
 body {
-  background: url("../static/6.jpg");
+  /* background: url("../static/6.jpg"); */
+  background: rgb(233, 234, 237);
   background-size: cover;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
-  opacity: 0.9;
+  /* opacity: 0.9; */
 }
 
 #__nuxt {
@@ -34,7 +35,12 @@ ul li {
 a {
   text-decoration: none;
   list-style: none;
+  color: #fff;
+}
 
+a:hover {
+  text-decoration: none;
+  list-style: none;
 }
 
 a:hover {
@@ -93,4 +99,66 @@ blockquote {
 
 .hljs-number {
   color: #718c00;
+}
+
+/* 回到顶部 */
+.backtop {
+  font-size: 6rem;
+  color: #ccc;
+  position: fixed;
+  right: -5rem;
+  bottom: 5rem;
+  cursor: pointer;
+  transition: 0.7s;
+}
+
+.github {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.github img {
+  width: 100px;
+}
+
+header {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-weight: 400;
+  background: #1c2327;
+}
+
+header::before {
+  background: #000 linear-gradient(to left,
+      #4cd964,
+      #5ac8fa,
+      #007aff,
+      #34aadc,
+      #5856d6,
+      #ff2d55);
+  content: "";
+  height: 8px;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+
+/* 侧边栏 */
+.sidebar {
+  flex: 2;
+  width: 240px;
+  height: 510px;
+  margin-left: 4rem;
+  opacity: 0.9;
+  color: #555;
+  box-sizing: border-box;
+  background: #fff;
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12),
+    0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
+    0 -1px 0.5px 0 rgba(0, 0, 0, 0.09);
+  border-radius: initial;
+  box-sizing: border-box;
 }

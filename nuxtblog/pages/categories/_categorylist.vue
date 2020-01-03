@@ -65,10 +65,11 @@ h2 {
 .heard {
   line-height: 65px;
   cursor: pointer;
+  font-size: 0.8rem;
 }
 .heard:hover {
   color: #ccc;
-  font-size: 1.1rem;
+  font-size: 1.0rem;
 }
 .listdate {
   margin-left: 2rem;

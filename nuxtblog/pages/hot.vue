@@ -107,9 +107,8 @@ export default {
 .wrap {
   width: 90%;
   height: 100%;
-  background: rgb(217, 216, 223);
   overflow: hidden;
-  opacity: 0.9;
+  background:#fff;
   margin: 0 auto;
 }
 h2 {

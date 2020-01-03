@@ -27,10 +27,6 @@ export default {
 };
 </script>
 <style scoped>
-#swiper {
-  width: 80%;
-  margin: 0 auto;
-}
 @media screen and (min-width: 1360px) {
   img {
     width: 100%;

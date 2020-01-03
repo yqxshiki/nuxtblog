@@ -82,7 +82,7 @@ export default {
   width: 90%;
   text-align: center;
   padding: 1rem;
-  background: #ccc;
+  background: #fff;
 }
 .length {
   font-size: 1.1rem;

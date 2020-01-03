@@ -21,7 +21,7 @@ export default {
 </script>
 <style scoped>
 #withme {
-  background: #eee;
+  background: #fff;
   margin-top: 1rem;
   width: 90%;
 }

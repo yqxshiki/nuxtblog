@@ -12,13 +12,13 @@
     <header>
       <div class="wrap">
         <div class="content">
-          <nuxt-link   to="/">Home</nuxt-link>
+          <nuxt-link to="/">Home</nuxt-link>
         </div>
         <div class="content">
-          <nuxt-link   to="/blog">Bolg</nuxt-link>
+          <nuxt-link to="/blog">Bolg</nuxt-link>
         </div>
         <div class="content">
-          <nuxt-link to="/"  >
+          <nuxt-link to="/">
             <img class="img" src="../static/scrook.png" alt />
           </nuxt-link>
         </div>
@@ -26,7 +26,7 @@
           <nuxt-link to="/category">Category</nuxt-link>
         </div>
         <div class="content">
-          <nuxt-link   to="/withme" >Withme</nuxt-link>
+          <nuxt-link to="/withme">Withme</nuxt-link>
         </div>
       </div>
     </header>
@@ -184,7 +184,8 @@ export default {
       var link = document.createElement("link");
       link.type = "image/x-icon";
       link.rel = "shortcut icon";
-      link.href = "https://hexophoto-1259178461.cos.ap-beijing.myqcloud.com/photos/img/icon.jpg";
+      link.href =
+        "https://hexophoto-1259178461.cos.ap-beijing.myqcloud.com/photos/img/icon.jpg";
       document.getElementsByTagName("head")[0].appendChild(link);
     }
   },
@@ -214,38 +215,13 @@ export default {
 };
 </script>
 <style scoped>
-/* 回到顶部 */
-.backtop {
-  font-size: 6rem;
-  color: #ccc;
-  position: fixed;
-  right: -5rem;
-  bottom: 5rem;
-  cursor: pointer;
-  transition: 0.7s;
-}
-.github {
-  position: absolute;
-  left: 0;
-  top: 0;
-}
-.github img {
-  width: 100px;
-}
-/* 头部 */
-header {
-  width: 100%;
-  height: 100px;
-  margin-top: 40px;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-weight: 400;
-}
 .wrap {
   display: flex;
   justify-content: space-around;
 }
+
 .content a {
-  color: #fff;
+  font-weight: 700;
 }
 .content a:hover {
   border-bottom: 1px solid aqua;
@@ -253,9 +229,7 @@ header {
 }
 .img {
   text-align: center;
-  /* width: 210px; */
   height: 60px;
-  margin-top: -20px;
 }
 /* 内容区 */
 .container {
@@ -269,27 +243,15 @@ header {
   width: 80%;
   opacity: 0.9;
   box-sizing: border-box;
-  margin-top: -1rem;
+  margin-top: 2rem;
 }
-/* 侧边栏 */
-.sidebar {
-  flex: 2;
-  width: 240px;
-  height: 510px;
-  margin-left: 4rem;
-  opacity: 0.9;
-  color: #555;
-  box-sizing: border-box;
-  background: #fff;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.12),
-    0 3px 1px -2px rgba(0, 0, 0, 0.06), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
-    0 -1px 0.5px 0 rgba(0, 0, 0, 0.09);
-  border-radius: initial;
-  box-sizing: border-box;
-}
+
 .center {
   width: 100%;
   text-align: center;
+}
+.sidebar {
+  margin-top: 3rem;
 }
 .sidebar div {
   width: 240px;
