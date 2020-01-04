@@ -29,7 +29,13 @@ Vue.mixin({
   computed: {
     uploadUrl() {
       return 'http://localhost:4000/api/uploads'
-    }
+    },
+    // 请求头
+    getAuthHeaders() {
+      return {
+        Authorization: `Bearer ${localStorage.token || ""}`
+      };
+    },
   },
   methods: {
     // 添加图片

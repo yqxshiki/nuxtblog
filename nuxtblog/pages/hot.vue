@@ -5,30 +5,49 @@
         <i class="iconfont">&#xe66c;</i>
         最新文章
       </h2>
-      <div class="container">
-        <!-- 图片 -->
-        <div class="pic">
-          <div class="img" v-for="(item,index) in arrimg" :key="index">
-            <!-- 骨架屏 -->
-            <div class="skeleton" v-show="isshow"></div>
-            <p class="hidden">{{list.length>index?item.imgsrc:item.imgsrc=""}}</p>
-            <img class="noneimg" alt :src="item.imgsrc" />
-          </div>
-        </div>
-        <div class="acticlebody">
+      <!-- <div class="container d-flex">
+        <div class="acticlebody d-flex">
           <div class="article" v-for="(item,_id) in list" :key="_id">
             <nuxt-link :to="{name:'list-list',params:{list:item._id,title:item.title}}">
-              <!-- 骨架屏 -->
               <div class="bodyskeleton" v-show="isshow"></div>
               <div class="articlecont">
-                <!-- 文章 -->
                 <div class="title">{{item.title}}</div>
                 <div class="body">{{item.bodyrender | filter}}</div>
               </div>
             </nuxt-link>
           </div>
         </div>
-      </div>
+        <div class="right">
+          <div class="info"></div>
+        </div>
+      </div>-->
+      <el-row :gutter="20">
+        <el-col :span="18">
+          <div class="grid-content bg-purple"></div>
+        </el-col>
+        <el-col :span="6">
+          <el-row :span="6">
+            <div class="sidebar-info">
+              <h3>我的名片</h3>
+              <div class="userinfo">
+                <p>网名:Scrook</p>
+                <p>职业:web前端开发工程师</p>
+                <p>现居:湖北省-武汉市</p>
+                <p>Email:1023942883@qq.com</p>
+              </div>
+            </div>
+          </el-row>
+          <el-row :span="6">
+            <div class="sidebar-info"></div>
+          </el-row>
+          <el-row :span="6">
+            <div class="sidebar-info"></div>
+          </el-row>
+          <el-row :span="6">
+            <div class="sidebar-info"></div>
+          </el-row>
+        </el-col>
+      </el-row>
     </div>
   </div>
 </template>
@@ -111,6 +130,7 @@ export default {
   background: #fff;
   margin: 0 auto;
 }
+/* 标签 */
 h2 {
   color: red;
   margin-left: 2rem;
@@ -120,82 +140,12 @@ h2 {
 h2 .iconfont {
   color: red;
 }
-.container {
-  display: flex;
+
+.bg-purple {
+  background: #d3dce6;
 }
-.hidden {
-  display: none;
-}
-/* 骨架屏 */
-.skeleton {
-  width: 280px;
-  height: 160px;
-  background: #aaa;
-  position: absolute;
-}
-.bodyskeleton {
-  width: 486px;
-  height: 151px;
-  background: #aaa;
-  position: absolute;
-}
-.pic {
-  flex: 3;
-  margin-left: 4rem;
-}
-/* 文章 */
-.articleboyd {
-  flex: 7;
-}
-.article {
-  font: 8;
-  width: 100%;
-  display: inline-block;
-}
-.article a {
-  width: 60%;
-  height: 200px;
-  margin: 1rem auto;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  cursor: pointer;
-  border-radius: 1rem;
-}
-.article a .articlecont {
-  margin-left: 1rem;
-  width: 100%;
-  color: #444;
-  transition: 1s;
-}
-.article a .articlecont:hover {
-  color: rgb(185, 53, 53);
-  box-shadow: 10px 10px 10px rgb(87, 73, 163);
-}
-.img {
-  margin-left: 2rem;
-  margin-top: 3.6rem;
-  flex: 2;
-  width: 60%;
-  height: 160px;
-}
-.img img {
-  width: 240px;
-}
-/* 标题 */
-.title {
-  color: #1e90ff;
-  font-weight: 500;
-  text-align: center;
-  font-size: 1.4rem;
-}
-/* 内容 */
-.body {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 6;
-  overflow: hidden;
-  font-size: 18px;
-  text-indent: 2rem;
+.sidebar-info {
+  background: rgb(99, 88, 88);
+  color: #d0d2d4;
 }
 </style>

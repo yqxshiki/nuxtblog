@@ -12,6 +12,18 @@
             <el-option v-for="item in parents" :key="item._id" :label="item.name" :value="item._id"></el-option>
           </el-select>
         </el-form-item>
+        <el-form-item label="文章图片">
+          <el-upload
+            class="avatar-uploader"
+            :action="uploadUrl"
+            :show-file-list="false"
+            :on-success="afterupload"
+            :headers="getAuthHeaders"
+          >
+            <img v-if="form.icon" :src="form.icon" class="avatar" />
+            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+          </el-upload>
+        </el-form-item>
         <el-form-item label="文章内容">
           <mavon-editor
             :ishljs="true"
@@ -57,6 +69,7 @@ export default {
         categories: [],
         // 未渲染的内容
         body: "",
+        icon:"",
         // 渲染后的内容
         bodyrender: "",
         count: ""
@@ -69,6 +82,10 @@ export default {
     };
   },
   methods: {
+    // 显示图片
+    afterupload(res) {
+      this.$set(this.form, "icon", res.url);
+    },
     // 提交
     onSubmit() {
       if (

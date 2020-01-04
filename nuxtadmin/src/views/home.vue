@@ -2,7 +2,7 @@
   <div id="home">
     <el-container style="border: 1px solid #eee">
       <el-aside width="200px" style="background-color: rgb(238, 241, 246)">
-        <el-menu router :default-openeds="['1']">
+        <el-menu router :default-openeds="['1']" unique-opened :default-active="$route.path">
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-message"></i>博客管理

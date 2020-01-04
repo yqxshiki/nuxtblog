@@ -68,7 +68,6 @@ export default {
   created() {
     this.fetchparent();
     this.id && this.fetch();
-    console.log(this.model.name);
   }
 };
 </script>

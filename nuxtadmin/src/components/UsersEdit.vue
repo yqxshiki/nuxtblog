@@ -15,7 +15,7 @@
             :action="uploadUrl"
             :show-file-list="false"
             :on-success="afterupload"
-            :headers="getAuthHeaders()"
+            :headers="getAuthHeaders"
           >
             <img v-if="model.icon" :src="model.icon" class="avatar" />
             <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -63,12 +63,6 @@ export default {
     // 显示图片
     afterupload(res) {
       this.$set(this.model, "icon", res.url);
-    },
-    // 请求头
-    getAuthHeaders() {
-      return {
-        Authorization: `Bearer ${localStorage.token || ""}`
-      };
     },
     change(value, render) {
       this.html = render;
