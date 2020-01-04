@@ -33,36 +33,39 @@
     <div class="container">
       <!-- 内容 -->
       <div class="nuxt">
-        <nuxt keep-alive />
+        <!-- <nuxt keep-alive /> -->
+        <nuxt />
       </div>
       <!-- 侧边栏 -->
-      <div class="sidebar">
-        <div class="center" v-if="item">
-          <div class="img">
-            <img src="~static/icon.jpg" alt class="touxiang" />
-          </div>
-          <div class="title">{{item.title}}</div>
-          <div class="describe">{{item.describe}}</div>
-          <div class="count">
-            <div class="shuzi"></div>
-            <div class="rizhi">日志</div>
-          </div>
-          <div class="icon">
-            <a :href="item.gitlink" target="_blank" class="lianjie">
-              <span>
-                <i class="iconfont">&#xe709;</i>
-                <span>GitHub</span>
-              </span>
-            </a>
-            <a :href="item.qqlink" target="_blank" class="lianjie">
-              <span>
-                <i class="iconfont">&#xe643;</i>
-                <span>E-Mail</span>
-              </span>
-            </a>
-          </div>
-          <div class="time">
-            <span id="htmer_time"></span>
+      <div class="relative">
+        <div class="sidebar bb">
+          <div class="center" v-if="item">
+            <div class="img">
+              <img src="~static/icon.jpg" alt class="touxiang" />
+            </div>
+            <div class="title">{{item.title}}</div>
+            <div class="describe">{{item.describe}}</div>
+            <div class="count">
+              <div class="shuzi"></div>
+              <div class="rizhi">日志</div>
+            </div>
+            <div class="icon">
+              <a :href="item.gitlink" target="_blank" class="lianjie">
+                <span>
+                  <i class="iconfont">&#xe709;</i>
+                  <span>GitHub</span>
+                </span>
+              </a>
+              <a :href="item.qqlink" target="_blank" class="lianjie">
+                <span>
+                  <i class="iconfont">&#xe643;</i>
+                  <span>E-Mail</span>
+                </span>
+              </a>
+            </div>
+            <div class="time">
+              <span id="htmer_time"></span>
+            </div>
           </div>
         </div>
       </div>
@@ -180,6 +183,7 @@ export default {
         this.backtop.style.bottom = -3 + "rem";
       }
     },
+    // set icon
     seticon() {
       var link = document.createElement("link");
       link.type = "image/x-icon";
@@ -187,11 +191,27 @@ export default {
       link.href =
         "https://hexophoto-1259178461.cos.ap-beijing.myqcloud.com/photos/img/icon.jpg";
       document.getElementsByTagName("head")[0].appendChild(link);
-    }
+    },
+    // getbottom() {
+    //   let bodyHeight = document.getElementsByTagName("body")[0].clientHeight;
+    //   let footer = document.getElementsByTagName("footer")[0];
+    //   let containerHeight = document.getElementsByClassName("container")[0]
+    //     .clientHeight;
+    //     console.log(containerHeight)
+    //   // footer.style.bottom = -(bodyHeight - containerHeight - 100 - 38) + "px";
+    //   // console.log(footer.style.bottom);
+    // }
   },
   mounted() {
     this.getuserinfo;
     this.seticon();
+    // let tiembottom = setInterval(() => {
+    //   if (this.$route.name == "blog" || this.$route.name == "list-list") {
+    //     return;
+    //   } else {
+    //     this.getbottom();
+    //   }
+    // }, 5000);
     let times = setTimeout(() => {
       if (this.item) {
         setInterval(this.setTime(), 1000);
@@ -222,14 +242,15 @@ export default {
 
 .content a {
   font-weight: 700;
+  color: #fff;
 }
 .content a:hover {
-  border-bottom: 1px solid aqua;
   color: aqua;
 }
 .img {
   text-align: center;
   height: 60px;
+  margin-top: 20px;
 }
 /* 内容区 */
 .container {
@@ -245,7 +266,9 @@ export default {
   box-sizing: border-box;
   margin-top: 2rem;
 }
-
+.relative {
+  position: relative;
+}
 .center {
   width: 100%;
   text-align: center;
@@ -310,6 +333,25 @@ footer {
   height: 80px;
   margin-top: 2rem;
   font-size: 1.2rem;
+  background: rgb(53, 77, 77);
+  position: relative;
+}
+footer::before {
+  background: #000
+    linear-gradient(
+      to left,
+      #4cd964,
+      #5ac8fa,
+      #007aff,
+      #34aadc,
+      #5856d6,
+      #ff2d55
+    );
+  content: "";
+  height: 6px;
+  position: absolute;
+  top: -2%;
+  width: 100%;
 }
 footer div {
   width: 100%;

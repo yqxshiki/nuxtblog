@@ -43,7 +43,7 @@ export default {
 .container {
   width: 100%;
   padding: 1rem;
-  background: #ccc;
+  background: #fff;
 }
 h2 {
   color: #888;

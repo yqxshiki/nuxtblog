@@ -36,21 +36,21 @@
 <style scoped>
 #default {
   width: 100%;
-  height: 100%;
+  height: 100vh;
 }
 .wrap {
   display: flex;
   justify-content: space-around;
 }
 .content a {
-  font-weight: 700;
+  font-weight: 700;color: #fff;
 }
 .content a:hover {
-  border-bottom: 1px solid aqua;
   color: aqua;
- }
+}
 .img {
   width: 210px;
   height: 60px;
-} 
+  margin-top: 20px;
+}
 </style>

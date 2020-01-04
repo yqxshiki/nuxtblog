@@ -59,7 +59,7 @@ export default {
             this.list.unshift(item);
           });
         } else {
-          this.list = res.data.slice(length - 4, length);
+          this.list = res.data.slice(length - 5, length);
         }
       });
     },
@@ -108,7 +108,7 @@ export default {
   width: 90%;
   height: 100%;
   overflow: hidden;
-  background:#fff;
+  background: #fff;
   margin: 0 auto;
 }
 h2 {
@@ -122,14 +122,13 @@ h2 .iconfont {
 }
 .container {
   display: flex;
-  height: 944px;
 }
 .hidden {
   display: none;
 }
 /* 骨架屏 */
 .skeleton {
-  width: 240px;
+  width: 280px;
   height: 160px;
   background: #aaa;
   position: absolute;
@@ -194,7 +193,7 @@ h2 .iconfont {
 .body {
   display: -webkit-box;
   -webkit-box-orient: vertical;
-  -webkit-line-clamp: 5;
+  -webkit-line-clamp: 6;
   overflow: hidden;
   font-size: 18px;
   text-indent: 2rem;

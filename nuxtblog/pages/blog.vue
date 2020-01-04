@@ -1,7 +1,7 @@
 <template>
   <div id="blog">
     <div class="container">
-      <div class="list" v-for="item in list" :key="item.index">
+      <div class="list  rainbow" v-for="item in list" :key="item.index">
         <div class="title">
           <nuxt-link
             keep-alive
@@ -27,12 +27,6 @@
         </div>
         <!-- 结束符 -->
         <div class="end">---------------- The End ----------------</div>
-        
-          <div class="circle1"></div>
-       
-        
-          <div class="circle2"></div>
-       
       </div>
     </div>
   </div>
@@ -75,23 +69,13 @@ export default {
   flex-wrap: wrap;
   padding: 1rem;
 }
-/* 回到顶部 */
-.backtop {
-  font-size: 6rem;
-  color: #ccc;
-  position: fixed;
-  right: -5rem;
-  bottom: 5rem;
-  cursor: pointer;
-  transition: 0.7s;
-}
 /* 文章 */
 .list {
   width: 750px;
   position: relative;
   height: 360px;
   box-shadow: -6px -6px 6px 4px rgb(224, 198, 198);
-  margin-top: 2rem;
+  margin-top: 3rem;
   padding: 1rem;
   background: rgb(217, 216, 223);
   text-align: center;
@@ -99,75 +83,6 @@ export default {
 }
 .list div {
   margin-top: 1rem;
-}
-.list .circle1,
-.circle2::before {
-  position: absolute;
-  top: -0.5em;
-  right: -0.5em;
-  content: "";
-  width: 1em;
-  height: 1em;
-  background-color: currentColor;
-  border-radius: 50%;
-  box-shadow: 0 0 2em, 0 0 4em, 0 0 6em, 0 0 8em, 0 0 10em,
-    0 0 0 0.5em rgba(255, 255, 0, 0.1);
-}
-.circle1 {
-  position: absolute;
-  left: 0;
-  top: 0;
-  border-radius: 50%;
-  border-style: solid;
-  color: rgb(29, 187, 82);
-  border-color: currentColor transparent transparent currentColor;
-  border-width: 0.2em 0.2em 0em 0em;
-  animation: evenloop 6s linear infinite;
-}
-.circle2 {
-  position: absolute;
-  left: 0;
-  top: 0;
-  border-radius: 50%;
-  border-style: solid;
-  color: blue;
-  border-color: currentColor transparent transparent currentColor;
-  border-width: 0.2em 0.2em 0em 0em;
-  animation: blackevenloop 6s linear infinite;
-}
-@keyframes evenloop {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  25% {
-    transform: translate(750px, 0);
-  }
-
-  50% {
-    transform: translate(750px, 360px);
-  }
-
-  75% {
-    transform: translate(0, 360px);
-  }
-}
-@keyframes blackevenloop {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  25% {
-    transform: translate(0, 360px);
-  }
-
-  50% {
-    transform: translate(750px, 360px);
-  }
-
-  75% {
-    transform: translate(750px, 0);
-  }
 }
 /* 标题 */
 .title a {

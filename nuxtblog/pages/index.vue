@@ -6,7 +6,7 @@
       <contact />
     </div>
     <footer>
-      <div class="container">
+      <div class="footer">
         <div class="introduce">
           <nuxt-link to="/sitemap">Sitemap</nuxt-link>
         </div>
@@ -58,7 +58,7 @@ export default {
 <style scoped>
 #index {
   width: 100%;
-  height: 100%;
+  /* height: 100%; */
   margin-top: 3rem;
 }
 .center {
@@ -72,6 +72,7 @@ footer {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: relative;
 }
 footer::before {
   background: #000
@@ -87,7 +88,7 @@ footer::before {
   content: "";
   height: 8px;
   position: absolute;
-  bottom: -150%;
+  top: -2%;
   width: 100%;
 }
 .introduce {
