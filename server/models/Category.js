@@ -4,6 +4,9 @@ const schema = new mongoose.Schema({
     name: {
         type: String
     },
+    type: {
+        type: String
+    },
     parents: {
         type: mongoose.SchemaTypes.ObjectId,
         ref: 'Category',

@@ -6,11 +6,6 @@
       <contact />
     </div>
     <footer>
-      <div class="footer">
-        <div class="introduce">
-          <nuxt-link to="/sitemap">Sitemap</nuxt-link>
-        </div>
-      </div>
       <div class="keep">
         <span>关于yqxshiki个人网站</span>
         <a href="http://beian.miit.gov.cn/" target="_blank">

@@ -114,7 +114,6 @@ export default {
   overflow: hidden;
   text-indent: 2rem;
   letter-spacing: 3px;
-  text-shadow: 1px 1px 10px;
 }
 /* 发布时间 */
 .time {

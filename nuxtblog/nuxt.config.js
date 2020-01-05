@@ -58,22 +58,12 @@ export default {
    */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
   ],
-  styleResources: {
-    scss: [
-      '~/assets/style.scss',
-      '~/assets/_variables.scss'
-    ]
-  },
   /*
    ** Build configuration
    */
   build: {
     transpile: [/^element-ui/],
-    analyza: {
-      analyzeMode: 'static'
-    },
     /*
      ** You can extend webpack config here
      */

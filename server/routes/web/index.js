@@ -6,7 +6,14 @@ module.exports = app => {
     const Acticle = mongoose.model('Acticle')
     const Category = mongoose.model('Category')
     const Img = mongoose.model('Img')
+    const Tool = mongoose.model("Tool")
 
+    //工具
+    router.get("/tools", async (req, res) => {
+        const data = await Tool.find();
+        res.send(data)
+    })
+    // 获取图片
     router.get("/imglist", async (req, res) => {
         const data = await Img.find()
         res.send(data);

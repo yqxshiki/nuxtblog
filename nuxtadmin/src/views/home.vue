@@ -17,6 +17,18 @@
             <el-menu-item-group>
               <el-menu-item index="/create">创建文章</el-menu-item>
             </el-menu-item-group>
+            <el-menu-item-group>
+              <el-menu-item index="/img/list">展示轮播图</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group>
+              <el-menu-item index="/img/create">创建轮播图</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group>
+              <el-menu-item index="/tools/list">展示工具</el-menu-item>
+            </el-menu-item-group>
+            <el-menu-item-group>
+              <el-menu-item index="/tools/create">创建工具</el-menu-item>
+            </el-menu-item-group>
           </el-submenu>
 
           <el-submenu index="1">
@@ -34,12 +46,6 @@
             </el-menu-item-group>
             <el-menu-item-group>
               <el-menu-item index="/users/create">创建用户</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group>
-              <el-menu-item index="/img/list">展示轮播图</el-menu-item>
-            </el-menu-item-group>
-            <el-menu-item-group>
-              <el-menu-item index="/img/create">创建轮播图</el-menu-item>
             </el-menu-item-group>
           </el-submenu>
         </el-menu>

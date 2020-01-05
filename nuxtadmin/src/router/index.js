@@ -85,6 +85,20 @@ const routes = [{
       path: '/img/list',
       component: () => import('../components/ImgList.vue')
     },
+      //工具
+      {
+        path: '/tools/create',
+        component: () => import('../components/ToolsEdit.vue')
+      },
+      {
+        path: '/tools/edit/:id',
+        component: () => import('../components/ToolsEdit.vue'),
+        props: true
+      },
+      {
+        path: '/tools/list',
+        component: () => import('../components/ToolsList.vue')
+      },
   ]
 },
 {

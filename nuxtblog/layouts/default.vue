@@ -192,26 +192,24 @@ export default {
         "https://hexophoto-1259178461.cos.ap-beijing.myqcloud.com/photos/img/icon.jpg";
       document.getElementsByTagName("head")[0].appendChild(link);
     },
-    // getbottom() {
-    //   let bodyHeight = document.getElementsByTagName("body")[0].clientHeight;
-    //   let footer = document.getElementsByTagName("footer")[0];
-    //   let containerHeight = document.getElementsByClassName("container")[0]
-    //     .clientHeight;
-    //     console.log(containerHeight)
-    //   // footer.style.bottom = -(bodyHeight - containerHeight - 100 - 38) + "px";
-    //   // console.log(footer.style.bottom);
-    // }
+    getbottom() {
+      let bodyHeight = document.getElementsByTagName("body")[0].clientHeight;
+      let footer = document.getElementsByTagName("footer")[0];
+      let containerHeight = document.getElementsByClassName("container")[0]
+        .clientHeight;
+      footer.style.bottom = -(bodyHeight - containerHeight - 100 - 38) + "px";
+    }
   },
   mounted() {
     this.getuserinfo;
     this.seticon();
-    // let tiembottom = setInterval(() => {
-    //   if (this.$route.name == "blog" || this.$route.name == "list-list") {
-    //     return;
-    //   } else {
-    //     this.getbottom();
-    //   }
-    // }, 5000);
+    let tiembottom = setInterval(() => {
+      if (this.$route.name == "blog" || this.$route.name == "list-list") {
+        return;
+      } else {
+        this.getbottom();
+      }
+    }, 800);
     let times = setTimeout(() => {
       if (this.item) {
         setInterval(this.setTime(), 1000);
@@ -327,6 +325,9 @@ div.time {
   padding: 6px;
   margin-bottom: 40px;
 }
+
+
+
 /* 底部栏 */
 footer {
   width: 100%;

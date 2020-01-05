@@ -12,7 +12,7 @@
             tag="div"
             :to="{name:'categories-categorylist',params:{categorylist:item._id,title:item.name}}"
           >
-            <span class="name">{{item.name}}</span>
+            <el-tag :type="item.type" class="name">{{item.name}}</el-tag>
           </nuxt-link>
         </div>
       </div>
@@ -21,7 +21,6 @@
 </template>
 
 <script>
-import { setInterval, clearInterval } from "timers";
 export default {
   name: "category",
   data() {
@@ -34,37 +33,8 @@ export default {
     const res = await $axios.get("/web/api/category");
     return { categories: res.slice(6, res.length) };
   },
-  methods: {
-    setstyle() {
-      this.length = this.categories.length;
-      let list = document.querySelectorAll(".list");
-      list = Array.from(list);
-      let arr = [];
-      arr.push(this.getRandom(this.length));
-      arr.push(this.getRandom(this.length));
-      if (arr[0] == arr[1]) {
-        if (arr[1] > this.length) {
-          arr[1] = arr[1] - 1;
-        }
-        if (arr[1] < 0) {
-          arr[1] = arr[1] + 1;
-        }
-      }
-      list[arr[0]].className = "redlist";
-      list[arr[1]].className = "redlist";
-    },
-    // 获取随机数
-    getRandom(y) {
-      return Math.floor(Math.random() * y);
-    }
-  },
   mounted() {
-    let times = setInterval(() => {
-      if (this.categories !== undefined) {
-        this.setstyle();
-        clearInterval(times);
-      }
-    }, 1000);
+    this.length = this.categories.length;
   },
   head() {
     return {
@@ -102,25 +72,9 @@ export default {
 }
 
 .list {
-  border-bottom: 3px solid #888;
   margin-left: 3rem;
   margin-top: 2rem;
   cursor: pointer;
-  color: #888;
-}
-.list:hover {
-  color: #222;
-  border-bottom: 3px solid #222;
-}
-.redlist {
-  border-bottom: 3px solid red;
-  margin-left: 3rem;
-  margin-top: 2rem;
-  cursor: pointer;
-  color: red;
-}
-.redlist:hover {
-  color: rgb(189, 82, 82);
-  border-bottom: 3px solid rgb(189, 82, 82);
+  box-sizing: border-box;
 }
 </style>

@@ -6,14 +6,28 @@
           <span class="title">{{this.$route.params.title}}</span>
           标签
         </h2>
-        <div class="list" v-for="item in itemlist" :key="item._id">
+        <!-- <div class="list" v-for="item in itemlist" :key="item._id">
           <nuxt-link tag="div" :to="{name:'list-list',params:{list:item._id,title:item.title}}">
             <div class="heard">
               <span class="listdate">{{item.createdAt | date}}</span>
               <span class="listtitle">{{item.title}}</span>
             </div>
-          </nuxt-link>
-        </div>
+        </div>-->
+
+        <el-timeline>
+          <el-timeline-item
+            v-for="item in itemlist"
+            :key="item._id"
+            :timestamp="item.createdAt | date"
+            placement="top"
+          >
+            <el-card>
+              <nuxt-link tag="div" :to="{name:'list-list',params:{list:item._id,title:item.title}}">
+                <h4>{{item.title}}</h4>
+              </nuxt-link>
+            </el-card>
+          </el-timeline-item>
+        </el-timeline>
       </div>
     </div>
   </div>
@@ -49,32 +63,15 @@ h2 {
   color: #888;
   text-align: center;
 }
+h4 {
+  cursor: pointer;
+}
 .title {
   font-size: 1.2rem;
   color: black;
   font-weight: 700;
 }
-/* 文章列表 */
-.list {
-  background: #777;
-  width: 100%;
-  height: 65px;
-  color: black;
-  margin-top: 2rem;
-}
-.heard {
-  line-height: 65px;
-  cursor: pointer;
-  font-size: 0.8rem;
-}
-.heard:hover {
-  color: #ccc;
-  font-size: 1.0rem;
-}
-.listdate {
-  margin-left: 2rem;
-}
-.listtitle {
-  margin-left: 4rem;
+ul li {
+  list-style: none;
 }
 </style>
