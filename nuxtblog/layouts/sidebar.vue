@@ -39,11 +39,14 @@
   height: 100vh;
 }
 .wrap {
+  width: 60%;
+  margin: 0 auto;
   display: flex;
   justify-content: space-around;
 }
 .content a {
-  font-weight: 700;color: #fff;
+  font-weight: 700;
+  color: #fff;
 }
 .content a:hover {
   color: aqua;

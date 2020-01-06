@@ -38,7 +38,7 @@ export default {
    */
   css: [
     'element-ui/lib/theme-chalk/index.css',
-    'assets/main.css',
+    'assets/page.css',
     'assets/common.css',
     'assets/border.css',
   ],

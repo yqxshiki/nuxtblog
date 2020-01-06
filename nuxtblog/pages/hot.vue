@@ -13,7 +13,7 @@
                 <h4 class="article-title">{{item.title}}</h4>
               </nuxt-link>
               <div class="article-flex">
-                <img :src="item.icon" alt class="article-img" />
+                <img class="article-img" :src="item.icon" alt />
                 <span class="article-sidebar">
                   <div class="article-body">{{item.bodyrender | filter}}</div>
                   <div class="article-info">
@@ -26,11 +26,6 @@
           </div>
         </el-col>
         <el-col :span="6">
-          <!-- <el-row :span="6">
-            <div class="calendar-info">
-              <el-calendar v-model="value"></el-calendar>
-            </div>
-          </el-row>-->
           <el-row :span="6">
             <div class="sidebar-info">
               <h3 class="title-border">我的名片</h3>
@@ -59,7 +54,7 @@
               <h3 class="title-border">推荐工具</h3>
               <div v-for="item in tools" :key="item._id" class="tools">
                 <a :href="item.link">
-                  <img :src="item.icon" alt />
+                  <img class="toolsimg" :src="item.icon" alt />
                   <span>{{item.name}}</span>
                 </a>
               </div>
@@ -137,7 +132,6 @@ export default {
           });
         } else {
           this.list = res.data.slice(length - 5, length);
-          console.log(this.list);
         }
       });
     }
@@ -149,127 +143,5 @@ export default {
 };
 </script>
 <style scoped>
-.wrap {
-  max-width: 76%;
-  height: 100%;
-  overflow: hidden;
-  margin: 0 auto;
-}
-/* 标签 */
-h2 {
-  color: red;
-  margin-left: 2rem;
-  margin-top: 1rem;
-  cursor: pointer;
-}
-h2 .iconfont {
-  color: red;
-}
-.container {
-  width: 80%;
-  margin: 0 auto;
-}
-/* 最新文章 */
-.article-flex {
-  display: flex;
-}
-.article {
-  width: 80%;
-  margin: 0 auto;
-  margin-bottom: 2rem;
-}
-.article-img {
-  width: 200px;
-}
-.article-sidebar {
-  margin-left: 1rem;
-}
-.article-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #333;
-}
-.article-title:hover {
-  color: #337ab7;
-}
-.article-body {
-  overflow: hidden;
-  text-indent: 1rem;
-  color: #666;
-  text-overflow: ellipsis;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 4;
-}
-.article-info {
-  color: #999;
-  display: flex;
-  align-items: center;
-  margin-top: 1rem;
-}
-.article-info img {
-  width: 34px;
-  height: 34px;
-  display: inline-block;
-  border-radius: 100%;
-}
-/* sidebar */
-.el-row-6 {
-  margin-left: 10%;
-}
-.title-border {
-  border-bottom: 2px solid #eee;
-  line-height: 40px;
-}
-.flex img {
-  width: 100px;
-}
-/* 点击文字 */
-.green,
-.green a {
-  color: #096;
-}
-.sidebar-info {
-  background: #fff;
-  padding-left: 0.8rem;
-  padding-right: 0.8rem;
-  padding-bottom: 0.8rem;
-  max-width: 300px;
-  margin-top: -1rem;
-}
-.el-col-18 {
-  background: #fff;
-}
-.calendar-info {
-  max-width: 300px;
-}
-
-.website-info,
-.recommend-info,
-.friend-info {
-  background: #fff;
-  padding: 0.8rem;
-  margin-top: 1rem;
-  max-width: 300px;
-}
-/* 工具 */
-.tools {
-  width: 100%;
-  height: 70px;
-  margin-bottom: 1rem;
-  font-size: 0.8rem;
-  line-height: 70px;
-}
-.tools a {
-  height: 70px;
-  width: 100%;
-  display: inline-block;
-  display: flex;
-}
-.tools img {
-  width: 70px;
-  height: 70px;
-  margin-left: 1rem;
-  margin-right: 1rem;
-}
+@import '../assets/hot.css';
 </style>

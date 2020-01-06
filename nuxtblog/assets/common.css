@@ -52,13 +52,14 @@ p img {
 
 /* iconfont */
 @font-face {
-  font-family: 'iconfont';  /* project id 1505337 */
+  font-family: 'iconfont';
+  /* project id 1505337 */
   src: url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.eot');
   src: url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.eot?#iefix') format('embedded-opentype'),
-  url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.woff2') format('woff2'),
-  url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.woff') format('woff'),
-  url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.ttf') format('truetype'),
-  url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.svg#iconfont') format('svg');
+    url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.svg#iconfont') format('svg');
 }
 
 .iconfont {

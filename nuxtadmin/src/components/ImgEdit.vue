@@ -22,7 +22,7 @@
                   :action="uploadUrl"
                   :show-file-list="false"
                   :on-success="res=>$set(item,'url',res.url)"
-                  :headers="getAuthHeaders()"
+                  :headers="getAuthHeaders"
                 >
                   <img v-if="item.url" :src="item.url" class="avatar" />
                   <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -50,6 +50,7 @@ export default {
   data() {
     return {
       model: {
+        title:null,
         items: []
       },
       html: "",
@@ -57,16 +58,10 @@ export default {
     };
   },
   methods: {
-    // 请求头
-    getAuthHeaders() {
-      return {
-        Authorization: `Bearer ${localStorage.token || ""}`
-      };
-    },
     // 提交
     async save() {
       let res;
-      if (this.model.items.url ==undefined) {
+      if (this.model.title ==null) {
         this.$message({
           message: "图片信息不能为空",
           type: "warning"

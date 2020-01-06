@@ -50,6 +50,8 @@ export default {
 }
 .container {
   width: 90%;
+  width: 750px;
+
   text-align: center;
   padding: 1rem;
   background: #fff;
@@ -60,7 +62,6 @@ export default {
   color: red;
 }
 .category {
-  width: 750px;
   display: flex;
   flex-wrap: wrap;
   margin-top: 3rem;
@@ -72,7 +73,7 @@ export default {
 }
 
 .list {
-  margin-left: 3rem;
+  margin-left: 2rem;
   margin-top: 2rem;
   cursor: pointer;
   box-sizing: border-box;

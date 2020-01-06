@@ -1,0 +1,157 @@
+.wrap {
+  max-width: 76%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+/* 标签 */
+h2 {
+  color: red;
+  margin-left: 2rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+h2 .iconfont {
+  color: red;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* 最新文章 */
+.article-flex {
+  display: flex;
+}
+
+.article {
+  width: 80%;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+
+.article-img {
+  width: 200px;
+  transition: all 0.5s;
+}
+
+.article:hover .article-img {
+  transform: scale(1.1);
+}
+
+.article-sidebar {
+  margin-left: 1rem;
+}
+
+.article-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #333;
+  font-family: "Times New Roman", Times, serif;
+}
+
+.article:hover .article-title {
+  color: #337ab7;
+}
+
+.article-body {
+  overflow: hidden;
+  text-indent: 1rem;
+  color: #666;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4;
+}
+
+.article-info {
+  color: #096;
+  display: flex;
+  align-items: center;
+  margin-top: 1rem;
+}
+
+.article-info img {
+  width: 34px;
+  height: 34px;
+  display: inline-block;
+  border-radius: 100%;
+  margin-right: 1rem;
+}
+
+/* sidebar */
+.el-row-6 {
+  margin-left: 10%;
+}
+
+.title-border {
+  border-bottom: 2px solid #eee;
+  line-height: 40px;
+}
+
+.flex img {
+  width: 100px;
+}
+
+/* 点击文字 */
+.green,
+.green a {
+  color: #096;
+}
+
+.sidebar-info {
+  background: #fff;
+  padding-left: 0.8rem;
+  padding-right: 0.8rem;
+  padding-bottom: 0.8rem;
+  max-width: 300px;
+  margin-top: -1rem;
+}
+
+.el-col-18 {
+  background: #fff;
+}
+
+.calendar-info {
+  max-width: 300px;
+}
+
+.website-info,
+.recommend-info,
+.friend-info {
+  background: #fff;
+  padding: 0.8rem;
+  margin-top: 1rem;
+  max-width: 300px;
+}
+
+/* 工具 */
+.tools {
+  width: 100%;
+  height: 70px;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  line-height: 70px;
+}
+
+.tools a {
+  height: 70px;
+  width: 100%;
+  display: inline-block;
+  display: flex;
+}
+
+.tools a:hover .toolsimg {
+  transform: scale(1.1);
+}
+
+.tools img {
+  width: 70px;
+  height: 70px;
+  margin-left: 1rem;
+  margin-right: 1rem;
+  transition: all 0.5s;
+}

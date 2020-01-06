@@ -1,0 +1,153 @@
+.wrap {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+
+.content a {
+  font-weight: 700;
+  color: #fff;
+}
+
+.content a:hover {
+  color: aqua;
+}
+
+.img {
+  text-align: center;
+  height: 60px;
+  margin-top: 20px;
+}
+
+/* 内容区 */
+.container {
+  display: flex;
+  width: 70%;
+  position: relative;
+  margin: 0 auto;
+}
+
+.nuxt {
+  flex: 8;
+  width: 80%;
+  opacity: 0.9;
+  box-sizing: border-box;
+  margin-top: 2rem;
+}
+
+.relative {
+  position: relative;
+}
+
+.center {
+  width: 100%;
+  text-align: center;
+}
+
+.sidebar {
+  margin-top: 3rem;
+}
+
+.sidebar div {
+  width: 240px;
+  margin-top: 0.8rem;
+}
+
+.sidebar .img {
+  height: 200px;
+  transition: 2.5s all;
+}
+
+.sidebar .img:hover {
+  transform: rotate(360deg);
+}
+
+/* icon */
+a span {
+  color: #555;
+}
+
+a span i {
+  font-size: 16px;
+}
+
+.center .img {
+  margin-top: 40px;
+}
+
+.touxiang {
+  width: 130px;
+  height: 180px;
+  border-radius: 60%;
+  border: 1px solid black;
+}
+
+.lianjie:hover {
+  border-radius: 4px;
+  background: #eee;
+}
+
+/* 名称 */
+.title {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* 描述 */
+.describe {
+  color: #999;
+  font-size: 13px;
+}
+
+div.time {
+  width: 80%;
+  color: #7b68ee;
+  text-shadow: 0 5px 5px #00bfff;
+  font-size: 16px;
+  text-indent: 1rem;
+  text-align: center;
+  padding: 6px;
+  margin-bottom: 40px;
+}
+
+
+
+/* 底部栏 */
+footer {
+  width: 100%;
+  height: 80px;
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  background: rgb(53, 77, 77);
+  position: relative;
+}
+
+footer::before {
+  background: #000 linear-gradient(to left,
+      #4cd964,
+      #5ac8fa,
+      #007aff,
+      #34aadc,
+      #5856d6,
+      #ff2d55);
+  content: "";
+  height: 6px;
+  position: absolute;
+  top: -2%;
+  width: 100%;
+}
+
+footer div {
+  width: 100%;
+  text-align: center;
+}
+
+footer div a {
+  color: aquamarine;
+}
+
+footer div a:hover {
+  color: aqua;
+  border-bottom: 1px solid aqua;
+}
