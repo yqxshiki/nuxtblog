@@ -44,7 +44,7 @@ export default {
   },
   async asyncData({ $axios, route }) {
     const res = await $axios.get(
-      `/web/api/categorylist/${route.params.categorylist}`
+      `/categorylist/${route.params.categorylist}`
     );
     return { itemlist: res };
   }

@@ -30,7 +30,7 @@ export default {
     };
   },
   async asyncData({ $axios }) {
-    const res = await $axios.get("/web/api/category");
+    const res = await $axios.get("/category");
     return { categories: res.slice(6, res.length) };
   },
   mounted() {

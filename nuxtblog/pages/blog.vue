@@ -53,7 +53,7 @@ export default {
     }
   },
   async asyncData({ $axios }) {
-    const res = await $axios.get("/web/api/blog");
+    const res = await $axios.get("/blog");
     return { list: res.reverse() };
   }
 };

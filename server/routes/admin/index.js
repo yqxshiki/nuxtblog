@@ -56,12 +56,23 @@ module.exports = app => {
 
     // 上传图片
     const multer = require("multer")
+    const MAO = require('multer-aliyun-oss');
+    // const upload = multer({
+    //     dest: __dirname + '/../../uploads'
+    // })
     const upload = multer({
-        dest: __dirname + '/../../uploads'
-    })
+        storage: MAO({
+            config: {
+                region: 'oss-cn-beijing',
+                accessKeyId: 'LTAI4FpyBVDFFZKGErN2KNWA',
+                accessKeySecret: 'L02zvkJ8RC9EWSHATUbShmij3F9w44',
+                bucket: 'nuxtblog'
+            }
+        })
+    });
     app.post("/api/uploads", upload.single('file'), async (req, res) => {
         const file = req.file;
-        file.url = `http://localhost:4000/uploads/${file.filename}`
+        // file.url = `http://localhost:4000/uploads/${file.filename}`
         res.send(file);
     })
 

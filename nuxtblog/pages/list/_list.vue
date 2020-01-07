@@ -70,13 +70,13 @@ export default {
   },
   // 获取内容详情
   async asyncData({ $axios, route }) {
-    const res = await $axios.get(`/web/api/blog/${route.params.list}`);
+    const res = await $axios.get(`/blog/${route.params.list}`);
     return { arrlist: res };
   },
   methods: {
     getcount(list) {
       this.arrlist.count++;
-      this.$axios.post("/web/api/resive/" + list, this.arrlist);
+      this.$axios.post("/resive/" + list, this.arrlist);
     }
   },
   mounted() {

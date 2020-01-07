@@ -14,7 +14,7 @@ export default {
     };
   },
   async asyncData({ $axios }) {
-    const res = await $axios.get("/web/api/user/info");
+    const res = await $axios.get("/user/info");
     return { item: res[0] };
   }
 };

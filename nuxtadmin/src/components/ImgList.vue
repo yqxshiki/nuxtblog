@@ -4,7 +4,7 @@
       <h1>轮播图列表</h1>
       <el-table :data="items">
         <el-table-column prop="_id" label="ID" width="240"></el-table-column>
-        <el-table-column prop="title" label="名称" width="240"></el-table-column>
+        <el-table-column prop="title" label="名称" ></el-table-column>
         <el-table-column fixed="right" label="操作" width="180">
           <template slot-scope="scope">
             <el-button

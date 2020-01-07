@@ -119,12 +119,12 @@ export default {
   },
   methods: {
     async getTools() {
-      const res = await this.$axios.get("/web/api/tools");
+      const res = await this.$axios.get("/tools");
       this.tools = res.data;
     },
     // 文章
     getBlog() {
-      this.$axios.get("/web/api/blog").then(res => {
+      this.$axios.get("/blog").then(res => {
         let length = res.data.length;
         if (length <= 4) {
           res.data.map((item, index) => {

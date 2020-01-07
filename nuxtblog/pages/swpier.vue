@@ -17,7 +17,7 @@ export default {
   },
   computed: {
     async getimg() {
-      const res = await this.$axios.get("/web/api/imglist");
+      const res = await this.$axios.get("/imglist");
       this.imgsrc = res.data[0].items;
     }
   },

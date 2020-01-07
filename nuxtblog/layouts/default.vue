@@ -108,7 +108,7 @@ export default {
   computed: {
     // 获取用户信息
     async getuserinfo() {
-      const res = await this.$axios.get("/web/api/user/info");
+      const res = await this.$axios.get("/user/info");
       this.item = res.data[0];
     }
   },
