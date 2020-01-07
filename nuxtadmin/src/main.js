@@ -28,7 +28,7 @@ Vue.use(animate)
 Vue.mixin({
   computed: {
     uploadUrl() {
-      return 'http://localhost:4000/api/uploads'
+      return process.env.NODE_ENV == 'production' ? '/api/uploads' : 'http://localhost:4000/api/uploads'
     },
     // 请求头
     getAuthHeaders() {
