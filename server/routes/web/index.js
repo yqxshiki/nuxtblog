@@ -7,13 +7,18 @@ module.exports = app => {
     const Category = mongoose.model('Category')
     const Img = mongoose.model('Img')
     const Tool = mongoose.model("Tool")
+    const Fslink = mongoose.model("Fslink")
 
-    //工具
+    router.get("/fslinks", async (req, res) => {
+        const data = await Fslink.find();
+        res.send(data);
+    })
+    //工具信息
     router.get("/tools", async (req, res) => {
         const data = await Tool.find();
         res.send(data)
     })
-    // 获取图片
+    // 获取轮播图
     router.get("/imglist", async (req, res) => {
         const data = await Img.find()
         res.send(data);

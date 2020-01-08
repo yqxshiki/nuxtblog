@@ -155,3 +155,7 @@ h2 .iconfont {
   margin-right: 1rem;
   transition: all 0.5s;
 }
+
+.fslinks {
+  margin: .4rem;
+}

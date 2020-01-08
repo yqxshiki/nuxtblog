@@ -85,20 +85,34 @@ const routes = [{
       path: '/img/list',
       component: () => import('../components/ImgList.vue')
     },
-      //工具
-      {
-        path: '/tools/create',
-        component: () => import('../components/ToolsEdit.vue')
-      },
-      {
-        path: '/tools/edit/:id',
-        component: () => import('../components/ToolsEdit.vue'),
-        props: true
-      },
-      {
-        path: '/tools/list',
-        component: () => import('../components/ToolsList.vue')
-      },
+    //工具
+    {
+      path: '/tools/create',
+      component: () => import('../components/ToolsEdit.vue')
+    },
+    {
+      path: '/tools/edit/:id',
+      component: () => import('../components/ToolsEdit.vue'),
+      props: true
+    },
+    {
+      path: '/tools/list',
+      component: () => import('../components/ToolsList.vue')
+    },
+    //友情链接
+    {
+      path: '/fslinks/create',
+      component: () => import('../components/FslinksEdit.vue')
+    },
+    {
+      path: '/fslinks/edit/:id',
+      component: () => import('../components/FslinksEdit.vue'),
+      props: true
+    },
+    {
+      path: '/fslinks/list',
+      component: () => import('../components/FslinksList.vue')
+    },
   ]
 },
 {

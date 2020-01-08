@@ -1,7 +1,7 @@
 <template>
   <div id="UserEdit">
     <myloading :loading="loading">
-      <h1>{{id?'编辑':'新建'}}工具</h1>
+      <h1>{{id?'编辑':'新建'}}友情博客</h1>
       <el-form label-width="120px" @submit.native.prevent="save">
         <el-form-item label="名称">
           <el-input v-model="model.name"></el-input>
@@ -9,17 +9,8 @@
         <el-form-item label="链接">
           <el-input v-model="model.link"></el-input>
         </el-form-item>
-        <el-form-item label="图片">
-          <el-upload
-            class="avatar-uploader"
-            :action="uploadUrl"
-            :show-file-list="false"
-            :on-success="afterupload"
-            :headers="getAuthHeaders"
-          >
-            <img v-if="model.icon" :src="model.icon" class="avatar" />
-            <i v-else class="el-icon-plus avatar-uploader-icon"></i>
-          </el-upload>
+        <el-form-item label="类别">
+          <el-input v-model="model.type"></el-input>
         </el-form-item>
         <el-form-item>
           <el-button type="primary" native-type="submit">保存</el-button>
@@ -48,7 +39,7 @@ export default {
     // 提交
     async save() {
       let res;
-      if (this.model.link == undefined || this.model.name == undefined) {
+      if (this.model.link == undefined || this.model.type == undefined) {
         this.$message({
           message: "信息不能为空",
           type: "warning"
@@ -56,14 +47,14 @@ export default {
       } else {
         if (this.id) {
           res = await this.$axios.post(
-            `/rest/tools/resive/${this.id}`,
+            `/rest/fslinks/resive/${this.id}`,
             this.model
           );
         } else {
-          res = await this.$axios.post("/rest/tools/create", this.model);
+          res = await this.$axios.post("/rest/fslinks/create", this.model);
         }
         // 跳转
-        this.$router.push("/tools/list");
+        this.$router.push("/fslinks/list");
         // 提示信息
         this.$message({
           type: "success",
@@ -73,11 +64,11 @@ export default {
     },
     // 获取详情
     async fetch() {
-      const res = await this.$axios.get(`/rest/tools/details/${this.id}`);
+      const res = await this.$axios.get(`/rest/fslinks/details/${this.id}`);
       this.model = res.data;
     },
     isloading() {
-      if (this.model.icon == undefined) {
+      if (this.model.name == undefined) {
         return;
       } else {
         this.loading = false;

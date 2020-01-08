@@ -71,7 +71,7 @@
               </p>
               <p>
                 <strong>文章统计</strong>:
-                <span class="green">篇文章</span>
+                <span class="green">{{this.length}}篇文章</span>
               </p>
               <p>
                 <strong>标签管理</strong>:
@@ -84,9 +84,11 @@
           <el-row :span="6">
             <div class="friend-info">
               <h3 class="title-border">友情链接</h3>
-              <a href="https://www.yqxshiki.com/">
-                <el-tag type="info">个人博客</el-tag>
-              </a>
+              <div v-for="item in fslinks" :key="item._id" class="fslinks">
+                <a :href="item.link">
+                  <el-tag :type="item.type">{{item.name}}</el-tag>
+                </a>
+              </div>
             </div>
           </el-row>
         </el-col>
@@ -102,9 +104,11 @@ export default {
   name: "hot",
   data() {
     return {
+      length: "",
       list: [],
       // 工具
       tools: [],
+      fslinks: [],
       value: new Date()
     };
   },
@@ -122,16 +126,20 @@ export default {
       const res = await this.$axios.get("/tools");
       this.tools = res.data;
     },
+    async getfslink() {
+      const res = await this.$axios.get("/fslinks");
+      this.fslinks = res.data;
+    },
     // 文章
     getBlog() {
       this.$axios.get("/blog").then(res => {
-        let length = res.data.length;
+        this.length = res.data.length;
         if (length <= 4) {
           res.data.map((item, index) => {
             this.list.unshift(item);
           });
         } else {
-          this.list = res.data.slice(length - 5, length);
+          this.list = res.data.slice(this.length - 5, this.length);
         }
       });
     }
@@ -139,9 +147,10 @@ export default {
   mounted() {
     this.getBlog();
     this.getTools();
+    this.getfslink();
   }
 };
 </script>
 <style scoped>
-@import '../assets/hot.css';
+@import "../assets/hot.css";
 </style>
