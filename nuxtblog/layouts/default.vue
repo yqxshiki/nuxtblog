@@ -74,22 +74,24 @@
     <div class="backtop" @click="top" ref="top">^</div>
     <!-- 底部 -->
     <footer>
-      <div class="copyright">
-        <span class="quan">©2019</span>
-        <span class="with-ren">
-          <i class="iconfont">&#xebac;</i>
-        </span>
-        <span class="author">Scrook</span>
-      </div>
-      <div class="skill">
-        <span>
-          由
-          <a href="https://zh.nuxtjs.org/" target="_blank">NuxtJS</a>编写
-        </span>
-        <span>
-          仿照
-          <a href="https://www.yqxshiki.com/" target="_blank">用Hexo Next完成的Blog</a>
-        </span>
+      <div class="footer">
+        <div class="copyright">
+          <span class="quan">©2019</span>
+          <span class="with-ren">
+            <i class="iconfont">&#xebac;</i>
+          </span>
+          <span class="author">Scrook</span>
+        </div>
+        <div class="skill">
+          <span>
+            由
+            <a href="https://zh.nuxtjs.org/" target="_blank">NuxtJS</a>编写
+          </span>
+          <span>
+            仿照
+            <a href="https://www.yqxshiki.com/" target="_blank">用Hexo Next完成的Blog</a>
+          </span>
+        </div>
       </div>
     </footer>
   </div>
@@ -191,31 +193,11 @@ export default {
       link.href =
         "https://hexophoto-1259178461.cos.ap-beijing.myqcloud.com/photos/img/icon.jpg";
       document.getElementsByTagName("head")[0].appendChild(link);
-    },
-    // set foonter
-    getbottom() {
-      let bodyHeight = document.getElementsByTagName("body")[0].clientHeight;
-      let footer = document.getElementsByTagName("footer")[0];
-      let containerHeight = document.getElementsByClassName("container")[0]
-        .clientHeight;
-      footer.style.bottom = -(bodyHeight - containerHeight - 100 - 38) + "px";
     }
   },
   mounted() {
     this.getuserinfo;
     this.seticon();
-    let tiembottom = setInterval(() => {
-      if (
-        this.$route.name == "blog" ||
-        this.$route.name == "list-list" ||
-        this.$route.name == "index"
-      ) {
-        return;
-      } else {
-        this.getbottom();
-      }
-    }, 800);
-
     let times = setTimeout(() => {
       if (this.item) {
         setInterval(this.setTime(), 1000);

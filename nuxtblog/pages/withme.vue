@@ -16,7 +16,7 @@ export default {
   async asyncData({ $axios }) {
     const res = await $axios.get("/user/info");
     return { item: res[0] };
-  }
+  },
 };
 </script>
 <style scoped>

@@ -44,6 +44,7 @@ h2 .iconfont {
 
 .article-sidebar {
   margin-left: 1rem;
+  min-width: 340px;
 }
 
 .article-title {

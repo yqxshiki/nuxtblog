@@ -120,10 +120,14 @@ footer {
   margin-top: 2rem;
   font-size: 1.2rem;
   background: rgb(53, 77, 77);
+}
+
+.footer {
+  width: 100%;
   position: relative;
 }
 
-footer::before {
+.footer::before {
   background: #000 linear-gradient(to left,
       #4cd964,
       #5ac8fa,
@@ -138,16 +142,16 @@ footer::before {
   width: 100%;
 }
 
-footer div {
+.footer div {
   width: 100%;
   text-align: center;
 }
 
-footer div a {
+.footer div a {
   color: aquamarine;
 }
 
-footer div a:hover {
+.footer div a:hover {
   color: aqua;
   border-bottom: 1px solid aqua;
 }
