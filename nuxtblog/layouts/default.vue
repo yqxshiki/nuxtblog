@@ -33,8 +33,8 @@
     <div class="container">
       <!-- 内容 -->
       <div class="nuxt">
-        <!-- <nuxt keep-alive /> -->
-        <nuxt />
+        <nuxt keep-alive />
+        <!-- <nuxt /> -->
       </div>
       <!-- 侧边栏 -->
       <div class="relative">

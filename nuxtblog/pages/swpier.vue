@@ -1,6 +1,6 @@
 <template>
   <div id="swiper">
-    <el-carousel :interval="3000" type="card" height="340px">
+    <el-carousel :interval="3000" type="card">
       <el-carousel-item v-for="itmes in imgsrc" :key="itmes.index">
         <img :src="itmes.url" :alt="itmes.image" class="medium" />
       </el-carousel-item>
@@ -27,11 +27,9 @@ export default {
 };
 </script>
 <style scoped>
-@media screen and (min-width: 1360px) {
-  img {
-    width: 100%;
-    height: 340px;
-  }
+.el-carousel__item img{
+  width: 100%;
+  height: 100%;
 }
 /* element-ui样式 */
 .el-carousel__item h3 {

@@ -26,15 +26,36 @@ export default {
   data() {
     return {
       //   标签总数
-      length: ""
+      length: "",
+      setbottomtime:""
     };
   },
   async asyncData({ $axios }) {
     const res = await $axios.get("/category");
     return { categories: res.slice(6, res.length) };
   },
+  methods: {
+    setbottom() {
+      let body = window.screen.availHeight;
+      let footer = document.getElementsByTagName("footer")[0];
+      let container = document.getElementsByClassName("container")[0]
+        .offsetHeight;
+      footer.style.marginTop = body - container - 180 + "px";
+    }
+  },
   mounted() {
+    this.setbottomtime="";
+    this.setbottomtime = setInterval(() => {
+      this.setbottom();
+    }, 1000);
     this.length = this.categories.length;
+  },
+    watch: {
+    $route: function() {
+      clearInterval(this.setbottomtime);
+      let footer = document.getElementsByTagName("footer")[0];
+      footer.style.marginTop = 0 + "px";
+    }
   },
   head() {
     return {
@@ -49,9 +70,7 @@ export default {
   margin-top: 1rem;
 }
 .container {
-  width: 90%;
-  width: 750px;
-
+  width: 100%;
   text-align: center;
   padding: 1rem;
   background: #fff;
@@ -63,6 +82,7 @@ export default {
 }
 .category {
   display: flex;
+  width: 70%;
   flex-wrap: wrap;
   margin-top: 3rem;
   margin-bottom: 3rem;
