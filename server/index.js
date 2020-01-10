@@ -7,7 +7,7 @@ app.set('secret', 'wquiaggfaoj4561')
 //跨域
 app.use(require('cors')())
 
-// 静态文件
+// 静态
 app.use('/uploads', express.static(__dirname + '/uploads'))
 app.use('/admin', express.static(__dirname + '/public/admin'))
 app.use('/', express.static(__dirname + '/public/web'))
