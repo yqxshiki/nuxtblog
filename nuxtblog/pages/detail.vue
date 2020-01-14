@@ -207,4 +207,13 @@ export default {
     margin: 0 auto;
   }
 }
+@media screen and (max-width: 600px){
+  .split{
+    width: 100%;
+    margin: 0 auto;
+   .container{
+      display: none;
+    }
+  }
+}
 </style>

@@ -99,7 +99,6 @@
 
 <script>
 import dayjs from "dayjs";
-
 export default {
   name: "hot",
   data() {
@@ -152,5 +151,29 @@ export default {
 };
 </script>
 <style  lang="scss" scoped>
-@import '../assets/hot.scss';
+@import "../assets/hot.scss";
+@media screen and (max-width: 600px) {
+  .wrap {
+    margin-left: 0;
+    width: 100%;
+    margin: 0 auto;
+
+    .article-flex {
+      width: 100%;
+      overflow: hidden;
+      img {
+        display: none;
+      }
+    }
+  }
+  .container {
+    width: 100%;
+  }
+  div.el-col-6 {
+    display: none;
+  }
+  div.el-col-18 {
+    width: 100%;
+  }
+}
 </style>

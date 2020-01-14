@@ -9,6 +9,12 @@
       </a>
     </div>
     <header>
+      <div class="nav-menu">
+        <label for="nav" class="iconfont">
+          <i class="iconfont">&#xe671;</i>
+        </label>
+      </div>
+      <input @click="inputclick" ref="input" type="checkbox" id="nav" />
       <div class="wrap">
         <div class="content">
           <nuxt-link to="/">Home</nuxt-link>
@@ -44,6 +50,7 @@
         </div>
       </div>
     </header>
+
     <div class="hidden" ref="hidden">
       <div class="hidden-border">
         <div class="hidden-list" v-for="item in list" :key="item._id">
@@ -70,9 +77,11 @@ export default {
       this.list = null;
       const res = await this.$axios.post(`/search/${this.input}`);
       if (res.data.length == 0) {
-        this.list =[ {
-          title: "你搜索的内容不存在，请重新搜索!!!"
-        }];
+        this.list = [
+          {
+            title: "你搜索的内容不存在，请重新搜索!!!"
+          }
+        ];
       } else {
         this.list = res.data;
       }
@@ -80,33 +89,91 @@ export default {
       setTimeout(() => {
         this.$refs.hidden.style.opacity = 0;
       }, 4000);
+    },
+    inputclick() {
+      let list = document.querySelectorAll(".content");
+      list = Array.from(list);
+      list.map(i => {
+        if (this.$refs.input.checked) {
+          i.style.display = "block";
+        } else {
+          i.style.display = "none";
+        }
+      });
     }
   }
 };
 </script>  
-<style scoped>
-@import '../assets/search.css';
-#default {
-  width: 100%;
-  height: 100vh;
-}
-.wrap {
-  width: 60%;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-}
-.content a {
-  font-weight: 700;
-  color: #fff;
-}
-.content a:hover {
-  color: aqua;
-}
-.img {
-  width: 240px;
-  height: 60px;
-  margin-top: 20px;
+<style scoped lang="scss">
+@media screen and(min-width:602px) {
+  @import "../assets/search.css";
+  #default {
+    width: 100%;
+    height: 100vh;
+      #nav{
+        display: none;
+      }
+    .iconfont {
+      display: none;
+    }
+    .wrap {
+      width: 60%;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      .content {
+        a {
+          font-weight: 700;
+          color: #fff;
+        }
+        &.a:hover {
+          color: aqua;
+        }
+      }
+      .img {
+        width: 240px;
+        height: 60px;
+        margin-top: 20px;
+      }
+    }
+  }
 }
 
+@media screen and (max-width: 600px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    line-height: 20px;
+    height: auto;
+    .nav-menu {
+      font-size: 2rem;
+      line-height: 100px;
+    }
+    input {
+      display: none;
+    }
+
+    .wrap {
+      flex: 3;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      .content {
+        margin: 0.4rem;
+        display: none;
+
+        a {
+          color: #fff;
+        }
+      }
+      img {
+        display: none;
+      }
+    }
+  }
+  .github,
+  .input {
+    display: none;
+  }
+}
 </style>

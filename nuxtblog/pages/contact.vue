@@ -44,6 +44,11 @@
 export default {};
 </script>
 <style scoped>
+@media screen and (max-width: 600px) {
+  #contact {
+    display: none;
+  }
+}
 #contact {
   width: 100%;
   height: 240px;

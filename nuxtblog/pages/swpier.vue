@@ -27,6 +27,11 @@ export default {
 };
 </script>
 <style scoped>
+@media screen and (max-width: 600px) {
+  #swiper {
+    display: none;
+  }
+}
 .el-carousel__item img {
   width: 100%;
   height: 100%;
