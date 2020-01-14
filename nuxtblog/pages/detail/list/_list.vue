@@ -94,7 +94,7 @@ export default {
 </script>
 <style  scoped>
 #list {
-  margin-top: 0.6rem;
+  width: 90%;
 }
 a {
   color: black;

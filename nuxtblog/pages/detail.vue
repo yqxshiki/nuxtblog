@@ -1,6 +1,5 @@
 <template>
   <div id="detail">
-    
     <div class="split">
       <nuxt />
       <div class="container">
@@ -165,6 +164,12 @@ export default {
       document.getElementsByTagName("head")[0].appendChild(link);
     }
   },
+    watch: {
+    '$route': function(to,from) {
+      let footer = document.getElementsByTagName("footer")[0];
+      footer.style.marginTop =0+'px';
+    }
+  },
   mounted() {
     this.getuserinfo;
     this.seticon();
@@ -190,13 +195,16 @@ export default {
   }
 };
 </script>
-<style scoped>
+<style scoped lang="scss">
 @import "../assets/default.css";
-.detail{
-  width: 80%;
-  margin: 0 auto;
-}
-.split {
-  display: flex;
+#detail {
+  width: 100%;
+  margin-top: 4rem;
+
+  .split {
+    display: flex;
+    width: 80%;
+    margin: 0 auto;
+  }
 }
 </style>

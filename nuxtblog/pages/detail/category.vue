@@ -10,7 +10,7 @@
         <div class="list" v-for="item in categories" :key="item._id">
           <nuxt-link
             tag="div"
-            :to="{name:'categories-categorylist',params:{categorylist:item._id,title:item.name}}"
+            :to="{name:'detail-categories-categorylist',params:{categorylist:item._id,title:item.name}}"
           >
             <el-tag :type="item.type" class="name">{{item.name}}</el-tag>
           </nuxt-link>
@@ -27,7 +27,7 @@ export default {
     return {
       //   标签总数
       length: "",
-      setbottomtime:""
+      setbottomtime: ""
     };
   },
   async asyncData({ $axios }) {
@@ -44,18 +44,12 @@ export default {
     }
   },
   mounted() {
-    this.setbottomtime="";
+    this.setbottomtime = "";
     this.setbottomtime = setInterval(() => {
       this.setbottom();
+      clearInterval(this.setbottomtime);
     }, 500);
     this.length = this.categories.length;
-  },
-    watch: {
-    $route: function() {
-      clearInterval(this.setbottomtime);
-      let footer = document.getElementsByTagName("footer")[0];
-      footer.style.marginTop = 0 + "px";
-    }
   },
   head() {
     return {
@@ -67,12 +61,12 @@ export default {
 </script>
 <style scoped>
 #category {
-  margin-top: 1rem;
+  /* margin-top: 1rem; */
 }
 .container {
   width: 100%;
   text-align: center;
-  padding: 1rem;
+  padding: 1rem 0 1rem 0;
   background: #fff;
 }
 .length {

@@ -6,14 +6,6 @@
           <span class="title">{{this.$route.params.title}}</span>
           标签
         </h2>
-        <!-- <div class="list" v-for="item in itemlist" :key="item._id">
-          <nuxt-link tag="div" :to="{name:'list-list',params:{list:item._id,title:item.title}}">
-            <div class="heard">
-              <span class="listdate">{{item.createdAt | date}}</span>
-              <span class="listtitle">{{item.title}}</span>
-            </div>
-        </div>-->
-
         <el-timeline>
           <el-timeline-item
             v-for="item in itemlist"
@@ -22,7 +14,7 @@
             placement="top"
           >
             <el-card>
-              <nuxt-link tag="div" :to="{name:'list-list',params:{list:item._id,title:item.title}}">
+              <nuxt-link tag="div" :to="{name:'detail-list-list',params:{list:item._id,title:item.title}}">
                 <h4>{{item.title}}</h4>
               </nuxt-link>
             </el-card>
@@ -39,8 +31,8 @@ export default {
   name: "categorylist",
   data() {
     return {
-      setbottomtime:""
-    }
+      setbottomtime: ""
+    };
   },
   filters: {
     date(val) {
@@ -48,12 +40,10 @@ export default {
     }
   },
   async asyncData({ $axios, route }) {
-    const res = await $axios.get(
-      `/categorylist/${route.params.categorylist}`
-    );
+    const res = await $axios.get(`/categorylist/${route.params.categorylist}`);
     return { itemlist: res };
   },
-    methods: {
+  methods: {
     setbottom() {
       let body = window.screen.availHeight;
       let footer = document.getElementsByTagName("footer")[0];
@@ -63,28 +53,24 @@ export default {
     }
   },
   mounted() {
-    this.setbottomtime="";
+    this.setbottomtime = "";
     this.setbottomtime = setInterval(() => {
       this.setbottom();
+      clearInterval(this.setbottomtime);
     }, 1000);
   },
-  watch: {
-    $route: function() {
-      clearInterval(this.setbottomtime);
-      let footer = document.getElementsByTagName("footer")[0];
-      footer.style.marginTop = 0 + "px";
-    }
-  }
 };
 </script>
 <style scoped>
 #categorylist {
-  margin-top: 1rem;
+  width: 80%;
+
 }
 .container {
-  width: 100%;
+  width: 80%;
   padding: 1rem;
   background: #fff;
+  margin: 0 auto;
 }
 h2 {
   color: #888;

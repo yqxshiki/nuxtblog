@@ -5,7 +5,7 @@
         <div class="title">
           <nuxt-link
             keep-alive
-            :to="{name:'list-list',params:{list:item._id,title:item.title}}"
+            :to="{name:'detail-list-list',params:{list:item._id,title:item.title}}"
           >{{item.title}}</nuxt-link>
           <!-- 发表时间 -->
           <div class="time">
@@ -23,7 +23,7 @@
         </div>
         <!-- 阅读全文 -->
         <div class="button">
-          <nuxt-link :to="{name:'list-list',params:{list:item._id,title:item.title}}">阅读全文</nuxt-link>
+          <nuxt-link :to="{name:'detail-list-list',params:{list:item._id,title:item.title}}">阅读全文</nuxt-link>
         </div>
         <!-- 结束符 -->
         <div class="end">---------------- The End ----------------</div>
@@ -58,6 +58,6 @@ export default {
   }
 };
 </script>
-<style scoped>
-@import '../../assets/blog.css'
+<style scoped lang="scss">
+@import "../../assets/blog.scss";
 </style>
