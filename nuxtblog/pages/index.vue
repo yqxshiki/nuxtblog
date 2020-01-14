@@ -18,7 +18,7 @@ import swiper from "@/pages/swpier";
 import contact from "@/pages/contact";
 import hotacticle from "@/pages/hot";
 export default {
-  layout: "sidebar",
+  layout: "default",
   name: "index",
   components: {
     swiper,

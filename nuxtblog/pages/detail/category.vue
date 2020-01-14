@@ -47,7 +47,7 @@ export default {
     this.setbottomtime="";
     this.setbottomtime = setInterval(() => {
       this.setbottom();
-    }, 1000);
+    }, 500);
     this.length = this.categories.length;
   },
     watch: {

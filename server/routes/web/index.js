@@ -9,6 +9,16 @@ module.exports = app => {
     const Tool = mongoose.model("Tool")
     const Fslink = mongoose.model("Fslink")
 
+
+    //search
+    router.post("/search/:title", async (req, res) => {
+        let reg = new RegExp(req.params.title, 'i')
+        const data = await Acticle.find({
+            bodyrender: { $regex: reg }
+        })
+        res.send(data)
+    })
+    //友情博客
     router.get("/fslinks", async (req, res) => {
         const data = await Fslink.find();
         res.send(data);

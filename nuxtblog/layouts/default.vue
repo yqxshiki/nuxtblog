@@ -8,14 +8,13 @@
         />
       </a>
     </div>
-    <!-- 头部 -->
     <header>
       <div class="wrap">
         <div class="content">
           <nuxt-link to="/">Home</nuxt-link>
         </div>
         <div class="content">
-          <nuxt-link to="/blog">Bolg</nuxt-link>
+          <nuxt-link to="/detail/blog">Bolg</nuxt-link>
         </div>
         <div class="content">
           <nuxt-link to="/">
@@ -23,203 +22,91 @@
           </nuxt-link>
         </div>
         <div class="content">
-          <nuxt-link to="/category">Category</nuxt-link>
+          <nuxt-link to="/detail/category">Category</nuxt-link>
         </div>
         <div class="content">
-          <nuxt-link to="/withme">Withme</nuxt-link>
+          <nuxt-link to="/detail/withme">Withme</nuxt-link>
         </div>
-      </div>
-    </header>
-    <div class="container">
-      <!-- 内容 -->
-      <div class="nuxt">
-        <nuxt keep-alive />
-        <!-- <nuxt /> -->
-      </div>
-      <!-- 侧边栏 -->
-      <div class="relative">
-        <div class="sidebar bb">
-          <div class="center" v-if="item">
-            <div class="img">
-              <img src="~static/icon.jpg" alt class="touxiang" />
-            </div>
-            <div class="title">{{item.title}}</div>
-            <div class="describe">{{item.describe}}</div>
-            <div class="count">
-              <div class="shuzi"></div>
-              <div class="rizhi">日志</div>
-            </div>
-            <div class="icon">
-              <a :href="item.gitlink" target="_blank" class="lianjie">
-                <span>
-                  <i class="iconfont">&#xe709;</i>
-                  <span>GitHub</span>
-                </span>
-              </a>
-              <a :href="item.qqlink" target="_blank" class="lianjie">
-                <span>
-                  <i class="iconfont">&#xe643;</i>
-                  <span>E-Mail</span>
-                </span>
-              </a>
-            </div>
-            <div class="time">
-              <span id="htmer_time"></span>
-            </div>
+        <div class="input">
+          <div class="search-box">
+            <input
+              type="text"
+              class="search-text"
+              v-model="input"
+              slot="reference"
+              @keyup.enter="click"
+              placeholder="请输入搜索内容"
+            />
+            <a href="#" class="search-btn">
+              <i class="iconfont">&#xe64c;</i>
+            </a>
           </div>
         </div>
       </div>
-    </div>
-    <!-- 回到顶部 -->
-    <div class="backtop" @click="top" ref="top">^</div>
-    <!-- 底部 -->
-    <footer>
-      <div class="footer">
-        <div class="copyright">
-          <span class="quan">©2019</span>
-          <span class="with-ren">
-            <i class="iconfont">&#xebac;</i>
-          </span>
-          <span class="author">Scrook</span>
-        </div>
-        <div class="skill">
-          <span>
-            由
-            <a href="https://zh.nuxtjs.org/" target="_blank">NuxtJS</a>编写
-          </span>
-          <span>
-            仿照
-            <a href="https://www.yqxshiki.com/" target="_blank">用Hexo Next完成的Blog</a>
-          </span>
+    </header>
+    <div class="hidden" ref="hidden">
+      <div class="hidden-border">
+        <div class="hidden-list" v-for="item in list" :key="item._id">
+          <nuxt-link tag="div" :to="{name:'list-list',params:{list:item._id,title:item.title}}">
+            <span class="hidden-title">{{item.title}}</span>
+          </nuxt-link>
         </div>
       </div>
-    </footer>
+    </div>
+    <nuxt />
   </div>
 </template>
+
 <script>
 export default {
   data() {
     return {
-      item: null,
-      // 滚动条
-      dtop: "",
-      // 回到顶部标签
-      backtop: ""
+      input: "",
+      list: []
     };
   },
-  computed: {
-    // 获取用户信息
-    async getuserinfo() {
-      const res = await this.$axios.get("/user/info");
-      this.item = res.data[0];
-    }
-  },
   methods: {
-    secondToDate(second) {
-      if (!second) {
-        return 0;
-      }
-      var time = new Array(0, 0, 0, 0, 0);
-      if (second >= 365 * 24 * 3600) {
-        time[0] = parseInt(second / (365 * 24 * 3600));
-        second %= 365 * 24 * 3600;
-      }
-      if (second >= 24 * 3600) {
-        time[1] = parseInt(second / (24 * 3600));
-        second %= 24 * 3600;
-      }
-      if (second >= 3600) {
-        time[2] = parseInt(second / 3600);
-        second %= 3600;
-      }
-      if (second >= 60) {
-        time[3] = parseInt(second / 60);
-        second %= 60;
-      }
-      if (second > 0) {
-        time[4] = second;
-      }
-      return time;
-    },
-    setTime() {
-      var createtime = Math.round(
-        new Date(Date.UTC(2019, 10, 14, 11, 42, 23)).getTime() / 1000
-      );
-      var timestamp = Math.round(
-        (new Date().getTime() + 8 * 60 * 60 * 1000) / 1000
-      );
-      var currentTime = this.secondToDate(timestamp - createtime);
-      var currentTimeHtml =
-        "本网站已经运行了：" +
-        // currentTime[0] +
-        // "月 " +
-        currentTime[1] +
-        "天 " +
-        currentTime[2] +
-        "时 " +
-        currentTime[3] +
-        "分 " +
-        currentTime[4] +
-        "秒";
-      document.getElementById("htmer_time").innerHTML = currentTimeHtml;
-    },
-    // 回到顶部
-    top() {
-      let timer = setInterval(function() {
-        let osTop =
-          document.documentElement.scrollTop || document.body.scrollTop;
-        let ispeed = Math.floor(-osTop / 5);
-        document.documentElement.scrollTop = document.body.scrollTop =
-          osTop + ispeed;
-        if (osTop === 0) {
-          clearInterval(timer);
-        }
-      }, 30);
-    },
-    getscrool() {
-      if (this.dtop >= 650) {
-        this.backtop.style.right = 3 + "rem";
-        this.backtop.style.bottom = 3 + "rem";
+    async click() {
+      this.list = null;
+      const res = await this.$axios.post(`/search/${this.input}`);
+      if (res.data.length == 0) {
+        this.list =[ {
+          title: "你搜索的内容不存在，请重新搜索!!!"
+        }];
       } else {
-        this.backtop.style.right = -5 + "rem";
-        this.backtop.style.bottom = -3 + "rem";
+        this.list = res.data;
       }
-    },
-    // set icon
-    seticon() {
-      var link = document.createElement("link");
-      link.type = "image/x-icon";
-      link.rel = "shortcut icon";
-      link.href =
-        "https://hexophoto-1259178461.cos.ap-beijing.myqcloud.com/photos/img/icon.jpg";
-      document.getElementsByTagName("head")[0].appendChild(link);
+      this.$refs.hidden.style.opacity = 1;
+      setTimeout(() => {
+        this.$refs.hidden.style.opacity = 0;
+      }, 4000);
     }
-  },
-  mounted() {
-    this.getuserinfo;
-    this.seticon();
-    let times = setTimeout(() => {
-      if (this.item) {
-        setInterval(this.setTime(), 1000);
-      } else {
-        clearTimeout(times);
-      }
-    }, 1000);
-
-    // 滚动效果
-    this.backtop = document.getElementsByClassName("backtop")[0];
-    const timer = setInterval(() => {
-      this.dtop = document.documentElement.scrollTop || document.body.scrollTop;
-      this.getscrool();
-    }, 500);
-
-    // 销毁
-    this.$once("hook:beforeDestroy", () => {
-      clearInterval(timer);
-    });
   }
 };
-</script>
+</script>  
 <style scoped>
-@import "../assets/default.css";
+@import '../assets/search.css';
+#default {
+  width: 100%;
+  height: 100vh;
+}
+.wrap {
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+}
+.content a {
+  font-weight: 700;
+  color: #fff;
+}
+.content a:hover {
+  color: aqua;
+}
+.img {
+  width: 240px;
+  height: 60px;
+  margin-top: 20px;
+}
+
 </style>

@@ -19,12 +19,15 @@
   },
   "dependencies": {
     "@nuxtjs/axios": "^5.9.0",
+    "@nuxtjs/style-resources": "^1.0.0",
     "axios": "^0.19.0",
     "dayjs": "^1.8.18",
     "element-ui": "^2.4.11",
     "highlight.js": "^9.16.2",
     "marked": "^0.7.0",
+    "node-sass": "^4.13.0",
     "nuxt": "^2.0.0",
+    "sass-loader": "^8.0.1",
     "url-loader": "^3.0.0"
   },
   "devDependencies": {}

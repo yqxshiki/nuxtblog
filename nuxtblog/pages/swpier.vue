@@ -27,7 +27,7 @@ export default {
 };
 </script>
 <style scoped>
-.el-carousel__item img{
+.el-carousel__item img {
   width: 100%;
   height: 100%;
 }

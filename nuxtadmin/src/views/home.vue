@@ -52,7 +52,7 @@
             </el-menu-item-group>
             <el-menu-item-group>
               <el-menu-item index="/tools/create">创建工具</el-menu-item>
-            </el-menu-item-group
+            </el-menu-item-group>
                <el-menu-item-group>
               <el-menu-item index="/fslinks/list">展示友情博客</el-menu-item>
             </el-menu-item-group>

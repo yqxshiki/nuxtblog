@@ -59,5 +59,5 @@ export default {
 };
 </script>
 <style scoped>
-@import '../assets/blog.css'
+@import '../../assets/blog.css'
 </style>

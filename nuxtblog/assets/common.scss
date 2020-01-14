@@ -5,19 +5,21 @@ body {
   width: 100%;
   height: 100vh;
   font-size: 16px;
-}
-
-
-html,
-body {
-  /* background: url("../static/6.jpg"); */
   background: rgb(233, 234, 237);
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position: center;
-  /* opacity: 0.9; */
+
 }
+
+
+// html,
+// body {
+//   /* background: url("../static/6.jpg"); */
+//   background: rgb(233, 234, 237);
+//   background-size: cover;
+//   background-repeat: no-repeat;
+//   background-attachment: fixed;
+//   background-position: center;
+//   /* opacity: 0.9; */
+// }
 
 
 #__nuxt,
@@ -39,11 +41,9 @@ a {
 a:hover {
   text-decoration: none;
   list-style: none;
-}
-
-a:hover {
   color: aqua;
 }
+
 
 p img {
   max-width: 740px;
@@ -54,12 +54,12 @@ p img {
 @font-face {
   font-family: 'iconfont';
   /* project id 1505337 */
-  src: url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.eot');
-  src: url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.eot?#iefix') format('embedded-opentype'),
-    url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.woff2') format('woff2'),
-    url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.woff') format('woff'),
-    url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.ttf') format('truetype'),
-    url('//at.alicdn.com/t/font_1505337_h76j9lu9jrv.svg#iconfont') format('svg');
+  src: url('//at.alicdn.com/t/font_1505337_ff7978ecjpw.eot');
+  src: url('//at.alicdn.com/t/font_1505337_ff7978ecjpw.eot?#iefix') format('embedded-opentype'),
+    url('//at.alicdn.com/t/font_1505337_ff7978ecjpw.woff2') format('woff2'),
+    url('//at.alicdn.com/t/font_1505337_ff7978ecjpw.woff') format('woff'),
+    url('//at.alicdn.com/t/font_1505337_ff7978ecjpw.ttf') format('truetype'),
+    url('//at.alicdn.com/t/font_1505337_ff7978ecjpw.svg#iconfont') format('svg');
 }
 
 .iconfont {
@@ -76,14 +76,15 @@ p img {
 code {
   color: #1e90ff;
   font-family: 'YaHei Consolas Hybrid', consolas, Menlo, "PingFang SC", "Microsoft YaHei", monospace;
+
+  h1 {
+    padding: 0;
+    font-weight: bold;
+    line-height: 1.5;
+    font-family: 'Lobster Two', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
+  }
 }
 
-code h1 {
-  padding: 0;
-  font-weight: bold;
-  line-height: 1.5;
-  font-family: 'Lobster Two', 'Monda', "PingFang SC", "Microsoft YaHei", sans-serif;
-}
 
 blockquote {
   padding: 0 15px;
@@ -114,11 +115,12 @@ blockquote {
   position: absolute;
   left: 0;
   top: 0;
+
+  img {
+    width: 100px;
+  }
 }
 
-.github img {
-  width: 100px;
-}
 
 header {
   width: 100%;
@@ -127,22 +129,23 @@ header {
   font-family: Georgia, "Times New Roman", Times, serif;
   font-weight: 400;
   background: #1c2327;
+
+  &::before {
+    background: #000 linear-gradient(to left,
+        #4cd964,
+        #5ac8fa,
+        #007aff,
+        #34aadc,
+        #5856d6,
+        #ff2d55);
+    content: "";
+    height: 8px;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
 }
 
-header::before {
-  background: #000 linear-gradient(to left,
-      #4cd964,
-      #5ac8fa,
-      #007aff,
-      #34aadc,
-      #5856d6,
-      #ff2d55);
-  content: "";
-  height: 8px;
-  position: absolute;
-  top: 0;
-  width: 100%;
-}
 
 /* 侧边栏 */
 .sidebar {
@@ -160,4 +163,3 @@ header::before {
   border-radius: initial;
   box-sizing: border-box;
 }
-

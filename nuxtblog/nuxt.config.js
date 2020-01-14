@@ -1,7 +1,7 @@
 export default {
   mode: 'universal',
   render: {
-    resourceHints: false, // 添加prefetch和preload，以加快初始化页面加载时间。如果有许多页面和路由，可禁用此项
+    resourceHints: true, // 添加prefetch和preload，以加快初始化页面加载时间。如果有许多页面和路由，可禁用此项
   },
   /*
    ** Headers of the page
@@ -39,8 +39,8 @@ export default {
   css: [
     'element-ui/lib/theme-chalk/index.css',
     'assets/page.css',
-    'assets/common.css',
-    'assets/border.css',
+    'assets/common.scss',
+    'assets/border.scss',
   ],
   /*
    ** Plugins to load before mounting the App
@@ -58,12 +58,18 @@ export default {
    */
   modules: [
     '@nuxtjs/axios',
+    '@nuxtjs/style-resources'
   ],
+  styleResources: {
+    scss: ['./assets/variables.scss'],
+  },
   /*
    ** Build configuration
    */
   build: {
     transpile: [/^element-ui/],
+    analyze: true,
+
     /*
      ** You can extend webpack config here
      */
