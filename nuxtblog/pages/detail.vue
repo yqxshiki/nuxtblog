@@ -7,7 +7,7 @@
           <div class="sidebar bb">
             <div class="center" v-if="item">
               <div class="img">
-                <img src="~static/icon.jpg" alt class="touxiang" />
+                <img v-lazy="item.icon" alt class="touxiang" />
               </div>
               <div class="title">{{item.title}}</div>
               <div class="describe">{{item.describe}}</div>
@@ -164,10 +164,10 @@ export default {
       document.getElementsByTagName("head")[0].appendChild(link);
     }
   },
-    watch: {
-    '$route': function(to,from) {
+  watch: {
+    $route: function(to, from) {
       let footer = document.getElementsByTagName("footer")[0];
-      footer.style.marginTop =0+'px';
+      footer.style.marginTop = 0 + "px";
     }
   },
   mounted() {
@@ -207,11 +207,11 @@ export default {
     margin: 0 auto;
   }
 }
-@media screen and (max-width: 600px){
-  .split{
+@media screen and (max-width: 600px) {
+  .split {
     width: 100%;
     margin: 0 auto;
-   .container{
+    .container {
       display: none;
     }
   }

@@ -2,7 +2,7 @@
   <div id="swiper">
     <el-carousel :interval="3000" type="card">
       <el-carousel-item v-for="itmes in imgsrc" :key="itmes.index">
-        <img :src="itmes.url" :alt="itmes.image" class="medium" />
+        <img v-lazy="itmes.url" :alt="itmes.image" class="medium" />
       </el-carousel-item>
     </el-carousel>
   </div>

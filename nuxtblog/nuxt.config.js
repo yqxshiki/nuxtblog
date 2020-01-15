@@ -47,7 +47,8 @@ export default {
    */
   plugins: [
     '@/plugins/element-ui',
-    '@/plugins/axios'
+    '@/plugins/axios',
+    '@/plugins/vuelazyload'
   ],
   /*
    ** Nuxt.js dev-modules

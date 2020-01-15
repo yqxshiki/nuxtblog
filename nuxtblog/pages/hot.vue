@@ -13,7 +13,7 @@
                 <h4 class="article-title">{{item.title}}</h4>
               </nuxt-link>
               <div class="article-flex">
-                <img class="article-img" :src="item.icon" alt />
+                <img class="article-img" v-lazy="item.icon" alt />
                 <span class="article-sidebar">
                   <div class="article-body">{{item.bodyrender | filter}}</div>
                   <div class="article-info">
@@ -54,7 +54,7 @@
               <h3 class="title-border">推荐工具</h3>
               <div v-for="item in tools" :key="item._id" class="tools">
                 <a :href="item.link">
-                  <img class="toolsimg" :src="item.icon" alt />
+                  <img class="toolsimg" v-lazy="item.icon" alt />
                   <span class="tool-name">{{item.name}}</span>
                 </a>
               </div>
@@ -85,7 +85,7 @@
             <div class="friend-info">
               <h3 class="title-border">友情链接</h3>
               <div v-for="item in fslinks" :key="item._id" class="fslinks">
-                <a :href="item.link">
+                <a :href="item.link" target="_blank">
                   <el-tag :type="item.type">{{item.name}}</el-tag>
                 </a>
               </div>
