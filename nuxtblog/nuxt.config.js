@@ -59,10 +59,18 @@ export default {
    */
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/style-resources',
+    ['@nuxtjs/dotenv', { path : '/' }],
   ],
   styleResources: {
     scss: ['./assets/variables.scss'],
+  },
+  generate: {
+    dir: "web",
+    devtools: true
+  },
+  env: {
+    vueApi: process.env.VUE_API_URL || "/web/api"
   },
   /*
    ** Build configuration
