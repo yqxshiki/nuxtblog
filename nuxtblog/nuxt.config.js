@@ -1,3 +1,5 @@
+const env = require("./env")
+
 export default {
   mode: 'universal',
   render: {
@@ -60,7 +62,7 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
-    ['@nuxtjs/dotenv', { path : '/' }],
+    ['@nuxtjs/dotenv', { filename: '.env.development' }],
   ],
   styleResources: {
     scss: ['./assets/variables.scss'],
@@ -70,7 +72,7 @@ export default {
     devtools: true
   },
   env: {
-    vueApi: process.env.VUE_API_URL || "/web/api"
+    baseUrl: env[process.env.MODE].ENV_API
   },
   /*
    ** Build configuration
