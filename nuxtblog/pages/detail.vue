@@ -196,18 +196,20 @@ export default {
 };
 </script>
 <style scoped lang="scss">
-@import "../assets/default.css";
-#detail {
-  width: 100%;
-  margin-top: 4rem;
+@media screen and (min-width: 901px) {
+  @import "../assets/default.css";
+  #detail {
+    width: 100%;
+    margin-top: 4rem;
 
-  .split {
-    display: flex;
-    width: 80%;
-    margin: 0 auto;
+    .split {
+      display: flex;
+      width: 80%;
+      margin: 0 auto;
+    }
   }
 }
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .split {
     width: 100%;
     margin: 0 auto;

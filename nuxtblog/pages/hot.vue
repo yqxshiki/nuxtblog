@@ -114,7 +114,7 @@ export default {
   // 过滤
   filters: {
     filter(val) {
-      return val.replace(/<\/?.+?>/g, "");
+       return  val.replace(/<\/?.+?>/g, "");
     },
     yeardata(val) {
       return dayjs(val).format("YYYY/MM/DD");
@@ -152,7 +152,7 @@ export default {
 </script>
 <style  lang="scss" scoped>
 @import "../assets/hot.scss";
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   .wrap {
     margin-left: 0;
     width: 100%;

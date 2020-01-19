@@ -3,7 +3,7 @@ module.exports = app => {
     const mongoose = require("mongoose")
     mongoose.connect('mongodb://localhost:27017/nuxtblog', {
         useCreateIndex: true,
-        useFindAndModify: true,
+        useFindAndModify: false,
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
