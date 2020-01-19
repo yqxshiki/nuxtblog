@@ -20,7 +20,9 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.9.0",
     "@nuxtjs/dotenv": "^1.4.1",
+    "@nuxtjs/pwa": "^3.0.0-beta.19",
     "@nuxtjs/style-resources": "^1.0.0",
+    "@nuxtjs/workbox": "^3.0.0-beta.16",
     "axios": "^0.19.0",
     "dayjs": "^1.8.18",
     "element-ui": "^2.4.11",

@@ -105,7 +105,7 @@ export default {
 };
 </script>  
 <style scoped lang="scss">
-@media screen and(min-width:602px) {
+@media screen and(min-width:901px) {
   @import "../assets/search.css";
   #default {
     width: 100%;
@@ -139,7 +139,7 @@ export default {
   }
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 900px) {
   header {
     display: flex;
     flex-direction: column;

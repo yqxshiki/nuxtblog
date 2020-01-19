@@ -63,6 +63,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     ['@nuxtjs/dotenv', { filename: '.env.development' }],
+    ['@nuxtjs/pwa']
   ],
   styleResources: {
     scss: ['./assets/variables.scss'],
