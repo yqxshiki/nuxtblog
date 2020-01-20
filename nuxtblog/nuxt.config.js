@@ -63,7 +63,12 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
     ['@nuxtjs/dotenv', { filename: '.env.development' }],
-    ['@nuxtjs/pwa']
+    ['@nuxtjs/pwa'],
+    // 配置选项
+    ['@nuxtjs/component-cache', {
+      max: 10000,
+      maxAge: 1000 * 60 * 60
+    }]
   ],
   styleResources: {
     scss: ['./assets/variables.scss'],
