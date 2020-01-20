@@ -30,21 +30,31 @@ export default {
     // 提交
     async save() {
       let res;
-      if (this.id) {
-        res = await this.$axios.post(
-          `/rest/admins/resive/${this.id}`,
-          this.model
-        );
+      if (
+        this.model.username == undefined ||
+        this.model.password == undefined
+      ) {
+        this.$message({
+          message: "用户信息不能为空",
+          type: "warning"
+        });
       } else {
-        res = await this.$axios.post("/rest/admins/create", this.model);
+        if (this.id) {
+          res = await this.$axios.post(
+            `/rest/admins/resive/${this.id}`,
+            this.model
+          );
+        } else {
+          res = await this.$axios.post("/rest/admins/create", this.model);
+        }
+        // 跳转
+        this.$router.push("/admin/list");
+        // 提示信息
+        this.$message({
+          type: "success",
+          message: "保存成功"
+        });
       }
-      // 跳转
-      this.$router.push("/admin/list");
-      // 提示信息
-      this.$message({
-        type: "success",
-        message: "保存成功"
-      });
     },
     // 获取详情
     async fetch() {

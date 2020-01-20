@@ -35,7 +35,7 @@ export default {
     // 提交
     async save() {
       let res;
-      if (this.model.name == undefined) {
+      if (this.model.name == undefined || this.model.type == undefined) {
         this.$message({
           message: "分类内容不能为空",
           type: "warning"

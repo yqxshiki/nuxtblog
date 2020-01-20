@@ -71,7 +71,12 @@ export default {
     async save() {
       let res;
       this.model.aboutrender = this.html;
-      if (this.model.gitlink ==undefined || this.model.qqlink ==undefined) {
+      if (
+        this.model.gitlink == undefined ||
+        this.model.qqlink == undefined ||
+        this.model.title == undefined ||
+        this.model.describe == undefined
+      ) {
         this.$message({
           message: "用户信息不能为空",
           type: "warning"
