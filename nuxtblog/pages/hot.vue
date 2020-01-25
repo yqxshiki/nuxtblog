@@ -114,7 +114,7 @@ export default {
   // 过滤
   filters: {
     filter(val) {
-       return  val.replace(/<\/?.+?>/g, "");
+      return val.replace(/<\/?.+?>/g, "");
     },
     yeardata(val) {
       return dayjs(val).format("YYYY/MM/DD");
@@ -133,12 +133,12 @@ export default {
     getBlog() {
       this.$axios.get("/blog").then(res => {
         this.length = res.data.length;
-        if (length <= 4) {
+        if (this.length <= 5) {
           res.data.map((item, index) => {
             this.list.unshift(item);
           });
         } else {
-          this.list = res.data.slice(this.length - 5, this.length);
+          this.list = res.data.slice(this.length - 5, this.length).reverse();
         }
       });
     }
@@ -153,6 +153,10 @@ export default {
 <style  lang="scss" scoped>
 @import "../assets/hot.scss";
 @media screen and (max-width: 900px) {
+  .wrap .el-col-18 .container .article {
+    width: 100%;
+  }
+  
   .wrap {
     margin-left: 0;
     width: 100%;

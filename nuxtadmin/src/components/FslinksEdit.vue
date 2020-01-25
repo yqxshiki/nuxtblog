@@ -39,7 +39,7 @@ export default {
     // 提交
     async save() {
       let res;
-      if (this.model.link == undefined || this.model.type == undefined||this.model.name == undefined || ) {
+      if (this.model.link == undefined || this.model.type == undefined||this.model.name == undefined) {
         this.$message({
           message: "信息不能为空",
           type: "warning"

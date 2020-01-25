@@ -60,4 +60,11 @@ export default {
 </script>
 <style scoped lang="scss">
 @import "../../assets/blog.scss";
+
+@media screen and (max-width: 900px) {
+  #blog .container .list {
+    width: 60%;
+    height: auto;
+  }
+}
 </style>
