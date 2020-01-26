@@ -164,12 +164,6 @@ export default {
       document.getElementsByTagName("head")[0].appendChild(link);
     }
   },
-  watch: {
-    $route: function(to, from) {
-      let footer = document.getElementsByTagName("footer")[0];
-      footer.style.marginTop = 0 + "px";
-    }
-  },
   mounted() {
     this.getuserinfo;
     this.seticon();

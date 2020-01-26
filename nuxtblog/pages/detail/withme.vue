@@ -22,22 +22,6 @@ export default {
     const res = await $axios.get("/user/info");
     return { item: res[0] };
   },
-  methods: {
-    setbottom() {
-      let body = window.screen.availHeight;
-      let footer = document.getElementsByTagName("footer")[0];
-      let container = document.getElementsByClassName("container")[0]
-        .offsetHeight;
-      footer.style.marginTop = body - container - 180 + "px";
-    }
-  },
-  mounted() {
-    this.setbottomtime = "";
-    this.setbottomtime = setInterval(() => {
-      this.setbottom();
-      clearInterval(this.setbottomtime);
-    }, 500);
-  },
 };
 </script>
 <style scoped>

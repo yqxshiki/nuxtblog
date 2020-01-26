@@ -43,22 +43,6 @@ export default {
     const res = await $axios.get(`/categorylist/${route.params.categorylist}`);
     return { itemlist: res };
   },
-  methods: {
-    setbottom() {
-      let body = window.screen.availHeight;
-      let footer = document.getElementsByTagName("footer")[0];
-      let container = document.getElementsByClassName("container")[0]
-        .offsetHeight;
-      footer.style.marginTop = body - container - 180 + "px";
-    }
-  },
-  mounted() {
-    this.setbottomtime = "";
-    this.setbottomtime = setInterval(() => {
-      this.setbottom();
-      clearInterval(this.setbottomtime);
-    }, 1000);
-  },
 };
 </script>
 <style scoped>

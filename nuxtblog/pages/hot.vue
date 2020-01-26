@@ -76,7 +76,7 @@
               <p>
                 <strong>标签管理</strong>:
                 <span class="green">
-                  <nuxt-link to="/category">标签云</nuxt-link>
+                  <nuxt-link to="/detail/category">标签云</nuxt-link>
                 </span>
               </p>
             </div>

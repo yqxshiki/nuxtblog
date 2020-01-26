@@ -34,21 +34,21 @@ export default {
     const res = await $axios.get("/category");
     return { categories: res.slice(6, res.length) };
   },
-  methods: {
-    setbottom() {
-      let body = window.screen.availHeight;
-      let footer = document.getElementsByTagName("footer")[0];
-      let container = document.getElementsByClassName("container")[0]
-        .offsetHeight;
-      footer.style.marginTop = body - container - 180 + "px";
-    }
-  },
+  // methods: {
+  //   setbottom() {
+  //     let body = window.screen.availHeight;
+  //     let footer = document.getElementsByTagName("footer")[0];
+  //     let container = document.getElementsByClassName("container")[0]
+  //       .offsetHeight;
+  //     footer.style.marginTop = body - container - 180 + "px";
+  //   }
+  // },
   mounted() {
-    this.setbottomtime = "";
-    this.setbottomtime = setInterval(() => {
-      this.setbottom();
-      clearInterval(this.setbottomtime);
-    }, 500);
+    // this.setbottomtime = "";
+    // this.setbottomtime = setInterval(() => {
+    //   this.setbottom();
+    //   clearInterval(this.setbottomtime);
+    // }, 500);
     this.length = this.categories.length;
   },
   head() {
@@ -60,9 +60,6 @@ export default {
 };
 </script>
 <style scoped>
-#category {
-  /* margin-top: 1rem; */
-}
 .container {
   width: 100%;
   text-align: center;

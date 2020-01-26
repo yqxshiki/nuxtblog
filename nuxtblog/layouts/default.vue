@@ -11,25 +11,26 @@
     <header>
       <div class="nav-menu">
         <label for="nav" class="iconfont">
-          <i class="iconfont">&#xe671;</i>
+          <i class="iconfont anniu">&#xe671;</i>
         </label>
       </div>
       <input @click="inputclick" ref="input" type="checkbox" id="nav" />
       <div class="wrap">
+        <div class="content home">
+          <nuxt-link to="/">
+            <!-- <img class="img" src="../static/scrook.png" alt /> -->
+            Scrook.Blog
+          </nuxt-link>
+        </div>
         <div class="content">
           <nuxt-link to="/">Home</nuxt-link>
         </div>
         <div class="content">
           <nuxt-link to="/detail/blog">Bolg</nuxt-link>
         </div>
-        <div class="content">
-          <nuxt-link to="/">
-            <img class="img" src="../static/scrook.png" alt />
-          </nuxt-link>
-        </div>
-        <div class="content">
+        <!-- <div class="content">
           <nuxt-link to="/detail/category">Category</nuxt-link>
-        </div>
+        </div>-->
         <div class="content">
           <nuxt-link to="/detail/withme">Withme</nuxt-link>
         </div>
@@ -44,7 +45,7 @@
               placeholder="请输入搜索内容"
             />
             <a href="#" class="search-btn">
-              <i class="iconfont">&#xe64c;</i>
+              <i class="iconfont sousu">&#xe64c;</i>
             </a>
           </div>
         </div>
@@ -105,15 +106,15 @@ export default {
 };
 </script>  
 <style scoped lang="scss">
+@import "../assets/search.css";
 @media screen and(min-width:901px) {
-  @import "../assets/search.css";
   #default {
     width: 100%;
     height: 100vh;
-      #nav{
-        display: none;
-      }
-    .iconfont {
+    #nav {
+      display: none;
+    }
+    .anniu {
       display: none;
     }
     .wrap {
@@ -121,6 +122,12 @@ export default {
       margin: 0 auto;
       display: flex;
       justify-content: space-around;
+      .home {
+        font-size: 30px;
+        font-weight: normal;
+        font-family: "Lobster Two", "Monda", "PingFang SC", "Microsoft YaHei",
+          sans-serif;
+      }
       .content {
         a {
           font-weight: 700;
