@@ -51,7 +51,7 @@ module.exports = app => {
     const validloginMiddleware = require("../../middleware/validlogin")
 
     // 通用接口
-    app.use('/api/rest/:resource', resourceMiddleware(), router)
+    app.use('/api/rest/:resource', validloginMiddleware(), resourceMiddleware(), router)
 
 
     // 上传图片
@@ -74,9 +74,9 @@ module.exports = app => {
     //         }
     //     })
     // });
-    app.post("/api/uploads", upload.single('file'), async (req, res) => {
+    app.post("/api/uploads", validloginMiddleware(), upload.single('file'), async (req, res) => {
         const file = req.file;
-        
+
         // 如果是阿里云就注释下面这行代码
         file.url = `http://localhost:4000/uploads/${file.filename}`
 

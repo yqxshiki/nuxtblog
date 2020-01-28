@@ -28,9 +28,10 @@ http.interceptors.response.use(res => {
             message: err.response.data.message
         })
     }
-    if (err.response.status == 401) {
+    if (err.response.status == 401 || err.response.status == 500) {
         router.push('/login')
     }
+
     return Promise.reject(err);
 })
 
