@@ -58,10 +58,10 @@ module.exports = app => {
     const multer = require("multer")
     const MAO = require('multer-aliyun-oss');
 
-    // 上传到本地uploads文件夹
-    const upload = multer({
-        dest: __dirname + '/../../uploads'
-    })
+    // // 上传到本地uploads文件夹
+    // const upload = multer({
+    //     dest: __dirname + '/../../uploads'
+    // })
 
     // 上传到阿里云oss
     // const upload = multer({
@@ -74,11 +74,22 @@ module.exports = app => {
     //         }
     //     })
     // });
+
+    const upload = multer({
+        storage: MAO({
+            config: {
+                region: 'oss-cn-beijing',
+                accessKeyId: 'LTAI4FpyBVDFFZKGErN2KNWA',
+                accessKeySecret: 'L02zvkJ8RC9EWSHATUbShmij3F9w44',
+                bucket: 'nuxtblog'
+            }
+        })
+    });
     app.post("/api/uploads", validloginMiddleware(), upload.single('file'), async (req, res) => {
         const file = req.file;
 
         // 如果是阿里云就注释下面这行代码
-        file.url = `http://localhost:4000/uploads/${file.filename}`
+        // file.url = `http://localhost:4000/uploads/${file.filename}`
 
         res.send(file);
     })
