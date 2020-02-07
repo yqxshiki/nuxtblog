@@ -53,7 +53,7 @@
             <el-menu-item-group>
               <el-menu-item index="/tools/create">创建工具</el-menu-item>
             </el-menu-item-group>
-               <el-menu-item-group>
+            <el-menu-item-group>
               <el-menu-item index="/fslinks/list">展示友情博客</el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group>
@@ -65,10 +65,19 @@
 
       <el-container>
         <el-header style="text-align: right; font-size: 12px">
+          <span class="userinfo">
+            <span>
+              <img class="userinfo-img" :src="userinfo.icon" alt />
+            </span>
+            <span>{{userinfo.username}}</span>
+          </span>
+
           <el-dropdown>
-            <i class="el-icon-switch-button" style="margin-right: 15px" @click="quit"></i>
+            <i class="el-icon-setting" style="margin-right: 15px"></i>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item></el-dropdown-item>
+              <el-dropdown-item>
+                <i class="el-icon-switch-button" style="margin-right: 15px" @click="quit">退出</i>
+              </el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </el-header>
@@ -83,14 +92,32 @@
 export default {
   data() {
     return {
-      loading: true
+      loading: true,
+      userinfo: {}
     };
   },
   methods: {
+    // 退出
     quit() {
-      localStorage.token = "";
+      localStorage.ytoken = "";
+      localStorage.bloguserinfo = "";
       this.$router.push("/login");
+    },
+    // 获取登录用户信息
+    async getuseinfo() {
+      const res = await this.$axios.post("/useinfo", localStorage.bloguserinfo);
+      if (res.data.length == 1) {
+        this.userinfo = res.data[0];
+      } else {
+        const data = res.data.filter((item, index) => {
+          return item.username == localStorage.bloguserinfo;
+        });
+        this.userinfo = data[0];
+      }
     }
+  },
+  created() {
+    this.getuseinfo();
   }
 };
 </script>
@@ -109,6 +136,21 @@ export default {
   .el-aside {
     color: #333;
     height: 100%;
+  }
+  .userinfo {
+    height: 100%;
+    display: inline-block;
+    margin-right: 1rem;
+    line-height: 60px;
+    span {
+      display: inline-block;
+      margin-left: 1rem;
+      vertical-align: top;
+    }
+    .userinfo-img {
+      width: 80px;
+      border-radius: 50%;
+    }
   }
 }
 </style>

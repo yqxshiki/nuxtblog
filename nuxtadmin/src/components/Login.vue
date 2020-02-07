@@ -37,7 +37,8 @@ export default {
       } else {
         const res = await this.$axios.post("/login", this.model);
         // 存入localStorage
-        localStorage.token = res.data;
+        localStorage.ytoken = res.data.token;
+        localStorage.bloguserinfo = res.data.username;
         this.$router.push("/");
         this.$message({
           type: "success",
@@ -45,7 +46,7 @@ export default {
         });
       }
     }
-  },
+  }
 };
 </script>
 <style scoped>

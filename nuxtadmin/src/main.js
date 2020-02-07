@@ -33,7 +33,7 @@ Vue.mixin({
     // 请求头
     getAuthHeaders() {
       return {
-        Authorization: `Bearer ${localStorage.token || ""}`
+        Authorization: `Bearer ${localStorage.ytoken || ""}`
       };
     },
   },

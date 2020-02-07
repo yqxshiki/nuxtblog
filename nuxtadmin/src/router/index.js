@@ -125,7 +125,7 @@ const routes = [{
 },
 {
   path: "*",
-  redirect: "/error",
+  redirect: "/",
   hidden: true
 }
 
@@ -138,7 +138,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-  if (!to.meta.isPublic && !localStorage.token) {
+  if (!to.meta.isPublic && !localStorage.ytoken) {
     next('/login');
   }
   next();

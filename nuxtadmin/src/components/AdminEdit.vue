@@ -8,6 +8,18 @@
       <el-form-item label="密码">
         <el-input v-model="model.password"></el-input>
       </el-form-item>
+      <el-form-item label="图片">
+        <el-upload
+          class="avatar-uploader"
+          :action="uploadUrl"
+          :show-file-list="false"
+          :on-success="afterupload"
+          :headers="getAuthHeaders"
+        >
+          <img v-if="model.icon" :src="model.icon" class="avatar" />
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
+      </el-form-item>
       <el-form-item>
         <el-button type="primary" native-type="submit">保存</el-button>
       </el-form-item>
@@ -27,12 +39,17 @@ export default {
     };
   },
   methods: {
+    // 显示图片
+    afterupload(res) {
+      this.$set(this.model, "icon", res.url);
+    },
     // 提交
     async save() {
       let res;
       if (
         this.model.username == undefined ||
-        this.model.password == undefined
+        this.model.password == undefined ||
+        this.model.icon == undefined
       ) {
         this.$message({
           message: "用户信息不能为空",

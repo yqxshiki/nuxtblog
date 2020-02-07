@@ -53,6 +53,12 @@ module.exports = app => {
     // 通用接口
     app.use('/api/rest/:resource', validloginMiddleware(), resourceMiddleware(), router)
 
+    //获取用户登录信息
+    app.post("/api/useinfo", validloginMiddleware(), async (req, res) => {
+        const username = req.body;
+        const data = await Admin.find();
+        res.send(data)
+    })
 
     // 上传图片
     const multer = require("multer")
@@ -114,7 +120,11 @@ module.exports = app => {
             id: user._id
         }, app.get("secret"))
 
-        res.send(token)
+        const data = {
+            token,
+            username
+        }
+        res.send(data)
     })
     // 错误处理函数
     app.use(async (err, req, res, next) => {

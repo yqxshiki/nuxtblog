@@ -9,8 +9,8 @@ const http = axios.create({
 
 //请求
 http.interceptors.request.use((config) => {
-    if (localStorage.token) {
-        config.headers.Authorization = 'Bearer ' + (localStorage.token || '')
+    if (localStorage.ytoken) {
+        config.headers.Authorization = 'Bearer ' + (localStorage.ytoken || '')
     }
     return config;
 }, (err) => {

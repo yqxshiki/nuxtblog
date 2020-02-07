@@ -12,6 +12,9 @@ const schema = new mongoose.Schema({
         set(val) {
             return require("bcryptjs").hashSync(val, 10)
         }
+    },
+    icon: {
+        type: String
     }
 })
 
