@@ -22,17 +22,19 @@
             Scrook.Blog
           </nuxt-link>
         </div>
-        <div class="content">
-          <nuxt-link to="/">Home</nuxt-link>
-        </div>
-        <div class="content">
-          <nuxt-link to="/detail/blog">Bolg</nuxt-link>
-        </div>
-        <!-- <div class="content">
+        <div class="wrap-content">
+          <div class="content">
+            <nuxt-link to="/">Home</nuxt-link>
+          </div>
+          <div class="content">
+            <nuxt-link to="/detail/blog">Bolg</nuxt-link>
+          </div>
+          <!-- <div class="content">
           <nuxt-link to="/detail/category">Category</nuxt-link>
-        </div>-->
-        <div class="content">
-          <nuxt-link to="/detail/withme">Withme</nuxt-link>
+          </div>-->
+          <div class="content">
+            <nuxt-link to="/detail/withme">Withme</nuxt-link>
+          </div>
         </div>
         <div class="input">
           <div class="search-box">
@@ -55,7 +57,10 @@
     <div class="hidden" ref="hidden">
       <div class="hidden-border">
         <div class="hidden-list" v-for="item in list" :key="item._id">
-          <nuxt-link tag="div" :to="{name:'list-list',params:{list:item._id,title:item.title}}">
+          <nuxt-link
+            tag="div"
+            :to="{name:'detail-list-list',params:{list:item._id,title:item.title}}"
+          >
             <span class="hidden-title">{{item.title}}</span>
           </nuxt-link>
         </div>
@@ -118,15 +123,22 @@ export default {
       display: none;
     }
     .wrap {
-      width: 60%;
+      width: 70%;
       margin: 0 auto;
       display: flex;
       justify-content: space-around;
       .home {
+        margin-left: 1rem;
         font-size: 30px;
         font-weight: normal;
         font-family: "Lobster Two", "Monda", "PingFang SC", "Microsoft YaHei",
           sans-serif;
+      }
+      .wrap-content {
+        display: flex;
+        justify-content: space-around;
+        width: 40%;
+        margin-left: 40%;
       }
       .content {
         a {

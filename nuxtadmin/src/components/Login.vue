@@ -10,6 +10,7 @@
         </el-form-item>
         <el-form-item>
           <el-button type="primary" native-type="submit">登录</el-button>
+          <i class="iconfont" @click="github">&#xe709;</i>
         </el-form-item>
       </el-form>
     </el-card>
@@ -45,6 +46,9 @@ export default {
           message: "登录成功"
         });
       }
+    },
+    async github() {
+      window.location.href = "http://localhost:4000/api/github/login";
     }
   }
 };
@@ -59,5 +63,9 @@ export default {
   bottom: 0;
   top: 0;
   margin: auto;
+}
+.iconfont {
+  font-size: 2rem;
+  cursor: pointer;
 }
 </style>

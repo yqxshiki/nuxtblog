@@ -17,6 +17,7 @@ require('./plugins/db')(app)
 
 // 路由
 require('./routes/admin/index')(app)
+require("./routes/third-login/index")(app)
 require('./routes/web/index')(app)
 
 app.listen(4000, () => console.log('app listening on port 4000!'))
