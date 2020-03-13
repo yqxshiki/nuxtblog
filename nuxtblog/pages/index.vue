@@ -2,44 +2,161 @@
   <div id="index">
     <div class="center">
       <swiper />
-      <hotacticle />
+      <!-- <bloghot/> -->
+      <div class="wrap">
+        <el-row :gutter="20">
+          <el-col :span="18">
+            <h2>
+              <i class="iconfont">&#xe601;</i>
+              最新文章
+            </h2>
+            <div class="container">
+              <div class="article" v-for="(item,_id) in list" :key="_id">
+                <nuxt-link :to="{name:'detail-list-list',params:{list:item._id,title:item.title}}">
+                  <h2 class="article-title">{{item.title}}</h2>
+                </nuxt-link>
+                <div class="article-flex">
+                  <img class="article-img" v-lazy="item.icon" alt />
+                  <span class="article-sidebar">
+                    <div class="article-body">{{item.bodyrender | filter}}</div>
+                    <div class="article-info">
+                      <img src="../static/icon.jpg" alt />
+                      <span>Scrook:{{item.createdAt | yeardata}}</span>
+                    </div>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </el-col>
+          <el-col :span="6">
+            <el-row :span="6">
+              <div class="sidebar-info">
+                <h3 class="title-border">我的名片</h3>
+                <div class="userinfo">
+                  <p>
+                    <strong>网名</strong>:Scrook
+                  </p>
+                  <p>
+                    <strong>职业</strong>:web前端开发工程师
+                  </p>
+                  <p>
+                    <strong>现居</strong>:湖北省-武汉市
+                  </p>
+                  <p>
+                    <strong>Email</strong>:1023942883@qq.com
+                  </p>
+                </div>
+                <div class="flex">
+                  <img class="img" src="../static/qqlink.jpg" alt="添加QQ" />
+                  <img class="img" src="../static/wxlink.png" alt="添加微信" />
+                </div>
+              </div>
+            </el-row>
+            <el-row :span="6">
+              <div class="recommend-info">
+                <h3 class="title-border">推荐工具</h3>
+                <div v-for="item in tools" :key="item._id" class="tools">
+                  <a :href="item.link">
+                    <img class="toolsimg" v-lazy="item.icon" alt />
+                    <span class="tool-name">{{item.name}}</span>
+                  </a>
+                </div>
+              </div>
+            </el-row>
+            <el-row :span="6">
+              <div class="website-info">
+                <h3 class="title-border">站点信息</h3>
+                <p>
+                  <strong>建站时间</strong>:2019-12-14
+                </p>
+                <p>
+                  <strong>网站类型</strong>:博客
+                </p>
+                <p>
+                  <strong>文章统计</strong>:
+                  <span class="green">{{this.list.length}}篇文章</span>
+                </p>
+                <p>
+                  <strong>标签管理</strong>:
+                  <span class="green">
+                    <nuxt-link to="/detail/category">标签云</nuxt-link>
+                  </span>
+                </p>
+              </div>
+            </el-row>
+            <el-row :span="6">
+              <div class="friend-info">
+                <h3 class="title-border">友情链接</h3>
+                <div v-for="item in fslinks" :key="item._id" class="fslinks">
+                  <a :href="item.link" target="_blank">
+                    <el-tag :type="item.type">{{item.name}}</el-tag>
+                  </a>
+                </div>
+              </div>
+            </el-row>
+          </el-col>
+        </el-row>
+      </div>
       <contact />
     </div>
-    <footer>
-      <div class="keep">
-        <!-- 这里是底部栏，自己添加想要的信息 -->
-                <span>关于yqxshiki个人网站</span>
-        <a href="http://beian.miit.gov.cn/" target="_blank">
-          <span>鄂ICP备19027794号</span>
-        </a>
-        <div style="width:300px;margin:0 auto; padding:20px 0;">
-          <a
-            target="_blank"
-            href="http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=42011602000714"
-            style="display:inline-block;text-decoration:none;height:20px;line-height:20px;"
-          >
-            <img src="../static/beian.png" style="float:left;" />
-            <p
-              style="float:left;height:20px;line-height:20px;margin: 0px 0px 0px 5px; color:#939393;"
-            >鄂公网安备 42011602000714号</p>
-          </a>
-        </div>
-      </div>
-    </footer>
+    <blogfooter></blogfooter>
   </div>
 </template>
 
 <script>
+import dayjs from "dayjs";
 import swiper from "@/pages/swpier";
 import contact from "@/pages/contact";
-import hotacticle from "@/pages/hot";
+import blogfooter from "@/pages/footer";
+// import bloghot from "@/pages/hot";
 export default {
   layout: "default",
   name: "index",
   components: {
     swiper,
     contact,
-    hotacticle
+    blogfooter
+    // bloghot
+  },
+  data() {
+    return {
+      list: [],
+      // 工具
+      tools: [],
+      fslinks: []
+    };
+  },
+  // // 过滤
+  filters: {
+    filter(val) {
+      return val.replace(/<\/?.+?>/g, "");
+    },
+    yeardata(val) {
+      return dayjs(val).format("YYYY/MM/DD");
+    }
+  },
+  // 获取文章
+  async asyncData({ $axios }) {
+    const res = await $axios.get("/blog");
+    let list = [];
+    if (res.length <= 5) {
+      res.map((item, index) => {
+        list.unshift(item);
+      });
+    } else {
+      list = res.slice(res.length - 5, res.length).reverse();
+    }
+    return { list: list };
+  },
+  methods: {
+    async getTools() {
+      const res = await this.$axios.get("/tools");
+      this.tools = res.data;
+    },
+    async getfslink() {
+      const res = await this.$axios.get("/fslinks");
+      this.fslinks = res.data;
+    }
   },
   mounted() {
     this.$nextTick(() => {
@@ -48,10 +165,40 @@ export default {
         this.$nuxt.$loading.finish();
       });
     });
+    this.getTools();
+    this.getfslink();
   }
 };
 </script>
-<style scoped>
+<style  lang="scss" scoped>
+@import "../assets/hot.scss";
+@media screen and (max-width: 900px) {
+  .wrap .el-col-18 .container .article {
+    width: 100%;
+  }
+  .wrap {
+    margin-left: 0;
+    width: 100%;
+    margin: 0 auto;
+
+    .article-flex {
+      width: 100%;
+      overflow: hidden;
+      img {
+        display: none;
+      }
+    }
+  }
+  .container {
+    width: 100%;
+  }
+  div.el-col-6 {
+    display: none;
+  }
+  div.el-col-18 {
+    width: 100%;
+  }
+}
 #index {
   width: 100%;
   /* height: 100%; */
@@ -61,32 +208,6 @@ export default {
   width: 100%;
   margin: 0 auto;
 }
-/* 底部 */
-footer {
-  width: 100%;
-  background: rgb(53, 77, 77);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
-footer::before {
-  background: #000
-    linear-gradient(
-      to left,
-      #4cd964,
-      #5ac8fa,
-      #007aff,
-      #34aadc,
-      #5856d6,
-      #ff2d55
-    );
-  content: "";
-  height: 8px;
-  position: absolute;
-  top: -2%;
-  width: 100%;
-}
 .introduce {
   font-size: 1.2rem;
   font-weight: 700;
@@ -95,17 +216,5 @@ footer::before {
 }
 .introduce:hover {
   color: #000;
-}
-.keep {
-  color: #000;
-  margin-top: 40px;
-  margin-left: 40px;
-}
-.keep a {
-  color: #000;
-}
-.keep a :hover {
-  color: aqua;
-  border-bottom: 1px solid aqua;
 }
 </style>

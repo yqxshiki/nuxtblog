@@ -62,20 +62,15 @@ export default {
   modules: [
     '@nuxtjs/axios',
     '@nuxtjs/style-resources',
-    ['@nuxtjs/dotenv', { filename: '.env.development' }],
-    ['@nuxtjs/pwa'],
+    // ['@nuxtjs/dotenv', { filename: '.env.development' }],
     // 配置选项
-    ['@nuxtjs/component-cache', {
-      max: 10000,
-      maxAge: 1000 * 60 * 60
-    }]
   ],
   styleResources: {
     scss: ['./assets/variables.scss'],
   },
   generate: {
     dir: "web",
-    devtools: true
+    devtools: true,
   },
   env: {
     baseUrl: env[process.env.MODE].ENV_API
@@ -86,7 +81,6 @@ export default {
   build: {
     transpile: [/^element-ui/],
     analyze: true,
-
     /*
      ** You can extend webpack config here
      */

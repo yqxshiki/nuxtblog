@@ -43,6 +43,11 @@ export default {
       meta: [{ hid: "description", name: "Blog", content: "Blog" }]
     };
   },
+  data() {
+    return {
+      list: []
+    };
+  },
   // 过滤
   filters: {
     filter(val) {
@@ -55,7 +60,16 @@ export default {
   async asyncData({ $axios }) {
     const res = await $axios.get("/blog");
     return { list: res.reverse() };
-  }
+  },
+  // methods: {
+  //   async get_blog() {
+  //     const res = await this.$axios.get("/blog");
+  //     this.list = res.data.reverse();
+  //   }
+  // },
+  // created() {
+  //   this.get_blog();
+  // }
 };
 </script>
 <style scoped lang="scss">

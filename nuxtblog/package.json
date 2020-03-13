@@ -6,8 +6,8 @@
   "private": true,
   "scripts": {
     "dev": "cross-env MODE=dev nuxt",
-    "build": "cross-env MODE=pro nuxt build",
-    "start": "cross-env MODE=pro nuxt start",
+    "build": "cross-env MODE=dev nuxt build",
+    "start": "cross-env MODE=dev nuxt start",
     "generate": "cross-env MODE=pro nuxt generate",
     "analyze": "nuxt build --analyze"
   },
@@ -18,13 +18,10 @@
     }
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.9.0",
-    "@nuxtjs/component-cache": "^1.1.5",
-    "@nuxtjs/dotenv": "^1.4.1",
-    "@nuxtjs/pwa": "^3.0.0-beta.19",
+    "@nuxtjs/axios": "^5.9.5",
     "@nuxtjs/style-resources": "^1.0.0",
     "@nuxtjs/workbox": "^3.0.0-beta.16",
-    "axios": "^0.19.0",
+    "axios": "^0.19.2",
     "dayjs": "^1.8.18",
     "element-ui": "^2.4.11",
     "highlight.js": "^9.16.2",

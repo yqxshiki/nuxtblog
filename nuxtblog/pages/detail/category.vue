@@ -27,29 +27,35 @@ export default {
     return {
       //   标签总数
       length: "",
-      setbottomtime: ""
+      setbottomtime: "",
+      categories:""
     };
   },
   async asyncData({ $axios }) {
     const res = await $axios.get("/category");
     return { categories: res.slice(6, res.length) };
   },
-  // methods: {
-  //   setbottom() {
-  //     let body = window.screen.availHeight;
-  //     let footer = document.getElementsByTagName("footer")[0];
-  //     let container = document.getElementsByClassName("container")[0]
-  //       .offsetHeight;
-  //     footer.style.marginTop = body - container - 180 + "px";
-  //   }
-  // },
-  mounted() {
+  methods: {
+    // async get_catetory() {
+    //   const res = await this.$axios.get("/category");
+    //   this.categories = res.data.slice(6, res.length);
+    // }
+    // setbottom() {
+    //   let body = window.screen.availHeight;
+    //   let footer = document.getElementsByTagName("footer")[0];
+    //   let container = document.getElementsByClassName("container")[0]
+    //     .offsetHeight;
+    //   footer.style.marginTop = body - container - 180 + "px";
+    // }
+  },
+  created() {
     // this.setbottomtime = "";
     // this.setbottomtime = setInterval(() => {
     //   this.setbottom();
     //   clearInterval(this.setbottomtime);
     // }, 500);
     this.length = this.categories.length;
+    // this.get_catetory();
   },
   head() {
     return {

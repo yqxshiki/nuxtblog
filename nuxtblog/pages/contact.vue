@@ -11,7 +11,7 @@
 
       <div class="wrap">
         <div class="icon">
-          <i class="iconfont">&#xe605;</i>
+          <i class="iconfont">&#xe605;</i> 
         </div>
         <div class="description">Mail support</div>
         <div class="mindescription">

@@ -47,7 +47,6 @@ import dayjs from "dayjs";
 import Vue from "vue";
 import hljs from "highlight.js";
 import "highlight.js/styles/atelier-cave-light.css";
-import { setInterval, clearInterval } from "timers";
 // 代码高亮
 Vue.directive("highlight", function(el) {
   let blocks = el.querySelectorAll("pre code");
