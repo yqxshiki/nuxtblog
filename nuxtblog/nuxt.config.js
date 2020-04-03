@@ -79,8 +79,8 @@ export default {
    ** Build configuration
    */
   build: {
-    transpile: [/^element-ui/],
-    analyze: true,
+    // transpile: [/^element-ui/],
+    // analyze: true,
     /*
      ** You can extend webpack config here
      */

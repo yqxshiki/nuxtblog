@@ -138,7 +138,7 @@ export default {
       this.fslinks = res.data;
     }
   },
-  mounted() {
+  created() {
     this.getTools();
     this.getfslink();
     // this.getBlog();

@@ -164,23 +164,27 @@ export default {
       document.getElementsByTagName("head")[0].appendChild(link);
     }
   },
-  mounted() {
-    this.getuserinfo;
-    this.seticon();
-    let times = setTimeout(() => {
-      if (this.item) {
-        setInterval(this.setTime(), 1000);
-      } else {
-        clearTimeout(times);
-      }
-    }, 1000);
+  created() {
+    if (process.client) {
+      this.seticon();
 
-    // 滚动效果
-    this.backtop = document.getElementsByClassName("backtop")[0];
-    const timer = setInterval(() => {
-      this.dtop = document.documentElement.scrollTop || document.body.scrollTop;
-      this.getscrool();
-    }, 500);
+      let times = setTimeout(() => {
+        if (this.item) {
+          setInterval(this.setTime(), 1000);
+        } else {
+          clearTimeout(times);
+        }
+      }, 1000);
+
+      // 滚动效果
+      this.backtop = document.getElementsByClassName("backtop")[0];
+      const timer = setInterval(() => {
+        this.dtop =
+          document.documentElement.scrollTop || document.body.scrollTop;
+        this.getscrool();
+      }, 500);
+    }
+    this.getuserinfo;
 
     // 销毁
     this.$once("hook:beforeDestroy", () => {

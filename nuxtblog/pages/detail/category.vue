@@ -28,7 +28,7 @@ export default {
       //   标签总数
       length: "",
       setbottomtime: "",
-      categories:""
+      categories: ""
     };
   },
   async asyncData({ $axios }) {

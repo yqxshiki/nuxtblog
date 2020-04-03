@@ -2,7 +2,7 @@
 module.exports = {
     dev: {
         MODE: 'development',
-        ENV_API: "http://localhost:4000/web/api"
+        ENV_API: "http://localhost:9999/web/api"
     },
     pro: {
         MODE: 'production',

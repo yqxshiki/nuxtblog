@@ -56,7 +56,7 @@
               <div class="recommend-info">
                 <h3 class="title-border">推荐工具</h3>
                 <div v-for="item in tools" :key="item._id" class="tools">
-                  <a :href="item.link">
+                  <a :href="item.link" target="_blank">
                     <img class="toolsimg" v-lazy="item.icon" alt />
                     <span class="tool-name">{{item.name}}</span>
                   </a>
@@ -158,13 +158,15 @@ export default {
       this.fslinks = res.data;
     }
   },
-  mounted() {
-    this.$nextTick(() => {
-      this.$nuxt.$loading.start();
-      setTimeout(() => {
-        this.$nuxt.$loading.finish();
+  created() {
+    if (process.client) {
+      this.$nextTick(() => {
+        this.$nuxt.$loading.start();
+        setTimeout(() => {
+          this.$nuxt.$loading.finish();
+        });
       });
-    });
+    }
     this.getTools();
     this.getfslink();
   }

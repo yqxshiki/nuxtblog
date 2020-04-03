@@ -113,6 +113,7 @@
 
         // 密码对比
         const isValid = require("bcryptjs").compareSync(password, user.password)
+
         assert(isValid, 422, '密码错误')
 
         // 生成token

@@ -78,10 +78,10 @@ export default {
       this.$axios.post("/resive/" + list, this.arrlist);
     }
   },
-  mounted() {
-    setTimeout(() => {
-      this.getcount(this.$route.params.list);
-    }, 1000);
+  created() {
+      setTimeout(() => {
+        this.getcount(this.$route.params.list);
+      }, 1000);
   },
   head() {
     return {
