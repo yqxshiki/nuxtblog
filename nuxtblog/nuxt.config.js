@@ -1,5 +1,4 @@
 const env = require("./env")
-
 export default {
   mode: 'universal',
   render: {
@@ -70,7 +69,11 @@ export default {
   },
   generate: {
     dir: "web",
-    devtools: true,
+    routes: [
+      '/detail/withme',
+      '/detail/blog',
+      '/detail/category'
+    ]
   },
   env: {
     baseUrl: env[process.env.MODE].ENV_API
