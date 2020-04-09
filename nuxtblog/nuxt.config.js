@@ -69,11 +69,6 @@ export default {
   },
   generate: {
     dir: "web",
-    routes: [
-      '/detail/withme',
-      '/detail/blog',
-      '/detail/category'
-    ]
   },
   env: {
     baseUrl: env[process.env.MODE].ENV_API

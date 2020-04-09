@@ -136,19 +136,31 @@ export default {
     }
   },
   // 获取文章
-  async asyncData({ $axios }) {
-    const res = await $axios.get("/blog");
-    let list = [];
-    if (res.length <= 5) {
-      res.map((item, index) => {
-        list.unshift(item);
-      });
-    } else {
-      list = res.slice(res.length - 5, res.length).reverse();
-    }
-    return { list: list };
-  },
+  // async asyncData({ $axios }) {
+  //   const res = await $axios.get("/blog");
+  //   let list = [];
+  //   if (res.length <= 5) {
+  //     res.map((item, index) => {
+  //       list.unshift(item);
+  //     });
+  //   } else {
+  //     list = res.slice(res.length - 5, res.length).reverse();
+  //   }
+  //   return { list: list };
+  // },
   methods: {
+    async getBlog() {
+      const res = await this.$axios.get("/blog");
+      let list = [];
+      if (res.data.length <= 5) {
+        res.data.map((item, index) => {
+          list.unshift(item);
+        });
+      } else {
+        list = res.slice(res.data.length - 5, res.data.length).reverse();
+      }
+      this.list = list;
+    },
     async getTools() {
       const res = await this.$axios.get("/tools");
       this.tools = res.data;
@@ -169,6 +181,7 @@ export default {
     }
     this.getTools();
     this.getfslink();
+    this.getBlog();
   }
 };
 </script>

@@ -1,4 +1,4 @@
-<template>
+﻿<template>
   <div class="wrap">
     <el-row :gutter="20">
       <el-col :span="18">
@@ -116,18 +116,18 @@ export default {
     }
   },
   // 获取文章
-  // async asyncData({ $axios }) {
-  //   const res = await $axios.get("/blog");
-  //   let bloglist = [];
-  //   if (res.length <= 5) {
-  //     res.map((item, index) => {
-  //       bloglist.unshift(item);
-  //     });
-  //   } else {
-  //     bloglist = res.slice(res.length - 5, res.length).reverse();
-  //   }
-  //   return { list: bloglist };
-  // },
+  async asyncData({ $axios }) {
+    const res = await $axios.get("/blog");
+    let bloglist = [];
+    if (res.length <= 5) {
+      res.map((item, index) => {
+        bloglist.unshift(item);
+      });
+    } else {
+      bloglist = res.slice(res.length - 5, res.length).reverse();
+    }
+    return { list: bloglist };
+  },
   methods: {
     async getTools() {
       const res = await this.$axios.get("/tools");
