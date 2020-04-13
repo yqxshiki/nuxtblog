@@ -1,7 +1,11 @@
 <template>
   <div id="blog">
     <div class="container">
-      <div class="list rainbow" v-for="item in list" :key="item.index">
+      <div
+        class="list rainbow"
+        v-for="item in list.slice((currentpage-1)*page_size,currentpage*page_size)"
+        :key="item.index"
+      >
         <div class="title">
           <nuxt-link
             keep-alive
@@ -29,6 +33,18 @@
         <div class="end">---------------- The End ----------------</div>
       </div>
     </div>
+    <div class="center">
+      <el-pagination
+        @size-change="change_size_change"
+        @current-change="change_current_page"
+        :page-size="page_size"
+        :page-sizes="[5,10,15,20]"
+        :current-page="currentpage"
+        background
+        layout="prev, pager, next"
+        :total="list.length"
+      ></el-pagination>
+    </div>
   </div>
 </template>
 
@@ -45,7 +61,9 @@ export default {
   },
   data() {
     return {
-      list: []
+      list: [],
+      page_size: 5,
+      currentpage: 1
     };
   },
   // 过滤
@@ -57,10 +75,19 @@ export default {
       return dayjs(val).format("YYYY/MM/DD");
     }
   },
+  methods: {
+    change_size_change(size) {
+      this.page_size = size;
+    },
+    // 第几页
+    change_current_page(size) {
+      this.currentpage = size;
+    }
+  },
   async asyncData({ $axios }) {
     const res = await $axios.get("/blog");
     return { list: res.reverse() };
-  },
+  }
 };
 </script>
 <style scoped lang="scss">
@@ -71,5 +98,9 @@ export default {
     width: 60%;
     height: auto;
   }
+}
+.center {
+  text-align: center;
+  font-size: 24px;
 }
 </style>

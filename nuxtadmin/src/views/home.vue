@@ -25,7 +25,7 @@
             </el-menu-item-group>
           </el-submenu>
 
-          <el-submenu index="1">
+          <el-submenu index="2">
             <template slot="title">
               <i class="el-icon-message"></i>用户管理
             </template>
@@ -43,7 +43,7 @@
             </el-menu-item-group>
           </el-submenu>
 
-          <el-submenu index="1">
+          <el-submenu index="3">
             <template slot="title">
               <i class="el-icon-message"></i>sidebar管理
             </template>

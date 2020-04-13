@@ -157,7 +157,7 @@ export default {
           list.unshift(item);
         });
       } else {
-        list = res.slice(res.data.length - 5, res.data.length).reverse();
+        list = res.data.slice(res.data.length - 5, res.data.length).reverse();
       }
       this.list = list;
     },
