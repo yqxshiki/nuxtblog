@@ -9,8 +9,12 @@ export default {
   name: "withme",
   head() {
     return {
-      title: "关于我",
-      meta: [{ hid: "description", name: "withme", content: "withme" }]
+      title: "关于我-Scrook博客",
+      meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { hid: "description", name: "withme", content: "withme-Scrook博客" }
+      ]
     };
   },
   data() {
@@ -21,7 +25,7 @@ export default {
   async asyncData({ $axios }) {
     const res = await $axios.get("/user/info");
     return { item: res[0] };
-  },
+  }
   // methods: {
   //   async get_userinfo() {
   //     const res = await this.$axios.get("/user/info");

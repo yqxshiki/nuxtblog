@@ -9,6 +9,7 @@ export default {
    */
   head: {
     title: 'Scrook.Blog',
+    titleTemplate: '%s --一直向前',
     meta: [{
       charset: 'utf-8'
     },
@@ -17,16 +18,22 @@ export default {
       content: 'width=device-width, initial-scale=1'
     },
     {
+      name: 'baidu-site-verification',
+      content: '3nPimulmkL'
+    },
+    { name: "renderer", content: "webkit" },
+    { name: "force-rendering", content: "webkit" },
+    {
       hid: 'description',
       name: 'description',
-      content: process.env.npm_package_description || ''
+      content: process.env.npm_package_description || 'Scrook博客'
     }
     ],
     link: [{
       rel: 'icon',
       type: 'image/x-icon',
       href: '/icon.jpg'
-    }]
+    }],
   },
   /*
    ** Customize the progress-bar color
@@ -77,7 +84,8 @@ export default {
    ** Build configuration
    */
   build: {
-    // transpile: [/^element-ui/],
+    transpile: [/^element-ui/],
+    extractCSS: true,
     // analyze: true,
     /*
      ** You can extend webpack config here

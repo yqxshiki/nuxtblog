@@ -56,7 +56,6 @@
             <a href="https://zh.nuxtjs.org/" target="_blank">NuxtJS</a>编写
           </span>
           <span>
-            仿照
             <a href="https://www.yqxshiki.com/" target="_blank">用Hexo Next完成的Blog</a>
           </span>
         </div>
@@ -76,12 +75,9 @@ export default {
       backtop: ""
     };
   },
-  computed: {
-    // 获取用户信息
-    async getuserinfo() {
-      const res = await this.$axios.get("/user/info");
-      this.item = res.data[0];
-    }
+  async asyncData({ $axios }) {
+    const res = await $axios.get("/user/info");
+    return { item: res[0] };
   },
   methods: {
     secondToDate(second) {
@@ -134,7 +130,7 @@ export default {
     },
     // 回到顶部
     top() {
-      let timer = setInterval(function() {
+      var timer = setInterval(function() {
         let osTop =
           document.documentElement.scrollTop || document.body.scrollTop;
         let ispeed = Math.floor(-osTop / 5);
@@ -145,15 +141,23 @@ export default {
         }
       }, 30);
     },
-    getscrool() {
-      if (this.dtop >= 650) {
-        this.backtop.style.right = 3 + "rem";
-        this.backtop.style.bottom = 3 + "rem";
-      } else {
-        this.backtop.style.right = -5 + "rem";
-        this.backtop.style.bottom = -3 + "rem";
-      }
-    },
+    // getscrool() {
+    //   if (this.dtop >= 550) {
+    //     if (this.backtop == undefined) {
+    //       return false;
+    //     } else {
+    //       this.backtop.style.right = 3 + "rem";
+    //       this.backtop.style.bottom = 3 + "rem";
+    //     }
+    //   } else {
+    //     if (this.backtop == undefined) {
+    //       return false;
+    //     } else {
+    //       this.backtop.style.right = -5 + "rem";
+    //       this.backtop.style.bottom = -3 + "rem";
+    //     }
+    //   }
+    // },
     // set icon
     seticon() {
       var link = document.createElement("link");
@@ -167,7 +171,6 @@ export default {
   created() {
     if (process.client) {
       this.seticon();
-
       let times = setTimeout(() => {
         if (this.item) {
           setInterval(this.setTime(), 1000);
@@ -175,21 +178,7 @@ export default {
           clearTimeout(times);
         }
       }, 1000);
-
-      // 滚动效果
-      this.backtop = document.getElementsByClassName("backtop")[0];
-      const timer = setInterval(() => {
-        this.dtop =
-          document.documentElement.scrollTop || document.body.scrollTop;
-        this.getscrool();
-      }, 500);
     }
-    this.getuserinfo;
-
-    // 销毁
-    this.$once("hook:beforeDestroy", () => {
-      clearInterval(timer);
-    });
   }
 };
 </script>

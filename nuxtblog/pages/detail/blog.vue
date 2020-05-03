@@ -55,8 +55,12 @@ export default {
   // 标题
   head() {
     return {
-      title: "Blog",
-      meta: [{ hid: "description", name: "Blog", content: "Blog" }]
+      title: "博客列表--Scrook博客",
+      meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { hid: "description", name: "Blog", content: "博客列表--Scrook博客" }
+      ]
     };
   },
   data() {
@@ -85,7 +89,15 @@ export default {
     }
   },
   async asyncData({ $axios }) {
+    //文章
     const res = await $axios.get("/blog");
+    let list = [];
+    for (let i = 0; i < res.length; i++) {
+      var reg = res[i].bodyrender.replace(/<\/?.+?>/g, "");
+      var reg1 = reg.replace(/(^\s*)|(\s*$)/g, "");
+      reg1 = reg1.slice(0, 240);
+      res[i].bodyrender = reg1;
+    }
     return { list: res.reverse() };
   }
 };

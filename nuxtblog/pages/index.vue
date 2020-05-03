@@ -10,7 +10,7 @@
               <i class="iconfont">&#xe601;</i>
               最新文章
             </h2>
-            <div class="container">
+            <div class="container" :class="getSkeleton=='img'?'skeleton':' '">
               <div class="article" v-for="(item,_id) in list" :key="_id">
                 <nuxt-link :to="{name:'detail-list-list',params:{list:item._id,title:item.title}}">
                   <h2 class="article-title">{{item.title}}</h2>
@@ -18,10 +18,10 @@
                 <div class="article-flex">
                   <img class="article-img" v-lazy="item.icon" alt />
                   <span class="article-sidebar">
-                    <div class="article-body">{{item.bodyrender | filter}}</div>
+                    <p class="article-body">{{item.bodyrender | filter}}</p>
                     <div class="article-info">
                       <img src="../static/icon.jpg" alt />
-                      <span>Scrook:{{item.createdAt | yeardata}}</span>
+                      <p>Scrook:{{item.createdAt | yeardata}}</p>
                     </div>
                   </span>
                 </div>
@@ -108,7 +108,6 @@ import dayjs from "dayjs";
 import swiper from "@/pages/swpier";
 import contact from "@/pages/contact";
 import blogfooter from "@/pages/footer";
-// import bloghot from "@/pages/hot";
 export default {
   layout: "default",
   name: "index",
@@ -116,14 +115,24 @@ export default {
     swiper,
     contact,
     blogfooter
-    // bloghot
+  },
+  head() {
+    return {
+      title: "Scrook博客",
+      meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { hid: "description", name: "Scrook博客", content: "Scrook博客" }
+      ]
+    };
   },
   data() {
     return {
       list: [],
       // 工具
       tools: [],
-      fslinks: []
+      fslinks: [],
+      getSkeleton: "img"
     };
   },
   // // 过滤
@@ -135,40 +144,31 @@ export default {
       return dayjs(val).format("YYYY/MM/DD");
     }
   },
-  // 获取文章
-  // async asyncData({ $axios }) {
-  //   const res = await $axios.get("/blog");
-  //   let list = [];
-  //   if (res.length <= 5) {
-  //     res.map((item, index) => {
-  //       list.unshift(item);
-  //     });
-  //   } else {
-  //     list = res.slice(res.length - 5, res.length).reverse();
-  //   }
-  //   return { list: list };
-  // },
-  methods: {
-    async getBlog() {
-      const res = await this.$axios.get("/blog");
-      let list = [];
-      if (res.data.length <= 5) {
-        res.data.map((item, index) => {
-          list.unshift(item);
-        });
-      } else {
-        list = res.data.slice(res.data.length - 5, res.data.length).reverse();
-      }
-      this.list = list;
-    },
-    async getTools() {
-      const res = await this.$axios.get("/tools");
-      this.tools = res.data;
-    },
-    async getfslink() {
-      const res = await this.$axios.get("/fslinks");
-      this.fslinks = res.data;
+  async asyncData({ $axios }) {
+    //文章
+    const res = await $axios.get("/blog");
+    let list = [];
+    for (let i = 0; i < res.length; i++) {
+      var reg = res[i].bodyrender.replace(/<\/?.+?>/g, "");
+      reg = reg.slice(0, 240);
+      res[i].bodyrender = reg;
     }
+    if (res.length <= 5) {
+      res.map((item, index) => {
+        list.unshift(item);
+      });
+    } else {
+      list = res.slice(res.length - 5, res.length).reverse();
+    }
+    //工具
+    const tools = await $axios.get("/tools");
+    //友情博客
+    const fslinks = await $axios.get("/fslinks");
+    return {
+      list: list,
+      tools: tools,
+      fslinks: fslinks
+    };
   },
   created() {
     if (process.client) {
@@ -176,12 +176,10 @@ export default {
         this.$nuxt.$loading.start();
         setTimeout(() => {
           this.$nuxt.$loading.finish();
+          this.getSkeleton = "end";
         });
       });
     }
-    this.getTools();
-    this.getfslink();
-    this.getBlog();
   }
 };
 </script>
@@ -213,6 +211,9 @@ export default {
   div.el-col-18 {
     width: 100%;
   }
+}
+.skeleton {
+  background: #ccc;
 }
 #index {
   width: 100%;

@@ -1,8 +1,8 @@
 <template>
   <div id="swiper">
-    <el-carousel :interval="3000" type="card">
+    <el-carousel :interval="3000" type="card" :class="getSkeleton=='img'?'skeleton':' '">
       <el-carousel-item v-for="itmes in imgsrc" :key="itmes.index">
-        <img v-lazy="itmes.url" :alt="itmes.image" class="medium" />
+        <img v-lazy="itmes.url" :alt="itmes.image" />
       </el-carousel-item>
     </el-carousel>
   </div>
@@ -12,7 +12,8 @@ export default {
   name: "swiper",
   data() {
     return {
-      imgsrc: ""
+      imgsrc: "",
+      getSkeleton: "img"
     };
   },
   computed: {
@@ -22,7 +23,10 @@ export default {
     }
   },
   created() {
-    this.getimg;
+    setTimeout(() => {
+      this.getimg;
+      this.getSkeleton = "";
+    }, 500);
   }
 };
 </script>
@@ -31,6 +35,11 @@ export default {
   #swiper {
     display: none;
   }
+}
+.skeleton {
+  width: 80%;
+  margin: 0 auto;
+  background: #ccc;
 }
 .el-carousel__item img {
   width: 100%;
