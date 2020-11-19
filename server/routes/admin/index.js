@@ -81,16 +81,6 @@
     //     })
     // });
 
-    const upload = multer({
-        storage: MAO({
-            config: {
-                region: 'oss-cn-beijing',
-                accessKeyId: 'LTAI4FpyBVDFFZKGErN2KNWA',
-                accessKeySecret: 'L02zvkJ8RC9EWSHATUbShmij3F9w44',
-                bucket: 'nuxtblog'
-            }
-        })
-    });
     app.post("/api/uploads", validloginMiddleware(), upload.single('file'), async (req, res) => {
         const file = req.file;
 
