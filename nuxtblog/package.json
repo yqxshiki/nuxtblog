@@ -21,7 +21,7 @@
     "@nuxtjs/axios": "^5.9.5",
     "@nuxtjs/style-resources": "^1.0.0",
     "@nuxtjs/workbox": "^3.0.0-beta.16",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "dayjs": "^1.8.18",
     "element-ui": "^2.4.11",
     "highlight.js": "^9.16.2",
